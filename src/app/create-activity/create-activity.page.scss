@@ -1,0 +1,68 @@
+.header{
+    margin-top: 35px;
+}
+.back-button{
+    border-radius: 100%;
+    box-shadow: 2px 3px 5px 5px whitesmoke;
+    margin-left: 15px;
+    height: 33px;
+    width: 33px;
+}
+.text{
+    margin: 0px;
+    text-align: center;
+    font-size: 18px;
+}
+ion-input{
+    height: 64px;
+    max-width: 324px;
+    border: solid #0000004f 1px;
+    margin: auto;
+    border-radius: 6px;
+    font-size: 16px;
+    --padding-start: 20px;
+    --padding-end:16px;
+     
+    opacity: 1 !important;
+     
+}
+.input-text{
+    max-width: 320px;margin: auto;
+}
+.input-text3{
+    max-width: 320px;margin: auto;margin-top: 35px;
+}
+.start{
+    max-width:325px;margin: auto;margin-top: 10px; 
+}
+ 
+.input{
+    font-size: 18px;
+    margin-top: 16px;
+}
+.input-description{
+    height: 122px;
+    max-width: 324px;
+    border: solid #0000004f 1px;
+    margin: auto;
+    border-radius: 6px;
+    font-size: 16px;
+    --padding-start: 20px;
+    --padding-end:16px;
+     
+    opacity: 1 !important;
+     
+}
+.upload{
+    font-size: 18px;
+    margin-top: 12px;
+}
+.upload-pic{
+    height: 127px;max-width: 331px;border-radius:21px ;border: dashed 1px black;margin: auto;
+}
+.col-start{
+    border: solid #0000004f 1px ; border-radius: 6px;height: 55px;width: 150px;
+}
+.col-end{
+    border: solid  1px #0000004f ; border-radius: 6px;height: 55px;width: 150px;
+}

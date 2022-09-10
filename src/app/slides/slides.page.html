@@ -1,0 +1,20 @@
+
+<ion-content>
+  <ion-slides pager="true" >
+    <ion-slide *ngFor="let person of people">
+     
+      <div class="slide">
+        <img src="{{this.person.img}}" />
+      </div>
+      <ion-card class="card">
+          <h5>{{this.person.h5}}</h5>
+          <p>{{this.person.p}}</p>
+          <ion-button>continue</ion-button>
+      </ion-card>
+    </ion-slide>
+
+   
+
+  
+  </ion-slides>
+</ion-content>

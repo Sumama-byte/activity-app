@@ -1,0 +1,38 @@
+.hole{
+    width: 223px;
+    height: 223px;
+   margin-top: 200px;
+   margin-left: auto;
+   margin-right: auto;
+   border-radius: 100%;
+   background-color: #FDEAD1;
+   img{
+    height: 174px;
+    width: 174px;
+    margin-left: 10%;
+    margin-top: 20px;
+    
+}
+}
+p{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 270px;
+    margin-top: 40px;
+    font-size: smaller;
+    font-family: system-ui;
+
+}
+ion-button {
+
+    --background: #F2910C;
+    --border-radius: 100px;
+    height: 60px;
+    width: 270px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+    color: white;
+}
