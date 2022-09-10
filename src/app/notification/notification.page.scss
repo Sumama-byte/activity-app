@@ -1,0 +1,42 @@
+.header{
+    margin-top: 35px;
+  
+}
+.back-button{
+    border-radius: 100%;
+    box-shadow: 2px 3px 5px 5px whitesmoke;
+    margin-left: 15px;
+    height: 33px;
+    width: 33px;
+}
+.text{
+    margin: 0px;
+    text-align: center;
+    font-size: 18px;
+}
+.text3 {
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+.text4 {
+    margin: 0px;
+    font-size: 9px;
+}
+
+.view {
+    margin: 20px auto 0px auto;
+    box-shadow: 0px 25px 42px 5px whitesmoke;
+    height: 99px;
+    max-width: 382px;
+}
+
+.class {
+    flex-wrap: wrap;
+}
+
+.p_image {
+    border: 1px solid black;
+    display: flex;
+    border-radius: 14px;
+}
