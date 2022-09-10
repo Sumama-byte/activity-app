@@ -7,7 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { ProfilePageRoutingModule } from './profile-routing.module';
 
 import { ProfilePage } from './profile.page';
-
+import { ViewProfileComponent } from '../view-profile/view-profile.component';
+import { SeeProfileComponent } from '../see-profile/see-profile.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +16,6 @@ import { ProfilePage } from './profile.page';
     IonicModule,
     ProfilePageRoutingModule
   ],
-  declarations: [ProfilePage]
+  declarations: [ProfilePage, ViewProfileComponent , SeeProfileComponent]
 })
 export class ProfilePageModule {}
