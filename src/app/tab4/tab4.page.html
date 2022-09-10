@@ -1,9 +1,31 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>tab4</ion-title>
-  </ion-toolbar>
-</ion-header>
+ 
 
 <ion-content>
-
+  <ion-row class="header">
+    <ion-col size="1.8">
+      <div class="back-button">
+        <ion-icon name="chevron-back-outline" size="large"></ion-icon>
+      </div>
+    </ion-col>
+    <ion-col size="8.2">
+      <p class="text"><b>Chat</b></p>
+    </ion-col>
+    <ion-col size="1.8">
+      <p class="text"><b></b></p>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngFor="let item of items" class="main">
+     
+    <ion-col size="2">
+      <img src="{{item.img}}" alt="">
+    </ion-col>
+    <ion-col size="7.5">
+      <p class="name"><b>{{item.p}}</b></p>
+      <p class="title">{{item.text}}</p>
+    </ion-col>
+    <ion-col size="2.5">
+      <p class="time"> {{item.time}}</p>
+    </ion-col>
+ 
+  </ion-row>
 </ion-content>
