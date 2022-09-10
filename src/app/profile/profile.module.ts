@@ -9,6 +9,7 @@ import { ProfilePageRoutingModule } from './profile-routing.module';
 import { ProfilePage } from './profile.page';
 import { ViewProfileComponent } from '../view-profile/view-profile.component';
 import { SeeProfileComponent } from '../see-profile/see-profile.component';
+
 @NgModule({
   imports: [
     CommonModule,

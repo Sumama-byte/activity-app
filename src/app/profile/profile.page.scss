@@ -1,0 +1,74 @@
+.header{
+    margin-top: 35px;
+}
+.back-button{
+    border-radius: 100%;
+    box-shadow: 2px 3px 5px 5px whitesmoke;
+    margin-left: 15px;
+    height: 33px;
+    width: 33px;
+}
+.text{
+    margin: 0px;
+    text-align: center;
+    font-size: 18px;
+}
+.avatar{
+    height: 118px;
+   width:  118px;
+    margin: 35px auto 0px auto;
+}
+.input{
+    font-size: 18px;
+   
+    margin-top: 52px;
+}
+ion-input{
+    height: 64px;
+    max-width: 324px;
+    border: solid black 1px;
+    margin: auto;
+    border-radius: 50px;
+    font-size: 16px;
+    --padding-start: 20px;
+    --padding-end:16px;
+     
+    opacity: 1 !important;
+     
+}
+.label{
+    font-size: 18px;
+    margin-bottom: 5px;
+    max-width: 324px;
+    border: solid black 1px;
+}
+.input1{
+    font-size: 18px;
+    margin-top: 29px;
+}
+.input2{
+    font-size: 18px;
+     
+     opacity: 0.6;
+}
+.icon{
+    text-align: end;
+}
+.texxt{
+    margin: 0px;opacity: 0.6;
+}
+ion-button{
+    height: 60px;
+     max-width: 327px;
+     margin: auto;
+     color: white;
+     margin-top: 24px;
+     font-size: 18px;
+}
+.input-text{
+    max-width: 320px;margin: auto;
+}
+.input-text1{
+    max-width: 280px;margin: auto;
+}
+
