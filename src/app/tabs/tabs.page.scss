@@ -1,1 +1,31 @@
-
+ion-tabs {
+    background-color: #fff;
+    ion-button {
+        width: 70px;
+        height: 70px;
+        margin: 0% auto;
+        display: flex;
+        z-index: 12;
+        --border-color: #fff;
+        --border-radius: 100%;
+        --border-style: solid;
+        --border-width: 5px;
+        position: absolute;
+        bottom: 21px;
+        left: 41%;
+        right: 41%;
+        --box-shadow: none;
+        --ripple-color:none;
+        --background-activated:#454545;
+        --background-activated-opacity: 1;        
+        ion-icon {
+            color: #fff;
+        }
+    }
+    ion-tab-bar {
+        box-shadow: 10px -1px 20px rgb(0 0 0 / 14%);
+        ion-tab-button{
+            --ripple-color:#fff;
+        }
+    }
+}
