@@ -1,0 +1,34 @@
+<ion-content>
+  <ion-row class="header">
+    <ion-col size="1.8">
+      <div class="back-button">
+        <ion-icon name="chevron-back-outline" size="large"></ion-icon>
+      </div>
+    </ion-col>
+    <ion-col size="8.4">
+      <p class="text"><b>Notification</b></p>
+    </ion-col>
+    <ion-col size="1.8">
+      <b><ion-icon name="funnel-outline"></ion-icon></b>
+    </ion-col>
+  </ion-row>
+
+  <ion-list >
+    <ion-row class="view"  *ngFor="let person of people">
+      <ion-col size="2">
+        <div class="p_image">
+        <img src="{{this.person.img}}" alt="">
+      </div>
+      </ion-col>
+      <ion-col size="7" class="class">
+        <p class="text3"><b>{{this.person.p2}}</b></p>
+        <p class="text4">{{this.person.p3}}</p>
+        <p><b>view it</b></p>
+      </ion-col>
+      <ion-col size="3">
+        <img src="{{this.person.image}}" alt="">
+      </ion-col>
+    </ion-row>
+  </ion-list>
+
+</ion-content>
