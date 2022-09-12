@@ -1,34 +1,43 @@
-<ion-content>
-  <ion-row class="header">
-    <ion-col size="1.8">
-      <div class="back-button">
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <div class="head_align">
+      
+      <div class="back-button" (click)="nav_back()">
         <ion-icon name="chevron-back-outline" size="large"></ion-icon>
       </div>
-    </ion-col>
-    <ion-col size="8.4">
+      
       <p class="text"><b>Notification</b></p>
-    </ion-col>
-    <ion-col size="1.8">
-      <b><ion-icon name="funnel-outline"></ion-icon></b>
-    </ion-col>
-  </ion-row>
+        <div class="img" >
+          <b><ion-icon name="funnel-outline"></ion-icon></b>
+        </div>
 
-  <ion-list >
-    <ion-row class="view"  *ngFor="let person of people">
-      <ion-col size="2">
-        <div class="p_image">
-        <img src="{{this.person.img}}" alt="">
-      </div>
-      </ion-col>
-      <ion-col size="7" class="class">
-        <p class="text3"><b>{{this.person.p2}}</b></p>
-        <p class="text4">{{this.person.p3}}</p>
-        <p><b>view it</b></p>
-      </ion-col>
-      <ion-col size="3">
-        <img src="{{this.person.image}}" alt="">
-      </ion-col>
-    </ion-row>
-  </ion-list>
+    </div>
+
+  </ion-toolbar>
+
+</ion-header>
+ 
+<ion-content>
+  
+ <!-- Notification data -->
+ <ion-row>
+  <ion-col size="12" size-md="4" *ngFor="let data of notifications">
+
+    <div class="user_img m-2">
+      <img src="{{this.data.user_img}}" alt="">
+    </div>
+
+    <div class="m-2">
+      <p class="title m-1"><b>{{this.data.notify_title}}</b></p>
+      <p class="subtitle m-1">{{this.data.notify_des}}</p>
+      <p class="subtitle m-1"><b>view it</b></p>
+    </div>
+
+    <div class="location_img">
+      <img src="{{this.data.location_img}}" alt="">
+    </div>
+
+  </ion-col>
+</ion-row>
 
 </ion-content>

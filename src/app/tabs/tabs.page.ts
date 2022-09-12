@@ -11,7 +11,7 @@ export class TabsPage {
   constructor(public route : Router) {}
   
   nav(){
-    this.route.navigate(['tab5'])
+    this.route.navigate(['/tabs/create-activity'])
   }
 
 

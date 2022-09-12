@@ -1,26 +1,32 @@
+<!-- Head -->
 <ion-header>
-    <ion-toolbar>
-      <ion-row>
-        <ion-col size="2">
-          <img src="../../assets/WhatsApp_Image_2022-05-10_at_8.12 3.png" alt="">
-        </ion-col>
-        <ion-col class="c2" size="7"> 
-          312 Street, USA
-        </ion-col>
-        <ion-col class="c4" size="3">
-          <ion-icon name="notifications-outline" class="icon"></ion-icon>
-          <div class="img">
-            <img src="../../assets/profile - 1.png" alt="">
-          </div>
-        </ion-col>  
-      </ion-row>
-    </ion-toolbar>
+  <ion-toolbar>
+
+    <div class="head_align">
+      <div class="head_align_left">
+
+        <img src="../../assets/WhatsApp_Image_2022-05-10_at_8.12 3.png" alt="">
+
+        <p> 312 Street, USA</p>
+
+      </div>
+      <div class="head_align_right">
+        <ion-icon (click)="notification()" name="notifications-outline" class="icon"></ion-icon>
+        <div class="img" (click)="profile()" >
+          <img src="../../assets/profile - 1.png" alt="">
+        </div>
+
+      </div>
+    </div>
+
+  </ion-toolbar>
 
 </ion-header>
 
 <ion-content>
- 
-  <ion-segment  [(ngModel)]="selectTabs" mode="ios" value="all">
+
+  <!-- Segment -->
+  <ion-segment [(ngModel)]="selectTabs" mode="ios" value="all">
     <ion-segment-button value="map">
       <ion-label>Map</ion-label>
     </ion-segment-button>
@@ -29,28 +35,37 @@
     </ion-segment-button>
   </ion-segment>
 
-
+  <!-- Map Segment -->
   <ion-list *ngIf="selectTabs == 'map' ">
+
+    <!-- Map Image -->
     <img src="../../assets/Mapsicle Map.png" alt="">
+
   </ion-list>
 
+  <!-- List Segment -->
+  <div *ngIf="selectTabs == 'list' ">
 
-  <ion-list  *ngIf="selectTabs == 'list' " >
-    <ion-row class="view"  *ngFor="let person of people">
-      <ion-col size="2">
-        <div class="p_image">
-        <img src="{{this.person.img}}" alt="">
-      </div>
-      </ion-col>
-      <ion-col size="7" class="class">
-        <p class="text3"><b>{{this.person.p2}}</b></p>
-        <p class="text4">{{this.person.p3}}</p>
-        <p><b>view it</b></p>
-      </ion-col>
-      <ion-col size="3">
-        <img src="{{this.person.image}}" alt="">
+    <!-- List data -->
+    <ion-row>
+      <ion-col size="12" size-md="4" *ngFor="let data of list_activities">
+
+        <div class="user_img m-2">
+          <img src="{{this.data.user_img}}" alt="">
+        </div>
+
+        <div class="m-2">
+          <p class="title m-1"><b>{{this.data.activity_title}}</b></p>
+          <p class="subtitle m-1">{{this.data.activity_des}}</p>
+          <p class="subtitle m-1"><b>view it</b></p>
+        </div>
+
+        <div class="location_img">
+          <img src="{{this.data.location_img}}" alt="">
+        </div>
+
       </ion-col>
     </ion-row>
-  </ion-list>
-  
+  </div>
+
 </ion-content>

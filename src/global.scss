@@ -25,26 +25,48 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+@import 'swiper/scss';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/pagination';
+
+.swiper-slide {
+    display: flex; 
+    flex-wrap: wrap;
+    align-content: space-between;
+ 
+}
+
+.swiper-slide h2 {
+    margin-top: 2.8rem;
+}
+
+.swiper-slide img {
+    max-height: 67%;
+    max-width: 80%;
+    margin: 60px 0 40px;
+    pointer-events: none;
+}
+
 .swiper-pagination {
     position: absolute;
-    text-align: center; 
-    margin-top: 200px;
-    
+    text-align: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    top: 0px !important;
+
     .swiper-pagination-bullet {
         background-color: black;
         height: 8px;
-        width: 8px;
-    
-     
-       
+        width: 8px;       
     }
     .swiper-pagination-bullet-active {
         background: #f2910c;
         width: 24px;
         border-radius: 100px;
-        height: 8px;
-    
-       
+        height: 8px;     
     }
 }
  
