@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Camera, CameraResultType,CameraSource } from '@capacitor/camera';
 import { Router } from '@angular/router';
 
 @Component({
@@ -46,10 +47,23 @@ export class ProfilePage implements OnInit {
     console.log('log out')
   }
 
-  // nav back to home
-    
+  // nav back to home  
   nav_back(){
     this.route.navigate(['/tabs/tab1'])
  }
+
+  // get image
+  async capture_img(){
+    const image = await Camera.getPhoto({
+      quality:90,
+      resultType: CameraResultType.Base64,
+      source: CameraSource.Prompt,
+
+    });
+    document.getElementById('cameraImage').setAttribute('src', `data:image/${image.format};base64,`+image.base64String );
+    console.log(image.base64String);
+    this.profile_data.user_img = image.base64String;
+  }
+
 }
 
