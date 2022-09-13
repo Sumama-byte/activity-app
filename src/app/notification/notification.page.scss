@@ -4,7 +4,7 @@ ion-header {
 
         .head_align {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             align-items: center;
         }
         .back-button{
@@ -12,6 +12,10 @@ ion-header {
             box-shadow: 2px 3px 5px 5px whitesmoke;
             height: 33px;
             width: 33px;
+            margin-left: 15px;
+        }
+        ion-icon{
+            margin-right: 15px;
         }
     }
 }
@@ -19,6 +23,7 @@ ion-header {
 
 
 ion-row {
+    width: 100%;
     display: flex;
     justify-content: center;
     position: absolute;

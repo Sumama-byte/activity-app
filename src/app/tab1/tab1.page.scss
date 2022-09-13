@@ -54,10 +54,12 @@ ion-list {
 }
 
 ion-row {
+    width: 100%;
     display: flex;
     justify-content: center;
     position: absolute;
     top: 68px;
+    margin: 5px;
 
     ion-col {
         max-width: 382px;

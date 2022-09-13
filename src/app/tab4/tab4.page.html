@@ -1,31 +1,29 @@
- 
-
 <ion-content>
   <ion-row class="header">
     <ion-col size="1.8">
-      <div class="back-button">
+      <div class="back-button" (click)="go_home()">
         <ion-icon name="chevron-back-outline" size="large"></ion-icon>
       </div>
     </ion-col>
     <ion-col size="8.2">
       <p class="text"><b>Chat</b></p>
     </ion-col>
-    <ion-col size="1.8">
-      <p class="text"><b></b></p>
-    </ion-col>
+    <ion-col size="1.8"></ion-col>
   </ion-row>
-  <ion-row *ngFor="let item of items" class="main">
-     
-    <ion-col size="2">
-      <img src="{{item.img}}" alt="">
-    </ion-col>
-    <ion-col size="7.5">
-      <p class="name"><b>{{item.p}}</b></p>
-      <p class="title">{{item.text}}</p>
-    </ion-col>
-    <ion-col size="2.5">
-      <p class="time"> {{item.time}}</p>
-    </ion-col>
- 
-  </ion-row>
+
+  <!-- list of user -->
+  <ion-list >
+    <ion-item lines="none" *ngFor="let user of users"  (click)="show_chat(user)">
+      <ion-avatar slot="start" class="avatar">
+        <img src="{{user.user_img}}" class="img">
+      </ion-avatar>
+      <ion-label>
+        <h2>{{user.user_name}}</h2>
+        <p>{{user.user_last_msg}}</p>
+      </ion-label>
+      <ion-note slot="end">
+        {{user.last_time}}
+      </ion-note>
+    </ion-item>
+  </ion-list>
 </ion-content>

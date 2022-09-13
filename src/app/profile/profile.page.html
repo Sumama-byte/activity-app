@@ -121,7 +121,11 @@
 
     <!-- get  -->
     <ion-avatar class="avatar">
-      <img src="../../assets/profile - 1.png" alt="">
+      <img src="../../assets/profile - 1.png"  id="cameraImage" alt="">
+      <!-- get img buttton  -->
+      <div class="capture_img" (click)="capture_img()" >
+        <img src="./../../assets/edit_img.png" alt="">
+      </div>
     </ion-avatar>
     <!-- Name -->
     <ion-row class="input_title">
@@ -146,7 +150,11 @@
 
     <!-- range -->
     <ion-row class="input_title">
-      <p class="input2"><b>set between 100m and 30km</b></p>
+      <div style="    display: flex;
+      align-items: center;">
+        <img src="./../../assets/Vector.png" alt="" srcset="">
+      </div>
+      <p class="input2 m-1">Set between 100m and 30km</p>
     </ion-row>
 
     <!-- Submit button -->

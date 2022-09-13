@@ -22,8 +22,14 @@ export class NotificationPage implements OnInit {
   ngOnInit() {
   }
    
+  // go to home / tab1 page
   nav_back(){
      this.route.navigate(['/tabs/tab1'])
   }
+
+  // go to filter/ tab 3 page
+  funnel(){
+    this.route.navigate(['/tabs/tab3'])
+ }
 
 }

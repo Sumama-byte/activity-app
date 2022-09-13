@@ -1,5 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { IonContent } from '@ionic/angular';
+import { GlobalService } from '../Services/global.service';
+
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.page.html',
@@ -28,10 +31,19 @@ export class ChatPage implements OnInit {
 
   newMsg = '';
 
+  public chat :any;
+
   @ViewChild(IonContent) content: IonContent
-  constructor() { }
+
+  constructor( public route: Router , public global :GlobalService  ) { }
 
   ngOnInit() {
+    this.global.Chat.subscribe( res => {
+      this.chat = res;
+      console.log(this.chat);
+    })
+    
+
   }
   sendMessage(){
     this.messages.push({
@@ -43,5 +55,10 @@ export class ChatPage implements OnInit {
     setTimeout(() => {
       this.content.scrollToBottom(200);
     });
+  }
+
+
+  go_back(){
+    this.route.navigate(['/tabs/tab4'])
   }
 }

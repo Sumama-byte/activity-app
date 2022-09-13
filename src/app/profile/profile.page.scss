@@ -1,70 +1,79 @@
 //view profile css
-.header{
+.header {
     margin-top: 35px;
     display: flex;
     align-items: center;
 }
-.back-button{
+
+.back-button {
     border-radius: 100%;
     box-shadow: 2px 3px 5px 5px whitesmoke;
     margin-left: 10px;
     height: 33px;
     width: 33px;
 }
-.text{
+
+.text {
     margin: 0px;
     text-align: center;
     font-size: 18px;
 }
-.avatar{
-     height: 118px;
-    width:  118px;
-     margin: 35px auto 0px auto;
+
+.avatar {
+    height: 118px;
+    width: 118px;
+    margin: 35px auto 0px auto;
 }
-.name{
+
+.name {
     text-align: center;
     font-size: 18px;
     margin: 15px 0px 0px 0px;
 }
-.text2{
+
+.text2 {
     text-align: center;
     font-size: 15px;
     margin: 8px 0px 0px 0px;
-    
+
 }
-.range{
+
+.range {
     height: 64px;
-    max-width: 330px;
+    max-width: 300px;
     margin: auto;
     margin-top: 33px;
     border-radius: 10px;
     box-shadow: 0px 1px 20px 19px whitesmoke;
-    p{
+
+    p {
         margin-left: 20px;
     }
 }
 
-.activity{
+.activity {
     max-width: 340px;
     margin: auto;
     margin-top: 25px;
 }
-.text3
-{
+
+.text3 {
     margin: 0px;
     font-size: 12px;
 }
-.text4{
+
+.text4 {
     margin: 0px;
     font-size: 9px;
 }
-.view{
+
+.view {
     margin: 34px 10px 0px 10px;
     display: flex;
     justify-content: center;
+    width: 100%;
 
-    
- 
+
 
     ion-col {
         max-width: 382px;
@@ -73,10 +82,10 @@
         align-items: flex-start;
         align-content: space-between;
         justify-content: space-between;
-        margin:0px 5px 27px 5px;
+        margin: 0px 5px 27px 5px;
         padding: 0;
         box-shadow: 2px 4px 5px #00000029;
-        border-radius:10px;
+        border-radius: 10px;
 
         .user_img {
             border: 2px solid #17A525;
@@ -112,7 +121,8 @@
 
 
 }
-.refer_logut{
+
+.refer_logut {
     height: 60px;
     max-width: 363px;
     margin: 15px auto 23px auto;
@@ -121,17 +131,19 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    div{
-        text-align: left;
-      width: 65%;
 
-      p{
-        font-size: 14px;
-        font-weight: 500;
-      }
+    div {
+        text-align: left;
+        width: 65%;
+
+        p {
+            font-size: 14px;
+            font-weight: 500;
+        }
     }
 }
-.icon{
+
+.icon {
     margin-top: 6px;
 }
 
@@ -143,18 +155,19 @@
 ion-header {
 
     ion-toolbar {
-         
-       .w-1{
-        width: 42px;
-       }
-        p{
+
+        .w-1 {
+            width: 42px;
+        }
+
+        p {
             margin: 0% auto;
         }
     }
 }
- 
- 
-ion-input{
+
+
+ion-input {
     height: 55px;
     max-width: 336px;
     border: solid black 1px;
@@ -162,41 +175,57 @@ ion-input{
     border-radius: 50px;
     font-size: 16px;
     --padding-start: 20px;
-    --padding-end:16px;
-     
+    --padding-end: 16px;
+
     opacity: 1 !important;
-     
+
 }
-.label{
+
+.label {
     font-size: 18px;
     margin-bottom: 5px;
     max-width: 324px;
     border: solid black 1px;
 }
-.input1{
+
+.input1 {
     font-size: 18px;
-    margin: 29px 0px 0px 0px ;
+    margin: 29px 0px 0px 0px;
 
 }
-.input2{
+
+.input2 {
     font-size: 12px;
+    font-weight: bold;
+    margin: 10px;
     opacity: 0.6;
 }
-.icon{
+
+.icon {
     text-align: end;
 }
-.texxt{
-    margin: 0px;opacity: 0.6;
-}
-ion-button{
-    height: 60px;
-     max-width: 327px;
-     margin: auto;
-     color: white;
-     margin-bottom: 34px;
-     font-size: 18px;
-}
-.input_title{
-    max-width: 300px;margin: auto auto 9px auto;
+
+.texxt {
+    margin: 0px;
+    opacity: 0.6;
 }
 
+ion-button {
+    height: 60px;
+    max-width: 327px;
+    margin: auto;
+    color: white;
+    margin-bottom: 34px;
+    font-size: 18px;
+}
+
+.input_title {
+    max-width: 300px;
+    margin: auto auto 9px auto;
+}
+
+.capture_img {
+    width: 29px;
+    height: 29px;
+    transform: translate3d(84px, -35px, 10px);
+}
