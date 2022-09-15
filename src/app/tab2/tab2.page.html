@@ -28,7 +28,7 @@
   <!-- Activities on going -->
   <div *ngIf =" selectTabs ==  'going' " >
     <ion-row>
-      <ion-col size="12" size-md="5" size-lg="6" *ngFor="let data of activities_going">
+      <ion-col size="12" size-md="5" size-lg="6" *ngFor="let data of activities_going" (click)="going()">
 
         <div class="user_img m-2">
           <img src="{{this.data.user_img}}" alt="">
@@ -51,7 +51,7 @@
   <!-- Activities  may be going -->
   <div *ngIf =" selectTabs ==  'may_be_going' " >
     <ion-row>
-      <ion-col size="12" size-md="4" *ngFor="let data of  activities_may_be_going">
+      <ion-col size="12" size-md="4" *ngFor="let data of  activities_may_be_going" (click)="may_be_going()">
 
         <div class="user_img m-2">
           <img src="{{this.data.user_img}}" alt="">

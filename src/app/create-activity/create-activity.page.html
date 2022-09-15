@@ -1,62 +1,46 @@
-<!--  
-<ion-content>
-  <ion-content>
-    <ion-row class="header">
-      <ion-col size="1.8">
-        <div class="back-button">
-          <ion-icon name="chevron-back-outline" size="large"></ion-icon>
-        </div>
-      </ion-col>
-      <ion-col size="8.2">
-        <p class="text"><b>Create Activity</b></p>
-      </ion-col>
-      <ion-col size="1.8">
-        <p class="text"><b></b></p>
-      </ion-col>
-    </ion-row>
-    <ion-row class="input-text">
-      <p class="input"><b>Name of Activity</b></p>
-    </ion-row>
-    <ion-input></ion-input>
-    <ion-row class="input-text">
-      <p class="input"><b> Location</b></p>
-    </ion-row>
-    <ion-input></ion-input>
-    <ion-row class="input-text">
-      <p class="input"><b> Short Description</b></p>
-    </ion-row>
-    <ion-input class="input-description"></ion-input>
-    <ion-row class="input-text">
-      <p class="input"><b>Max number of attendance</b></p>
-    </ion-row>
-    <ion-input></ion-input>
-    <ion-row style="max-width: 330px;margin: auto;">
-      <ion-col size="5">
-        <p style="font-size: 12px;"><b>Activity as private</b></p>
-      </ion-col>
-      <ion-col size="7" style="text-align: end;">
-        <ion-toggle style="margin: 4px;"></ion-toggle>
-      </ion-col>
-    </ion-row>
-      <ion-row style="width: 330px;margin: auto;display: flex;align-items: center;">
-        <ion-icon name="information-circle-outline"></ion-icon>
-        <p style="font-size: 10px;margin: 0px 2px ;">Lorem ipsum dolor sit amet, consectetur   Consequuntur, inventore!</p>
-      </ion-row>
-</ion-content> -->
 <ion-content>
   <ion-row class="header">
     <ion-col size="1.8">
-      <div class="back-button">
+      <div class="back-button" (click)="go_back()">
         <ion-icon name="chevron-back-outline" size="large"></ion-icon>
       </div>
     </ion-col>
     <ion-col size="8.2">
-      <p class="text"><b>Creating Activity</b></p>
+      <p class="text"><b>Create Activity</b></p>
     </ion-col>
     <ion-col size="1.8">
       <p class="text"><b></b></p>
     </ion-col>
   </ion-row>
+  <ion-row class="input-text">
+    <p class="input"><b>Name of Activity</b></p>
+  </ion-row>
+  <ion-input></ion-input>
+  <ion-row class="input-text">
+    <p class="input"><b> Location</b></p>
+  </ion-row>
+  <ion-input></ion-input>
+  <ion-row class="input-text">
+    <p class="input"><b> Short Description</b></p>
+  </ion-row>
+  <ion-input class="input-description"></ion-input>
+  <ion-row class="input-text">
+    <p class="input"><b>Max number of attendance</b></p>
+  </ion-row>
+  <ion-input></ion-input>
+  <ion-row style="max-width: 330px;margin: auto;">
+    <ion-col size="5">
+      <p style="font-size: 12px;"><b>Activity as private</b></p>
+    </ion-col>
+    <ion-col size="7" style="text-align: end;">
+      <ion-toggle style="margin: 4px;"></ion-toggle>
+    </ion-col>
+  </ion-row>
+  <ion-row style="width: 330px;margin: auto;display: flex;align-items: center;">
+    <ion-icon name="information-circle-outline"></ion-icon>
+    <p style="font-size: 10px;margin: 0px 2px ;">Lorem ipsum dolor sit amet, consectetur Consequuntur, inventore!</p>
+  </ion-row>
+
   <ion-row class="input-text">
     <p class="input"><b>Social Range of Activity</b></p>
   </ion-row>
@@ -69,18 +53,23 @@
   </ion-input>
   <ion-row class="start">
     <ion-col class="col-start" size="5.8">
-    <p>start</p>
+      <p>start</p>
     </ion-col>
     <ion-col size="0.4"></ion-col>
-    <ion-col class="col-end"  size="5.8">
-<p>end</p>
+    <ion-col class="col-end" size="5.8">
+      <p>end</p>
     </ion-col>
   </ion-row>
   <ion-row class="input-text3">
     <p class="upload"><b>upload a picture</b></p>
   </ion-row>
   <ion-row class="upload-pic">
-
+      <ion-button>
+        upload-pic
+      </ion-button>
   </ion-row>
+
+  <ion-button expand="block" shape="round"  >Continue </ion-button>
+
 
 </ion-content>

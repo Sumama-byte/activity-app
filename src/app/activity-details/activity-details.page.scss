@@ -1,54 +1,28 @@
-.header{
-    margin-top: 35px;
-    display: flex;
-    align-items: center;
-}
+ 
 .back-button{
     border-radius: 100%;
     box-shadow: 2px 3px 5px 5px whitesmoke;
-    margin-left: 10px;
     height: 33px;
     width: 33px;
 }
-.text{
-    margin: 0px;
-    text-align: center;
+.txt{
     font-size: 18px;
+    margin: auto;
 }
 .image{
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
+    margin: 30px auto 0px auto;
+    box-shadow: 2px 2px 37px rgba(0, 0, 0, 0.215);
 }
 
-.head_align {
-    display: flex;
-    justify-content: space-between;
-    width: 88%;
-    margin-left: auto;
-    margin-right: auto;
-
-    .head_align_left {
+    .algin_left{
         display: flex;
-        justify-content: space-around;
-        width: 187px;
-        align-items: center;
-        font-size: small;
-        
     }
-
-    .head_align_right {
-        width: 100px;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        font-size: small;
-    }
-
-}
 .div2{
     width: 90%;                                            
     margin-left: auto;
     margin-right: auto;
+    
     .para{
         margin-left: auto;
         margin-right: auto;
@@ -59,24 +33,29 @@
         font-size: smaller;
         font-weight: bold;
         font-family: system-ui;
+        padding: 0;
     }
   .coltime{
     display: flex;
   }
       .div4{
        display: flex;
-        width: 36px;
-        height: 43px;
+        // width: 37px;
+        // height: 43px;
+         width: 37px;
+        height: 46px;
+      
         background-color: #F2910C;
         color: white;
         border-radius: 8px;
         font-size: 21px;
         font-weight: bolder;
-        border-bottom: 2px solid black;
-        border-left: 2px solid black;
+        // background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='10' ry='10' stroke='black' stroke-width='6' stroke-dasharray='100%2c45' stroke-dashoffset='92' stroke-linecap='square'/%3e%3c/svg%3e");
+        // border-radius: 10px;
+        background-image: url(./../../assets/div_ouline.png);
         justify-content: center;
         align-items: center;
-        margin-left: 10px;
+        margin: 8px;
     }
 
         
@@ -91,4 +70,24 @@ ion-button {
     padding-top: 20px;
     color: white;
     text-transform: none;
+    margin:0px auto 25px auto;
+}
+
+.fs-0{
+    width: 100%;
+    font-size: 12px;
+}
+.col{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+ion-item{
+    --background: transparent;
+}
+.center{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }

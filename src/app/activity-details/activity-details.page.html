@@ -1,59 +1,80 @@
+<ion-header class="ion-no-border">
+  <ion-item lines="none" class="ion-text-center">
 
+    <div slot="start" class="back-button" (click)="nav_back()">
+      <ion-icon name="chevron-back-outline" size="large"></ion-icon>
+    </div>
+    <!-- Activtiy title -->
+    <p class="txt">{{this.details.activity_title}}</p>
+
+    <ion-icon slot="end" name="heart-outline"></ion-icon>
+  </ion-item>
+</ion-header>
 
 <ion-content>
-  <ion-row class="header">
-    <ion-col size="1.8">
-      <div class="back-button" (click)="nav_back()"> 
-        <ion-icon name="chevron-back-outline" size="large"></ion-icon>
-      </div>
-    </ion-col>
-    <ion-col size="8.4">
-      <p class="text"><b>Vollyball in the beach</b></p>
-    </ion-col>
-   
-  </ion-row>
-  <img src="../../assets/Rectangle 12942.png" alt="" class="image">
 
+  <ion-row>
+    <ion-col size="12" size-md="12" size-lg="6" class="col">
+      <!-- location image  -->
+       
+        <img class="image" src="{{this.details.location_img}}" alt="">
  
-    <div class="head_align">
-      <div class="head_align_left">
 
-        <ion-icon name="location-outline" size="large"></ion-icon>
+      <ion-item lines="none" class="fs-0">
+        <div slot="start" class="algin_left">
 
-        <p> 312 Street, USA</p>
+          <ion-icon name="location-outline" size="large"></ion-icon>
 
-      </div>
-      <div class="head_align_right">
-        Within 20Km
-      </div>
-    </div>
-    <div class="div2">
-    <p class="para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed massa dui
-       enim et enim tortor. Et amet hac tellus ut pretium, dolor. Eget orci q
-       uis arcu, mauris. Id tellus a cras tellus cursus viverra urna nullam. 
-       Feugiat tempor eget aliquet dui. Tellus sollicitudin vitae ut volutpat
-       , nisl blandit nisi, sed nibh. Donec nulla nunc facilisis elit</p>
-       <p><b>Number Of Atendees Allowed</b></p>
-       <h5><b>45</b></h5>
-       <ion-row>
-        <ion-col size="6" class="div3">Start Time</ion-col>
-        <ion-col size="6" class="div3">End Time</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col size="6" class="coltime">
-          <div class="div4">10</div>
-          <div class="div4">00</div>
-        </ion-col>
-        <ion-col size="6" class="coltime">
-          <div class="div4">15</div>
-          <div class="div4">00</div>
-        </ion-col>
-      </ion-row>
-      </div>
-      <ion-item>
-        <ion-button>I am Going</ion-button>
-        <ion-button>Maybe Going</ion-button>
+          <!-- activity location -->
+          <p> {{this.details.location_address}}</p>
+
+        </div>
+        <!-- Avtivity range -->
+        <div slot="end">
+          <p> Within {{this.details.location_range}} Km</p>
+        </div>
       </ion-item>
-  
+
+
+    </ion-col>
+    <ion-col size="12" size-md="12" size-lg="6" class="center">
+
+      <div class="div2">
+        <!-- activity description -->
+        <p class="para">
+          {{this.details.activity_des}}
+        </p>
+        <!-- attendies title -->
+        <p><b>Number Of Atendees Allowed</b></p>
+        <!-- canidaties nunber -->
+        <h5><b>{{this.details.attende_no}} </b></h5>
+        <ion-row>
+          <ion-col size="6" class="div3">Start Time</ion-col>
+          <ion-col size="6" class="div3">End Time</ion-col>
+        </ion-row>
+        <ion-row>
+
+          <!-- Activity Start time  -->
+          <ion-col size="6" class="coltime">
+            <div class="div4">{{this.details.start_time}}</div>
+            <div class="div4">00</div>
+          </ion-col>
+          <!-- Activity end time  -->
+          <ion-col size="6" class="coltime">
+            <div class="div4">{{this.details.end_time}}</div>
+            <div class="div4">00</div>
+          </ion-col>
+        </ion-row>
+      </div>
+      <ion-item lines="none">
+        <!-- Going button -->
+        <ion-button   (click)="going()">I am Going</ion-button>
+        <!--May be Going button -->
+        <ion-button   (click)="may_be_going()">Maybe Going</ion-button>
+      </ion-item>
+
+    </ion-col>
+  </ion-row>
+
 
 </ion-content>

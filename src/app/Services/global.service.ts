@@ -16,4 +16,15 @@ export class GlobalService {
   set_chat(chat : any){
     this.chat.next(chat)
   }
+
+
+  //activity_details
+  private activity_details = new BehaviorSubject<any>('');
+  public Activity_Details = this.activity_details.asObservable();
+
+  set_activity_details(activity_details : any){
+    this.activity_details.next(activity_details)
+  }
+
+
 }

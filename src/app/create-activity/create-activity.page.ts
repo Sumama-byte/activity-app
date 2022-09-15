@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-activity',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateActivityPage implements OnInit {
 
-  constructor() { }
+  constructor(public route :Router) { }
 
   ngOnInit() {
   }
-
+  
+  go_back(){
+    this.route.navigate(['/tabs/tab1']);
+  }
 }

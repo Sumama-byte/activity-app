@@ -21,20 +21,20 @@
   
  <!-- Notification data -->
  <ion-row>
-  <ion-col size="12" size-md="4" *ngFor="let data of notifications">
+  <ion-col size="12" size-md="4" *ngFor="let data of notifications" (click)="show_details(data)">
 
     <div class="user_img m-2">
       <img src="{{this.data.user_img}}" alt="">
     </div>
 
     <div class="m-2">
-      <p class="title m-1"><b>{{this.data.notify_title}}</b></p>
-      <p class="subtitle m-1">{{this.data.notify_des}}</p>
+      <p class="title m-1"><b>{{this.data.activity_title}}</b></p>
+      <p class="subtitle short_des m-1">{{this.data.activity_des}}</p>
       <p class="subtitle m-1"><b>view it</b></p>
     </div>
 
     <div class="location_img">
-      <img src="{{this.data.location_img}}" alt="">
+      <img class="a" src="{{this.data.location_img}}" alt="">
     </div>
 
   </ion-col>

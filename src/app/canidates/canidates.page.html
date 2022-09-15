@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-row class="header">
+    <ion-col size="1.8">
+      <div class="back-button" (click)="go_back()">
+        <ion-icon name="chevron-back-outline" size="large"></ion-icon>
+      </div>
+    </ion-col>
+    <ion-col size="8.2">
+      <p class="text"><b>Create Activity</b></p>
+    </ion-col>
+    <ion-col size="1.8"></ion-col>
+  </ion-row>
+
+</ion-header>
+<ion-content>
+  <ion-segment [(ngModel)]="selectTabs" mode="ios" value="going">
+    <ion-segment-button value="going">
+      <ion-label>Going</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="may_be_going">
+      <ion-label>May be going</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+
+  <!-- canidates going -->
+
+  <ion-row>
+    <ion-col size="12" *ngFor="let data of going">
+
+      <div class="user_img m-2">
+        <img src="{{this.data.user_img}}" alt="">
+      </div>
+
+      <div class="m-2">
+        <p class="title m-1"><b>{{this.data.user_name}}</b></p>
+      </div>
+    </ion-col>
+  </ion-row>
+
+
+  <!-- canidates may be going  -->
+
+  
+  <ion-row>
+    <ion-col size="12" *ngFor="let data of may_be_going">
+
+      <div class="user_img m-2">
+        <img src="{{this.data.user_img}}" alt="">
+      </div>
+
+      <div class="m-2">
+        <p class="title m-1"><b>{{this.data.user_name}}</b></p>
+      </div>
+    </ion-col>
+  </ion-row>
+
+</ion-content>

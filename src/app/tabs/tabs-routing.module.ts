@@ -40,6 +40,18 @@ const routes: Routes = [
         loadChildren: () => import('../create-activity/create-activity.module').then(m => m.CreateActivityPageModule)
       },
       {
+        path: 'activity-details',
+        loadChildren: () => import('../activity-details/activity-details.module').then(m => m.ActivityDetailsPageModule)
+      },
+      {
+        path: 'canidates',
+        loadChildren: () => import('../canidates/canidates.module').then(m => m.CanidatesPageModule)
+      },
+      {
+        path: 'filter',
+        loadChildren: () => import('../filter/filter.module').then(m => m.FilterPageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full'

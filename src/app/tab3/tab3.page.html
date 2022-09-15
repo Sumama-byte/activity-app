@@ -1,17 +1,46 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
+
+    <div class="head_align">
+      <div class="head_align_left">
+        <ion-avatar lines="none" slot="start" class="back-button" (click)="go_back()">
+          <ion-icon class="black" name="chevron-back-outline" size="large"></ion-icon>
+        </ion-avatar>
+      </div>
+      <ion-input placeholder="Search here"></ion-input>
+      <div class="head_align_right">
+        <ion-button>
+          <ion-icon class="white" name="search"></ion-icon>
+        </ion-button>
+        <ion-button (click)="apply_filter()">
+          <ion-icon class="white" name="funnel"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+
   </ion-toolbar>
+
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <ion-row>
+    <ion-col size="12" size-md="5" (click)="show_details()">
+
+      <div class="user_img m-2">
+        <img src="../../assets/Rectangle 142.png" alt="">
+      </div>
+
+      <div class="m-2">
+        <p class="title m-1"><b>this.data.activity_title</b></p>
+        <p class="subtitle m-1 short_des">this.data.activity_des</p>
+        <p class="subtitle m-1"><b>view it</b></p>
+      </div>
+
+      <div class="location_img">
+        <img class="a" src="../../assets/Rectangle 12942.png" alt="">
+      </div>
+
+    </ion-col>
+  </ion-row>
 </ion-content>
