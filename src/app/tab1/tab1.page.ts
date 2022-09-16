@@ -4,7 +4,7 @@ import { GlobalService } from '../Services/global.service';
 import { GoogleMap, Marker } from '@capacitor/google-maps';
 import { ViewDidEnter } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
-
+import { Geolocation } from '@capacitor/geolocation';
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -43,6 +43,7 @@ export class Tab1Page implements ViewDidEnter {
      , location_address:'30,street ,USA' , location_img:'../../assets/Rectangle 12942.png', location_range:'24' , start_time:'05' ,end_time:'03',attende_no:'43'},
 
 ]
+  coordinates: any;
 
   constructor(public route : Router , public global : GlobalService) {}
 
@@ -65,6 +66,9 @@ export class Tab1Page implements ViewDidEnter {
     this.createMap();
   }
   async createMap() {
+    // Get Current Locations
+    await this.getLocation();
+    // Create Map
     const mapRef = document.getElementById('my-cool-map');
     this.newMap = await GoogleMap.create({
       id: 'my-cool-map',
@@ -72,17 +76,18 @@ export class Tab1Page implements ViewDidEnter {
       apiKey: environment.mapApiKey,
       config: {
         center: {
-          lat: 33.6,
-          lng: -117.9,
+          lat: this.coordinates.coords.latitude,
+          lng: this.coordinates.coords.longitude,
         },
-        zoom: 8,
+        zoom: 18,
       },
     });
+    // Add Markers
     await this.newMap.addMarkers([
       {
         coordinate:{
-          lat: 33.6,
-          lng: -117.2
+          lat: this.coordinates.coords.latitude,
+          lng: this.coordinates.coords.longitude
         },
         title: "Zagham"
        },
@@ -98,7 +103,12 @@ export class Tab1Page implements ViewDidEnter {
       console.log(marker);
      })
 }
-  // Add Marker
+  // GeoLocation
+  async getLocation () {
+    this.coordinates = await Geolocation.getCurrentPosition();
+
+    console.log('Current position:', this.coordinates.coords.latitude);
+  };
   
 
 }
