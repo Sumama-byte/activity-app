@@ -43,7 +43,9 @@ export class Tab1Page implements ViewDidEnter {
      , location_address:'30,street ,USA' , location_img:'../../assets/Rectangle 12942.png', location_range:'24' , start_time:'05' ,end_time:'03',attende_no:'43'},
 
 ]
-  coordinates: any;
+
+  public coords:any = [{coordinate:{lat:33.2, lng:-117.8}}]
+  public coordinates: any;
 
   constructor(public route : Router , public global : GlobalService) {}
 
