@@ -1,14 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { GlobalService } from '../Services/global.service';
-
+import { GoogleMap, Marker } from '@capacitor/google-maps';
+import { ViewDidEnter } from '@ionic/angular';
+import { environment } from 'src/environments/environment';
+import { Geolocation } from '@capacitor/geolocation';
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
-export class Tab1Page {
+export class Tab1Page implements ViewDidEnter {
   
+  // Map
+  @ViewChild('map')
+  mapRef: ElementRef<HTMLElement>;
+  newMap: GoogleMap;
   // segment value
   public selectTabs : any ='map';
 
@@ -36,6 +43,7 @@ export class Tab1Page {
      , location_address:'30,street ,USA' , location_img:'../../assets/Rectangle 12942.png', location_range:'24' , start_time:'05' ,end_time:'03',attende_no:'43'},
 
 ]
+  coordinates: any;
 
   constructor(public route : Router , public global : GlobalService) {}
 
@@ -52,5 +60,61 @@ export class Tab1Page {
     this.route.navigate(['/tabs/activity-details']);
     this.global.set_activity_details(data);
   }
+
+  // Map Function
+  ionViewDidEnter(): void {
+    this.createMap();
+  }
+  async createMap() {
+    // Get Current Locations
+    await this.getLocation();
+    // Create Map
+    const mapRef = document.getElementById('my-cool-map');
+    this.newMap = await GoogleMap.create({
+      id: 'my-cool-map',
+      element: mapRef,
+      apiKey: environment.mapApiKey,
+      config: {
+        center: {
+          lat: this.coordinates.coords.latitude,
+          lng: this.coordinates.coords.longitude,
+        },
+        zoom: 18,
+      },
+    });
+    // Add Markers
+    await this.newMap.addMarkers([
+      {
+        coordinate:{
+          lat: this.coordinates.coords.latitude,
+          lng: this.coordinates.coords.longitude
+        },
+        title: "Zagham",
+        snippet: "Zagham Nadeem",
+        iconUrl:"https://user-images.githubusercontent.com/104660890/185779727-ec171903-c781-4254-83ad-e7c6188e361e.png",
+        iconSize: {
+          width:100,
+          height:100
+        }
+       },
+       {
+        coordinate:{
+          lat: 33.7,
+          lng: -117.8
+        },
+        title: "Zagham"
+       }
+    ]);
+     await this.newMap.setOnMarkerClickListener(async (marker) => {
+      console.log(marker);
+     })
+}
+  // GeoLocation
+  async getLocation () {
+    this.coordinates = await Geolocation.getCurrentPosition();
+
+    console.log('Current position:', this.coordinates.coords.latitude);
+  };
+  
 
 }
