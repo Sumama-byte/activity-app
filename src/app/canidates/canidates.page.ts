@@ -21,6 +21,6 @@ export class CanidatesPage implements OnInit {
   }
 
   go_back(){
-     this.route.navigate(['/tabs/tab1'])
+     this.route.navigate(['/tabs/tab2'])
   }
 }

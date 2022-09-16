@@ -1,18 +1,21 @@
-<ion-header>
-  <ion-row class="header">
-    <ion-col size="1.8">
-      <div class="back-button" (click)="go_back()">
+<ion-content>
+
+  <!-- header -->
+  <ion-list class="header">
+     <ion-item lines="none">
+      
+      <div slot="start" class="back-button" (click)="go_back()">
         <ion-icon name="chevron-back-outline" size="large"></ion-icon>
       </div>
-    </ion-col>
-    <ion-col size="8.2">
-      <p class="text"><b>Create Activity</b></p>
-    </ion-col>
-    <ion-col size="1.8"></ion-col>
-  </ion-row>
 
-</ion-header>
-<ion-content>
+        
+      <p class="text ion-text-center"><b>Beach Party</b></p>
+   
+
+     </ion-item>    
+  </ion-list>
+
+  <!-- segment change  -->
   <ion-segment [(ngModel)]="selectTabs" mode="ios" value="going">
     <ion-segment-button value="going">
       <ion-label>Going</ion-label>
@@ -25,7 +28,7 @@
 
   <!-- canidates going -->
 
-  <ion-row>
+  <ion-row *ngIf=" selectTabs == 'going'">
     <ion-col size="12" *ngFor="let data of going">
 
       <div class="user_img m-2">
@@ -42,7 +45,7 @@
   <!-- canidates may be going  -->
 
   
-  <ion-row>
+  <ion-row *ngIf=" selectTabs == 'may_be_going' ">
     <ion-col size="12" *ngFor="let data of may_be_going">
 
       <div class="user_img m-2">
