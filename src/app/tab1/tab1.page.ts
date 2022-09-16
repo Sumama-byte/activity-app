@@ -1,14 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { GlobalService } from '../Services/global.service';
+import { GoogleMap } from '@capacitor/google-maps';
+import { ViewDidEnter } from '@ionic/angular';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
-export class Tab1Page {
+export class Tab1Page implements ViewDidEnter {
   
+  // Map
+  @ViewChild('my-cool-map')
+  mapRef: ElementRef<HTMLElement>;
+  newMap: GoogleMap;
   // segment value
   public selectTabs : any ='map';
 
@@ -52,5 +59,25 @@ export class Tab1Page {
     this.route.navigate(['/tabs/activity-details']);
     this.global.set_activity_details(data);
   }
+
+  // Map Function
+  ionViewDidEnter(): void {
+    this.createMap();
+  }
+  async createMap() {
+    const mapRef = document.getElementById('my-cool-map');
+    this.newMap = await GoogleMap.create({
+      id: 'my-cool-map',
+      element: mapRef,
+      apiKey: environment.mapApiKey,
+      config: {
+        center: {
+          lat: 33.6,
+          lng: -117.9,
+        },
+        zoom: 8,
+      },
+    });
+}
 
 }
