@@ -31,25 +31,25 @@
       <ion-row class="input-text">
         <p class="input"><b>Name of Activity</b></p>
       </ion-row>
-      <ion-input></ion-input>
+      <ion-input [(ngModel)]="activityData.activity_name"></ion-input>
 
       <!-- Activity location -->
       <ion-row class="input-text">
         <p class="input"><b> Location</b></p>
       </ion-row>
-      <ion-input></ion-input>
+      <ion-input [(ngModel)]="activityData.location"></ion-input>
 
       <!-- activity description -->
       <ion-row class="input-text">
         <p class="input"><b> Short Description</b></p>
       </ion-row>
-      <ion-input class="input-description"></ion-input>
+      <ion-input class="input-description" [(ngModel)]="activityData.description"></ion-input>
 
       <!-- Number od attendes -->
       <ion-row class="input-text">
         <p class="input"><b>Max number of attendance</b></p>
       </ion-row>
-      <ion-input></ion-input>
+      <ion-input [(ngModel)]="activityData.max_atendes"></ion-input>
 
       <ion-row style="max-width: 330px;margin: auto;">
         <ion-col size="5">
@@ -68,7 +68,7 @@
 
       <!-- next button -->
       <ion-list>
-        <ion-button shape="round" (click)="presentLoading();tabID = 2">
+        <ion-button expand="block" shape="round" (click)="presentLoading();tabID = 2">
           Next
         </ion-button>
       </ion-list>
@@ -108,24 +108,24 @@
       <ion-row class="input-text">
         <p class="input"><b>Social Range of Activity</b></p>
       </ion-row>
-      <ion-input placeholder="20km"></ion-input>
+      <ion-input placeholder="20km" [(ngModel)]="activityData.social_range"></ion-input>
 
       <!-- Activity date -->
       <ion-row class="input-text">
         <p class="input"><b>start date/Time</b></p>
       </ion-row>
-      <ion-input type="date">  <p style="margin: 5px;">set the date of activity</p> </ion-input>
+      <ion-input type="date" [(ngModel)]="activityData.date">  <p style="margin: 5px;">set the date of activity</p> </ion-input>
 
      
       <ion-row class="start">
          <!-- Activity start time -->
         <ion-col size="12">
-          <ion-input type="time">  <p style="margin: 5px;">Start TIme</p> </ion-input>  
+          <ion-input type="time" [(ngModel)]="activityData.start_time">  <p style="margin: 5px;">Start TIme</p> </ion-input>  
         </ion-col>
         
         <!-- Activity end time -->
         <ion-col size="12">
-          <ion-input type="time">  <p style="margin: 5px;">End Time</p> </ion-input>
+          <ion-input type="time" [(ngModel)]="activityData.end_time">  <p style="margin: 5px;">End Time</p> </ion-input>
         </ion-col>
       </ion-row>
 
@@ -135,13 +135,13 @@
       
       <!-- upload location image -->
       <ion-row class="upload-pic">
-        <ion-button>upload</ion-button>
+        <ion-button (click)="capture_img()">upload</ion-button>
       </ion-row>
 
 
       <!-- data sumbit button -->
-      <ion-button expand="block" shape="round">
-        <span *ngIf="!show">Create</span>
+      <ion-button expand="block" shape="round" (click)="addActivity()">
+        <span>Create</span>
       </ion-button>
 
     </div>
