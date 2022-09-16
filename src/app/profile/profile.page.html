@@ -19,22 +19,22 @@
  
      <!-- user image -->
     <ion-avatar class="avatar">
-      <img src="../../assets/profile - 1.png" alt="">
+      <img src="{{profile_data.img}}" alt="">
     </ion-avatar>
 
 
     <!-- user name and Bio -->
-    <h1 class="name"><b>William Jones</b></h1>
-    <p class="text2">Keep enjoying more and more!</p>
+    <h1 class="name"><b>{{profile_data.name}}</b></h1>
+    <p class="text2">{{profile_data.bio}}</p>
 
     <!-- social range -->
     <ion-row class="range">
       <ion-col size="8">
-        <p>social range</p>
+        <p>Social range</p>
       </ion-col>
       <ion-col size="4" class="col2">
         <!-- social range value -->
-        <p><b>200m</b></p>
+        <p><b>{{profile_data.socialize_distance}}</b></p>
       </ion-col>
     </ion-row>
 
@@ -121,7 +121,7 @@
 
     <!-- get  -->
     <ion-avatar class="avatar">
-      <img src="../../assets/profile - 1.png"  id="cameraImage" alt="">
+      <img src="" id="cameraImage" alt="">
       <!-- get img buttton  -->
       <div class="capture_img" (click)="capture_img()" >
         <img src="./../../assets/edit_img.png" alt="">
@@ -132,21 +132,21 @@
       <p class="input1"><b>Name</b></p>
     </ion-row>
     <!-- Enter Name -->
-    <ion-input type="text" placeholder="William" [(ngModel)]="this.profile_data.user_name"></ion-input>
+    <ion-input type="text" placeholder="William" [(ngModel)]="profile_data.name"></ion-input>
 
     <!-- Bio -->
     <ion-row class="input_title">
       <p class="input1"><b>Bio</b></p>
     </ion-row>
     <!-- enter Bio -->
-    <ion-input type="text" placeholder="Keep enjoying more!" [(ngModel)]="this.profile_data.user_bio"></ion-input>
+    <ion-input type="text" placeholder="Keep enjoying more!" [(ngModel)]="profile_data.bio"></ion-input>
 
     <!-- distance -->
     <ion-row class="input_title">
       <p  class="input1"><b>Socialize Distance</b></p>
     </ion-row>
     <!-- enter distance -->
-    <ion-input type="text" placeholder="200m" [(ngModel)]="this.profile_data.socialize_dis" ></ion-input>
+    <ion-input type="text" placeholder="200m" [(ngModel)]="profile_data.socialize_distance" ></ion-input>
 
     <!-- range -->
     <ion-row class="input_title">
@@ -158,7 +158,7 @@
     </ion-row>
 
     <!-- Submit button -->
-    <ion-button shape="round" expand="full" (click)="submit_profile_data()">
+    <ion-button shape="round" expand="full" (click)="ProfileUpdate()">
       <b>Save</b>
     </ion-button>
 

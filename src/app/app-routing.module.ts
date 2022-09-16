@@ -48,6 +48,10 @@ const routes: Routes = [
   {
     path: 'filter',
     loadChildren: () => import('./filter/filter.module').then( m => m.FilterPageModule)
+  },
+  {
+    path: 'new-user',
+    loadChildren: () => import('./new-user/new-user.module').then( m => m.NewUserPageModule)
   }
 
 

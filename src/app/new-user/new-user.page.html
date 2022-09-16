@@ -1,0 +1,63 @@
+<ion-content>
+
+  <ion-header class="ion-no-border">
+    <ion-toolbar>
+
+        <div slot="start" class="back-button">
+          <ion-icon name="chevron-back-outline" size="large"></ion-icon>
+        </div>
+        <div>
+          <p class="text"><b>Create Profile</b></p>
+        </div>
+
+        <div slot="end" class="w-1"></div>
+
+    </ion-toolbar>
+
+  </ion-header>
+
+  <!-- get  -->
+  <ion-avatar class="avatar">
+    <img src=""  id="cameraImage" alt="">
+    <!-- get img buttton  -->
+    <div class="capture_img" (click)="capture_img()" >
+      <img src="./../../assets/edit_img.png" alt="">
+    </div>
+  </ion-avatar>
+  <!-- Name -->
+  <ion-row class="input_title">
+    <p class="input1"><b>Name</b></p>
+  </ion-row>
+  <!-- Enter Name -->
+  <ion-input type="text" placeholder="William" [(ngModel)]="profile_data.name"></ion-input>
+
+  <!-- Bio -->
+  <ion-row class="input_title">
+    <p class="input1"><b>Bio</b></p>
+  </ion-row>
+  <!-- enter Bio -->
+  <ion-input type="text" placeholder="Keep enjoying more!" [(ngModel)]="profile_data.bio"></ion-input>
+
+  <!-- distance -->
+  <ion-row class="input_title">
+    <p  class="input1"><b>Socialize Distance</b></p>
+  </ion-row>
+  <!-- enter distance -->
+  <ion-input type="text" placeholder="200m" [(ngModel)]="profile_data.socialize_distance" ></ion-input>
+
+  <!-- range -->
+  <ion-row class="input_title">
+    <div style="    display: flex;
+    align-items: center;">
+      <img src="./../../assets/Vector.png" alt="" srcset="">
+    </div>
+    <p class="input2 m-1">Set between 100m and 30km</p>
+  </ion-row>
+
+  <!-- Submit button -->
+  <ion-button shape="round" expand="full" (click)="submit_profile_data()">
+    <b>Save</b>
+  </ion-button>
+
+
+</ion-content>

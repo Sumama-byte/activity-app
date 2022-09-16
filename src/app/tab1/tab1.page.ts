@@ -5,6 +5,7 @@ import { GoogleMap, Marker } from '@capacitor/google-maps';
 import { ViewDidEnter } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
 import { Geolocation } from '@capacitor/geolocation';
+import { ApicallService } from '../Services/apicall.service';
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -18,6 +19,9 @@ export class Tab1Page implements ViewDidEnter {
   newMap: GoogleMap;
   // segment value
   public selectTabs : any ='map';
+
+  public profile_data : any ={u_id:'', name:'',  img:'' , bio: '' , socialize_distance:'' };
+  public Profile: any ;
 
 
   public list_activities:any=[
@@ -44,8 +48,26 @@ export class Tab1Page implements ViewDidEnter {
 
 ]
   coordinates: any;
+  uid: any;
 
-  constructor(public route : Router , public global : GlobalService) {}
+  constructor(public route : Router,public apiCall:ApicallService, public global: GlobalService) {}
+
+  ngOnInit() {
+    this.getProfile();
+  }
+
+  async getProfile() {
+    await this.global.Uid.subscribe(uid => {
+      this.uid = uid;
+    });
+    
+    await this.apiCall.api_getprofile(this.uid);
+    console.log(this.uid);
+    await this.global.ProfileInfo.subscribe(res => {
+    console.log(res[0].img)
+   this.Profile= res[0].img;
+  });
+   }
 
   // navigations
   notification(){

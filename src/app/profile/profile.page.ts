@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Camera, CameraResultType,CameraSource } from '@capacitor/camera';
 import { Router } from '@angular/router';
+import { ApicallService } from '../Services/apicall.service';
+import { GlobalService } from '../Services/global.service';
 
 @Component({
   selector: 'app-profile',
@@ -15,21 +17,36 @@ export class ProfilePage implements OnInit {
     {id:1 ,user_img:'../../assets/Rectangle 142.png', fav_title:'Beach Party',fav_des:'Lets swimming together near a beach and play a volly ball with each other .', location_img:'../../assets/Rectangle 149.png'},
     {id:2 ,user_img:'../../assets/Rectangle 143.png', fav_title:'Swimming Together',fav_des:'Lets swimming together near a beach and play a volly ball with each other   .', location_img:'../../assets/Rectangle 149.png'},
   ] 
+
+
+
+  public profile_data : any ={u_id:'', name:'',  img:'' , bio: '' , socialize_distance:'' };
+  public profile: any;
  
-  public profile_data : any ={id: 1 ,user_img:'',  user_name:'' , user_bio: '' , socialize_dis:'' };
- 
-  constructor(public route : Router) {
+  constructor(public route : Router,public apiCall:ApicallService, private router: Router , public global: GlobalService) {
    }
 
   ngOnInit() {
-    
+    this.getprofile();
   }
 
-  // user entered data to update and create profile 
-  submit_profile_data(){
+  async getprofile() {
+    await this.global.Uid.subscribe(uid => {
+       this.apiCall.api_getprofile(uid);
+       console.log(uid);
+       this.profile_data.u_id = uid;
+      });
+       this.global.ProfileInfo.subscribe(res => {
+       console.log(res)
+      this.profile_data = res[0];
+      document.getElementById('cameraImage').setAttribute('src', this.profile_data.img );
+    })
+   }
+
+   ProfileUpdate(){
     console.log(this.profile_data);
+    this.apiCall.api_updateprofile(this.profile_data);
   }
-
 
   //  switch between veiw and eidt profile
   allow(){
@@ -62,7 +79,7 @@ export class ProfilePage implements OnInit {
     });
     document.getElementById('cameraImage').setAttribute('src', `data:image/${image.format};base64,`+image.base64String );
     console.log(image.base64String);
-    this.profile_data.user_img = image.base64String;
+    this.profile_data.img = image.base64String;
   }
 
 }

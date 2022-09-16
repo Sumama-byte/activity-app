@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApicallService } from '../Services/apicall.service';
+import { GlobalService } from '../Services/global.service';
 
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss']
 })
-export class Tab2Page {
+export class Tab2Page  implements OnInit{
   selectTabs :any = 'going';
 
   //  activities_going
@@ -28,7 +30,23 @@ public activities_you_created:any=[
   {id:1 ,user_img:'../../assets/Rectangle 142.png', activity_title:'Beach Party',activity_des:'Lets swimming together near a beach and play a volly ball with each other .', location_img:'../../assets/Rectangle 149.png'},
 ]
 
-  constructor(public route : Router) {}
+  // public CreatedActivity:any={u_id:'',activity_name:'',location:'',description:'',max_atendes:'',social_range:'',date:'',start_time:'',end_time:'',a_image:''}
+     public createActivity:any={u_id:'17'}
+  constructor(public route : Router,public apiCall:ApicallService, private router: Router , public global: GlobalService) {}
+
+
+  ngOnInit() {
+    this.getactivity();
+  }
+
+  async getactivity() {
+    // await this.global.Uid.subscribe(uid => {
+    //    this.apiCall.api_getprofile(uid);
+    //    console.log(uid);
+    //    this.createActivity.u_id = uid;
+    //   });
+  this.apiCall.api_getActivity(this.createActivity);
+   }
 
 
   going(){
