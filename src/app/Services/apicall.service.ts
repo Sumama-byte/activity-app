@@ -8,6 +8,7 @@ import { HttpClient } from "@angular/common/http";
 export class ApicallService {
   login: any;
   activity: any;
+  data: any;
 
   constructor( public global: GlobalService, public authservice: AuthService, public http: HttpClient ) { }
   // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -18,6 +19,18 @@ export class ApicallService {
       // this.global.set_login(this.login);
       if (this.login.error === false) {
         console.log(this.login);
+        return;
+      }
+    }, (err) => {
+      console.log(err);
+    });
+  }
+  //create activity
+  api_addActivity(data : any ){
+    this.authservice.con(data, 'insert_activity').then(async (res) => {
+      this.data = JSON.parse(String(res).toString());
+      if (this.data.error === false) {
+        console.log(this.data);
         return;
       }
     }, (err) => {
