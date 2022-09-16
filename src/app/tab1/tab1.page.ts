@@ -1,7 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { GlobalService } from '../Services/global.service';
-import { GoogleMap } from '@capacitor/google-maps';
+import { GoogleMap, Marker } from '@capacitor/google-maps';
 import { ViewDidEnter } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
 
@@ -13,7 +13,7 @@ import { environment } from 'src/environments/environment';
 export class Tab1Page implements ViewDidEnter {
   
   // Map
-  @ViewChild('my-cool-map')
+  @ViewChild('map')
   mapRef: ElementRef<HTMLElement>;
   newMap: GoogleMap;
   // segment value
@@ -78,6 +78,27 @@ export class Tab1Page implements ViewDidEnter {
         zoom: 8,
       },
     });
+    await this.newMap.addMarkers([
+      {
+        coordinate:{
+          lat: 33.6,
+          lng: -117.2
+        },
+        title: "Zagham"
+       },
+       {
+        coordinate:{
+          lat: 33.7,
+          lng: -117.8
+        },
+        title: "Zagham"
+       }
+    ]);
+     await this.newMap.setOnMarkerClickListener(async (marker) => {
+      console.log(marker);
+     })
 }
+  // Add Marker
+  
 
 }
