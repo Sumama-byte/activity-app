@@ -89,7 +89,13 @@ export class Tab1Page implements ViewDidEnter {
           lat: this.coordinates.coords.latitude,
           lng: this.coordinates.coords.longitude
         },
-        title: "Zagham"
+        title: "Zagham",
+        snippet: "Zagham Nadeem",
+        iconUrl:"https://user-images.githubusercontent.com/104660890/185779727-ec171903-c781-4254-83ad-e7c6188e361e.png",
+        iconSize: {
+          width:100,
+          height:100
+        }
        },
        {
         coordinate:{
