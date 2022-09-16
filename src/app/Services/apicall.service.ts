@@ -26,6 +26,18 @@ export class ApicallService {
       console.log(err);
     });
   }
+  //create activity
+  api_addActivity(data : any ){
+    this.authservice.con(data, 'insert_activity').then(async (res) => {
+      this.data = JSON.parse(String(res).toString());
+      if (this.data.error === false) {
+        console.log(this.data);
+        return;
+      }
+    }, (err) => {
+      console.log(err);
+    });
+  }
   //Get Method
   getActivities() {
   return   this.authservice.getdata('getappointment').then((result) => {
