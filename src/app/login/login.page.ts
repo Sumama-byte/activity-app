@@ -28,7 +28,8 @@ export class LoginPage implements OnInit {
       const result = await FirebaseAuthentication.signInWithGoogle();
       console.log(result);
       this.global.add_uid(result.user.uid);
-      this.UserData.u_id = result.user.uid
+      // this.UserData.u_id = result.user.uid
+      this.UserData.u_id = '5787855'
       this.apiCall.api_postLogin(this.UserData);
       return result.user;
     };
