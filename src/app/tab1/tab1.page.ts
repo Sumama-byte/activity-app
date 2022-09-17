@@ -15,7 +15,7 @@ import { LocationsService } from '../Services/locations.service';
 })
 export class Tab1Page implements ViewDidEnter {
   
-  // Map
+  // Map Variables
   @ViewChild('map')
   mapRef: ElementRef<HTMLElement>;
   newMap: GoogleMap;
@@ -107,7 +107,7 @@ export class Tab1Page implements ViewDidEnter {
           lat: markers[0].lat,
           lng: markers[0].lng,
         },
-        zoom: 10,
+        zoom: 12,
       }
     });
     await this.newMap.enableClustering();
@@ -122,10 +122,10 @@ export class Tab1Page implements ViewDidEnter {
           },
           title:markers[i].title,
           snippet:"Zagham",
-          iconUrl:"https://raw.githubusercontent.com/zagham-nadeem/OpenSourceImages/main/marker.png",
+          iconUrl:"https://avatars.githubusercontent.com/u/104660890?v=4",
           iconSize: {
-            width: 56,
-            height:67
+            width: 40,
+            height:36
           }
         }
       ])
