@@ -27,7 +27,6 @@ export class NewUserPage implements OnInit {
    
    this.profile_data  ={u_id:'',name:'',  img:'' , bio: '' , socialize_distance:'' }
    document.getElementById('cameraImage').setAttribute('src','');
-  //  this.router.navigate(['/tabs/profile'])
   }
 
   async getprofile() {
@@ -39,7 +38,6 @@ export class NewUserPage implements OnInit {
        this.global.ProfileInfo.subscribe(res => {
        console.log(res)
       this.profile = res; 
-
     });
    }
 

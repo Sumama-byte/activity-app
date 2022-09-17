@@ -83,6 +83,10 @@ ion-row {
             align-items: center;
             justify-content: center;
             border-radius: 14px;
+            width: 40px;
+            .userimg{
+                border-radius: 14px;
+            }
         }
 
         .m-1 {
@@ -112,7 +116,7 @@ ion-row {
 
             .a{
                 object-fit: cover;
-                object-position: -52px 0px;
+                object-position: -5px 0px;
                 border-radius: 0px 10px 10px 0px;
             }
         }

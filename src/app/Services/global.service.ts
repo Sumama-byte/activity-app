@@ -45,12 +45,12 @@ export class GlobalService {
     this.uid.next(u_id);
      console.log(u_id);
     }
-     // activity id
+     // get activity
   private getactivity = new BehaviorSubject<any>('');
   public Getactivity = this.getactivity.asObservable();
  set_getActivity(getactivity: any)
   {
-    this.uid.next(getactivity);
+    this.getactivity.next(getactivity);
      console.log(getactivity);
     }
 

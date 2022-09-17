@@ -10,15 +10,11 @@ import { GlobalService } from '../Services/global.service';
 export class ActivityDetailsPage implements OnInit {
 
   public details :any;
-
+  public data : any;
   constructor( public route :Router , public global :GlobalService ) { }
 
   ngOnInit() {
-
-    this.global.Activity_Details.subscribe( res =>{
-      this.details =res;
-      console.log(this.details);
-    })
+    this.data = history.state.data;
   }
 
   //navigation
@@ -31,7 +27,6 @@ export class ActivityDetailsPage implements OnInit {
     console.log('going')
   }
 
-  
   //data to may_be_going 
   may_be_going(){
     console.log('may_be_going')

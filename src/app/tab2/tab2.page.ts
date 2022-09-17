@@ -26,12 +26,10 @@ public activities_may_be_going:any=[
 ]
 
 // activities_you_created
-public activities_you_created:any=[
-  {id:1 ,user_img:'../../assets/Rectangle 142.png', activity_title:'Beach Party',activity_des:'Lets swimming together near a beach and play a volly ball with each other .', location_img:'../../assets/Rectangle 149.png'},
-]
+public activities_you_created:any =[];
 
-  // public CreatedActivity:any={u_id:'',activity_name:'',location:'',description:'',max_atendes:'',social_range:'',date:'',start_time:'',end_time:'',a_image:''}
-     public createActivity:any={u_id:'17'}
+  // public CreatedActivity:any={u_id:'',activity_name:'',location:'',description:'',max_atendes:'',social_range:'',date:'',start_time:'',end_time:'',a_image:'',profile_img:''}
+     public YourActivity:any={u_id:''}
   constructor(public route : Router,public apiCall:ApicallService, private router: Router , public global: GlobalService) {}
 
 
@@ -39,15 +37,24 @@ public activities_you_created:any=[
     this.getactivity();
   }
 
+  // GetActivity method
+
   async getactivity() {
-    // await this.global.Uid.subscribe(uid => {
-    //    this.apiCall.api_getprofile(uid);
-    //    console.log(uid);
-    //    this.createActivity.u_id = uid;
-    //   });
-  this.apiCall.api_getActivity(this.createActivity);
+    await this.global.Uid.subscribe(uid => {
+       this.YourActivity.u_id = uid;
+      });
+   await this.apiCall.api_getActivity(this.YourActivity.u_id);
+   await this.global.Getactivity.subscribe(activity => {
+      this.activities_you_created = activity;
+   })
+   console.log(this.activities_you_created);
    }
 
+  // show activity details
+  show_details(data){
+    this.router.navigate(['/tabs/activity-details'], { state: { data: data} })
+  }
+   
 
   going(){
     this.route.navigate(['/tabs/canidates'])

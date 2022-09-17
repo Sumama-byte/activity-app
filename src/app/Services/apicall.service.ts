@@ -123,5 +123,18 @@ export class ApicallService {
         });
       }
 
+      // post activity
+      async api_postActivity(data: any) {
+        await this.authservice.con(data , 'insert_activity').then((result) => {
+           this.data = JSON.parse(String(result));
+           if (this.data.error === false) {
+            console.log(this.data);
+             return;
+            } 
+             console.log(this.data);
+         }, (err) => {
+           console.log(err);
+         });
+       }
 
 }
