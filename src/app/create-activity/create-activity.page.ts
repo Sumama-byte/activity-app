@@ -30,8 +30,8 @@ export class CreateActivityPage implements OnInit {
     console.log(this.activityData);
     await  this.apiCall.api_postActivity(this.activityData);
    
-   this.activityData  = {u_id:'', activity_name:'', location:'', description:'', max_atendes:'',
-  social_range:'', date:'', start_time:'', end_time:'', a_image:''}
+    this.activityData = {u_id:'', activity_name:'', location:'', description:'', max_atendes:'',
+  social_range:'', date:'', start_time:'', end_time:'', a_image:'', visibilty:''}
    document.getElementById('cameraImage').setAttribute('src','');
   }
 
@@ -77,13 +77,6 @@ export class CreateActivityPage implements OnInit {
     }
 
 
-  }
-
- async addActivity(){
-    console.log(this.activityData);    
-   await this.apicall.api_addActivity(this.activityData)
-  this.activityData = {u_id:'', activity_name:'', location:'', description:'', max_atendes:'',
-  social_range:'', date:'', start_time:'', end_time:'', a_image:'', visibilty:''}
   }
 
   async capture_img(){
