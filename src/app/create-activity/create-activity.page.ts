@@ -15,7 +15,7 @@ export class CreateActivityPage implements OnInit {
   tabID = 1;
 
   public activityData : any = {u_id:'17', activity_name:'', location:'', description:'', max_atendes:'',
-  social_range:'', date:'', start_time:'', end_time:'', a_image:''}
+  social_range:'', date:'', start_time:'', end_time:'', a_image:'', visibilty:''}
   profile_data: any;
 
   constructor(public route :Router ,   public loadingController: LoadingController, public apicall : ApicallService, public global : GlobalService) { }
@@ -38,9 +38,26 @@ export class CreateActivityPage implements OnInit {
   console.log(this.tabID)
   }
 
-  addActivity(){
+  async changeToggle($event: CustomEvent) {
+    console.log($event.detail.checked);
+    console.log($event.detail.value);
+    if ($event.detail.checked == true) {
+          this.activityData.visibilty = 'private'
+          console.log(this.activityData.visibilty);
+    }
+    else{
+      this.activityData.visibilty = 'public'
+      console.log(this.activityData.visibilty);
+    }
+
+
+  }
+
+ async addActivity(){
     console.log(this.activityData);    
-    this.apicall.api_addActivity(this.activityData)
+   await this.apicall.api_addActivity(this.activityData)
+  this.activityData = {u_id:'', activity_name:'', location:'', description:'', max_atendes:'',
+  social_range:'', date:'', start_time:'', end_time:'', a_image:'', visibilty:''}
   }
 
   async capture_img(){
