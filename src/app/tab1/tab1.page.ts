@@ -122,7 +122,7 @@ export class Tab1Page implements ViewDidEnter {
           },
           title:markers[i].title,
           snippet:"Zagham",
-          iconUrl:"https://avatars.githubusercontent.com/u/104660890?v=4",
+          // iconUrl:"https://avatars.githubusercontent.com/u/104660890?v=4",
           iconSize: {
             width: 40,
             height:36
