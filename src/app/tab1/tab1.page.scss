@@ -83,6 +83,10 @@ ion-row {
             align-items: center;
             justify-content: center;
             border-radius: 14px;
+            width: 40px;
+            .userimg{
+                border-radius: 14px;
+            }
         }
 
         .m-1 {
@@ -112,7 +116,7 @@ ion-row {
 
             .a{
                 object-fit: cover;
-                object-position: -52px 0px;
+                object-position: -5px 0px;
                 border-radius: 0px 10px 10px 0px;
             }
         }
@@ -138,10 +142,31 @@ ion-row {
     padding: 2px;
     border-radius: 100%;
 }
-capacitor-google-maps {
+capacitor-google-maps::ng-deep {
     display: inline-block;
     width: 100%;
     height: 100%;
+    div[class="gmnoprint"] {
+        top: -200px;
+    }
+    button[draggable="false"] {
+        height: 0px !important;
+        width: 0px !important;
+    }
+    div[role="button"] {
+        background-image: url("./../../assets/map-icon/markerTag.png");
+        z-index: 10;
+        background-size: 58px 72px;
+        background-repeat: no-repeat;
+        height: 118px !important;
+        width: 300px !important;
+    }
+    div[role="button"].img {
+        border-radius: 100%;
+    }
+    .gmnoprint {
+        top: -518px;
+    }
 }
 // Maps Cutoms
 .gmnoprint {
@@ -151,4 +176,9 @@ capacitor-google-maps {
     cursor: pointer;
     left: 0px;
     top: -61px;
+}
+.img2{
+    width: 100%;
+    border-radius: 100%;
+    height: -webkit-fill-available;
 }

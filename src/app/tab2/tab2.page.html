@@ -9,7 +9,7 @@
     </ion-item>
   </ion-toolbar>
   <!-- Segment -->
-  <ion-segment [(ngModel)]="selectTabs" mode="ios">
+  <ion-segment [(ngModel)]="selectTabs" mode="ios" (ionChange)="getactivity()">
     <ion-segment-button value="going">
       <ion-label>Going ({{this.activities_going.length}})</ion-label>
     </ion-segment-button>
@@ -72,22 +72,22 @@
   </div> 
 
   <!-- Activities you created -->
-  <div *ngIf =" selectTabs ==  'you_created' " >
+  <div *ngIf =" selectTabs ==  'you_created' ">
     <ion-row>
-      <ion-col size="12" size-md="4" *ngFor="let data of activities_you_created">
+      <ion-col size="12" size-md="4" *ngFor="let data of activities_you_created"  (click)="show_details(data)">
 
         <div class="user_img m-2">
-          <img src="{{this.data.user_img}}" alt="">
+          <img  class="userimg" src="{{data.profile_img}}" alt="" >
         </div>
 
         <div class="m-2">
-          <p class="title m-1"><b>{{this.data.activity_title}}</b></p>
-          <p class="subtitle m-1">{{this.data.activity_des}}</p>
+          <p class="title m-1"><b>{{data.activity_name}}</b></p>
+          <p class="subtitle m-1 short_des">{{data.description}}</p>
           <p class="subtitle m-1"><b>view it</b></p>
         </div>
 
         <div class="location_img">
-          <img src="{{this.data.location_img}}" alt="">
+          <img class="a" src="{{data.a_image}}" alt="">
         </div>
 
       </ion-col>

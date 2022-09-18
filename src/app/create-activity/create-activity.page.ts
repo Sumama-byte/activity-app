@@ -17,12 +17,38 @@ export class CreateActivityPage implements OnInit {
   public activityData : any = {u_id:'17', activity_name:'', location:'', description:'', max_atendes:'',
   social_range:'', date:'', start_time:'', end_time:'', a_image:'', visibilty:''}
   profile_data: any;
+  profile: any;
 
-  constructor(public route :Router ,   public loadingController: LoadingController, public apicall : ApicallService, public global : GlobalService) { }
+  constructor(public route :Router , public apiCall:ApicallService,  public loadingController: LoadingController, public apicall : ApicallService, public global : GlobalService) { }
 
   ngOnInit() {
+    this.getprofile();
   }
   
+
+  async submit_activity_data(){
+    console.log(this.activityData);
+    await  this.apiCall.api_postActivity(this.activityData);
+   
+   this.activityData  = {u_id:'', activity_name:'', location:'', description:'', max_atendes:'',
+  social_range:'', date:'', start_time:'', end_time:'', a_image:''}
+   document.getElementById('cameraImage').setAttribute('src','');
+  }
+
+
+  async getprofile() {
+    await this.global.Uid.subscribe(uid => {
+      //  this.apiCall.api_getprofile(uid);
+       console.log(uid);
+       this.activityData.u_id = uid;
+      });
+       this.global.Getactivity.subscribe(res => {
+       console.log(res)
+      this.profile = res; 
+    });
+   }
+
+
   go_back(){
     this.route.navigate(['/tabs/tab1']);
     this.tabID = 1 ;

@@ -27,4 +27,31 @@ export class GlobalService {
   }
 
 
+  
+  // create profile
+  private profileInfo = new BehaviorSubject<any>('');
+  public ProfileInfo = this.profileInfo.asObservable();
+  set_profileInfo(u_id: any)
+  {
+    this.profileInfo.next(u_id);
+     console.log(u_id);
+    }
+
+     // user id
+  private uid = new BehaviorSubject<any>('');
+  public Uid = this.uid.asObservable();
+  add_uid(u_id: any)
+  {
+    this.uid.next(u_id);
+     console.log(u_id);
+    }
+     // get activity
+  private getactivity = new BehaviorSubject<any>('');
+  public Getactivity = this.getactivity.asObservable();
+ set_getActivity(getactivity: any)
+  {
+    this.getactivity.next(getactivity);
+     console.log(getactivity);
+    }
+
 }

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Activity</string>
+    <string name="title_activity_main">Activity</string>
+    <string name="package_name">com.learn2earn.activity</string>
+    <string name="custom_url_scheme">com.learn2earn.activity</string>
+</resources>

@@ -5,6 +5,9 @@ import { GoogleMap, Marker } from '@capacitor/google-maps';
 import { ViewDidEnter } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
 import { Geolocation } from '@capacitor/geolocation';
+import { ApicallService } from '../Services/apicall.service';
+import { markers } from './data/index';
+import { LocationsService } from '../Services/locations.service';
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -12,12 +15,15 @@ import { Geolocation } from '@capacitor/geolocation';
 })
 export class Tab1Page implements ViewDidEnter {
   
-  // Map
+  // Map Variables
   @ViewChild('map')
   mapRef: ElementRef<HTMLElement>;
   newMap: GoogleMap;
   // segment value
   public selectTabs : any ='map';
+
+  public profile_data : any ={u_id:'', name:'',  img:'' , bio: '' , socialize_distance:'' };
+  public Profile: any ;
 
 
   public list_activities:any=[
@@ -43,11 +49,30 @@ export class Tab1Page implements ViewDidEnter {
      , location_address:'30,street ,USA' , location_img:'../../assets/Rectangle 12942.png', location_range:'24' , start_time:'05' ,end_time:'03',attende_no:'43'},
 
 ]
+  uid: any;
+
+
+  ngOnInit() {
+    this.getProfile();
+  }
+
+  async getProfile() {
+    await this.global.Uid.subscribe(uid => {
+      this.uid = uid;
+    });
+    
+    await this.apiCall.api_getprofile(this.uid);
+    console.log(this.uid);
+    await this.global.ProfileInfo.subscribe(res => {
+    console.log(res[0].img)
+   this.Profile= res[0].img;
+  });
+   }
 
   public coords:any = [{coordinate:{lat:33.2, lng:-117.8}}]
   public coordinates: any;
 
-  constructor(public route : Router , public global : GlobalService) {}
+  constructor(public route : Router , public global : GlobalService, public location: LocationsService,public apiCall:ApicallService ) {}
 
   // navigations
   notification(){
@@ -66,6 +91,7 @@ export class Tab1Page implements ViewDidEnter {
   // Map Function
   ionViewDidEnter(): void {
     this.createMap();
+    this.getLocationDistances();
   }
   async createMap() {
     // Get Current Locations
@@ -78,35 +104,32 @@ export class Tab1Page implements ViewDidEnter {
       apiKey: environment.mapApiKey,
       config: {
         center: {
-          lat: this.coordinates.coords.latitude,
-          lng: this.coordinates.coords.longitude,
+          lat: markers[0].lat,
+          lng: markers[0].lng,
         },
-        zoom: 18,
-      },
+        zoom: 12,
+      }
     });
+    await this.newMap.enableClustering();
     // Add Markers
-    await this.newMap.addMarkers([
-      {
-        coordinate:{
-          lat: this.coordinates.coords.latitude,
-          lng: this.coordinates.coords.longitude
-        },
-        title: "Zagham",
-        snippet: "Zagham Nadeem",
-        iconUrl:"https://user-images.githubusercontent.com/104660890/185779727-ec171903-c781-4254-83ad-e7c6188e361e.png",
-        iconSize: {
-          width:100,
-          height:100
+    for(let i=0; i<markers.length; i++) {
+      console.log(markers[i]);
+      this.newMap.addMarkers([
+        {
+          coordinate:{
+            lat: markers[i].lat,
+            lng: markers[i].lng
+          },
+          title:markers[i].title,
+          snippet:"Zagham",
+          // iconUrl:"https://avatars.githubusercontent.com/u/104660890?v=4",
+          iconSize: {
+            width: 40,
+            height:36
+          }
         }
-       },
-       {
-        coordinate:{
-          lat: 33.7,
-          lng: -117.8
-        },
-        title: "Zagham"
-       }
-    ]);
+      ])
+    }
      await this.newMap.setOnMarkerClickListener(async (marker) => {
       console.log(marker);
      })
@@ -116,7 +139,14 @@ export class Tab1Page implements ViewDidEnter {
     this.coordinates = await Geolocation.getCurrentPosition();
 
     console.log('Current position:', this.coordinates.coords.latitude);
-  };
+  }
   
+  // Get Distance
+  async getLocationDistances() {
+    for(let i=0; i<markers.length; i++) {
+      const x = this.location.getDistanceFromLatLonInKm(markers[0].lat, markers[0].lng, markers[1].lat, markers[1].lng)
+      console.log(x);
+    }
+  }
 
 }
