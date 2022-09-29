@@ -27,7 +27,12 @@ public activities_may_be_going:any=[
 
 // activities_you_created
 public activities_you_created:any =[];
+public myparticipation:any;
+public myGoing:any;
+public MaybeGoing:any;
 
+count_M: number;
+count_G: number;
   // public CreatedActivity:any={u_id:'',activity_name:'',location:'',description:'',max_atendes:'',social_range:'',date:'',start_time:'',end_time:'',a_image:'',profile_img:''}
      public YourActivity:any={u_id:''}
   constructor(public route : Router,public apiCall:ApicallService, private router: Router , public global: GlobalService) {}
@@ -35,6 +40,7 @@ public activities_you_created:any =[];
 
   ngOnInit() {
     this.getactivity();
+    this.getmyallparticipant();
   }
 
   // GetActivity method
@@ -48,19 +54,35 @@ public activities_you_created:any =[];
       this.activities_you_created = activity;
    })
    console.log(this.activities_you_created);
+   this.getmyallparticipant();
+   }
+
+   async getmyallparticipant(){
+  await this.apiCall.api_myparticipantActivity(this.YourActivity.u_id);
+  await this.global.Myparticipant.subscribe( res =>{
+    this.myparticipation = res;
+    console.log(this.myparticipation);
+    this.count_G = this.myparticipation.filter(x => x.status === 'g').length;
+    console.log(this.count_G);
+    this.myGoing = this.myparticipation.filter(x => x.status === 'g');
+    console.log(this.myGoing);
+    this.count_M = this.myparticipation.filter(x => x.status === 'm').length;
+    console.log(this.count_M);
+    this.MaybeGoing = this.myparticipation.filter(x => x.status === 'm');
+    console.log(this.MaybeGoing);    
+  });
+
    }
 
   // show activity details
   show_details(data){
-    this.router.navigate(['/tabs/activity-details'], { state: { data: data} })
+    this.router.navigate(['/tabs/myactivity'], { state: { data: data} })
   }
    
 
-  going(){
-    this.route.navigate(['/tabs/canidates'])
-  }
-
-  may_be_going(){
+ async checkStatus(a_id){
+    console.log(a_id);
+await this.apiCall.api_ActivityStatus(a_id)
     this.route.navigate(['/tabs/canidates'])
   }
 }

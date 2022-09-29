@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonContent } from '@ionic/angular';
+import { ApicallService } from '../Services/apicall.service';
 import { GlobalService } from '../Services/global.service';
 
 @Component({
@@ -32,26 +33,40 @@ export class ChatPage implements OnInit {
   newMsg = '';
 
   public chat :any;
+  public allChat :any;
 
+  public userMsg : any = {sender_id:'', reciever_id:'', msg:''}
+  public userData: any = {reciever_id:''}
   @ViewChild(IonContent) content: IonContent
 
-  constructor( public route: Router , public global :GlobalService  ) { }
+  constructor( public route: Router , public global :GlobalService, public apicall : ApicallService  ) { }
 
   ngOnInit() {
+    this.getChat();
     this.global.Chat.subscribe( res => {
       this.chat = res;
       console.log(this.chat);
-    })
-    
-
-  }
-  sendMessage(){
-    this.messages.push({
-      user: 'Rehan',
-      createdAt: new Date().getTime(),
-      msg: this.newMsg
+      this.userMsg.reciever_id = this.chat.u_id;
+      this.userData.reciever_id = this.chat.u_id;
     });
-    this.newMsg = '';
+    this.global.Uid.subscribe(uid => {
+      this.userMsg.sender_id = uid;
+      console.log(uid);
+     });
+  }
+
+  getChat(){
+    this.global.Storchat.subscribe(res =>{
+      this.allChat = res;
+      console.log(this.allChat);
+      console.log(res);
+    });
+  }
+
+ async sendMessage(){
+  await this.apicall.api_postChat(this.userMsg)
+    console.log(this.userMsg);
+  await this.apicall.api_getChat(this.userData)
     setTimeout(() => {
       this.content.scrollToBottom(200);
     });

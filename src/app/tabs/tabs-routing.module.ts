@@ -51,6 +51,10 @@ const routes: Routes = [
         path: 'filter',
         loadChildren: () => import('../filter/filter.module').then(m => m.FilterPageModule)
       },
+  {
+    path: 'myactivity',
+    loadChildren: () => import('../myactivity/myactivity.module').then( m => m.MyactivityPageModule)
+  },
       {
         path: '',
         redirectTo: '/tabs/tab1',

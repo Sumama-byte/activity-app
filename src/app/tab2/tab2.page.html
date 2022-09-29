@@ -11,10 +11,10 @@
   <!-- Segment -->
   <ion-segment [(ngModel)]="selectTabs" mode="ios" (ionChange)="getactivity()">
     <ion-segment-button value="going">
-      <ion-label>Going ({{this.activities_going.length}})</ion-label>
+      <ion-label>Going ({{count_G}})</ion-label>
     </ion-segment-button>
     <ion-segment-button value="may_be_going">
-      <ion-label>May be Going ({{this.activities_may_be_going.length}})</ion-label>
+      <ion-label>May be Going ({{count_M}})</ion-label>
     </ion-segment-button>
     <ion-segment-button value="you_created">
       <ion-label>You Created ({{this.activities_you_created.length}})</ion-label>
@@ -28,22 +28,20 @@
   <!-- Activities on going -->
   <div *ngIf =" selectTabs ==  'going' " >
     <ion-row>
-      <ion-col size="12" size-md="5" size-lg="6" *ngFor="let data of activities_going" (click)="going()">
-
+      <ion-col size="12" size-md="5" size-lg="6" *ngFor="let data of myGoing" (click)="checkStatus(data.a_id)">
         <div class="user_img m-2">
-          <img src="{{this.data.user_img}}" alt="">
+          <img src="{{this.data.profile_img}}" alt="">
         </div>
 
         <div class="m-2">
-          <p class="title m-1"><b>{{this.data.activity_title}}</b></p>
-          <p class="subtitle m-1">{{this.data.activity_des}}</p>
+          <p class="title m-1"><b>{{this.data.activity_name}}</b></p>
+          <p class="subtitle m-1">{{this.data.description}}</p>
           <p class="subtitle m-1"><b>view it</b></p>
         </div>
 
         <div class="location_img">
-          <img src="{{this.data.location_img}}" alt="">
+          <img src="{{this.data.a_image}}" alt="">
         </div>
-
       </ion-col>
     </ion-row>
   </div> 
@@ -51,21 +49,21 @@
   <!-- Activities  may be going -->
   <div *ngIf =" selectTabs ==  'may_be_going' " >
     <ion-row>
-      <ion-col size="12" size-md="4" *ngFor="let data of  activities_may_be_going" (click)="may_be_going()">
-
-        <div class="user_img m-2">
-          <img src="{{this.data.user_img}}" alt="">
-        </div>
-
-        <div class="m-2">
-          <p class="title m-1"><b>{{this.data.activity_title}}</b></p>
-          <p class="subtitle m-1">{{this.data.activity_des}}</p>
-          <p class="subtitle m-1"><b>view it</b></p>
-        </div>
-
-        <div class="location_img">
-          <img src="{{this.data.location_img}}" alt="">
-        </div>
+      <ion-col size="12" size-md="4" *ngFor="let data of MaybeGoing" (click)="checkStatus(data.a_id)">
+        
+          <div class="user_img m-2">
+            <img src="{{this.data.profile_img}}" alt="">
+          </div>
+  
+          <div class="m-2">
+            <p class="title m-1"><b>{{this.data.activity_name}}</b></p>
+            <p class="subtitle m-1">{{this.data.description}}</p>
+            <p class="subtitle m-1"><b>view it</b></p>
+          </div>
+  
+          <div class="location_img">
+            <img src="{{this.data.a_image}}" alt="">
+          </div>
 
       </ion-col>
     </ion-row>

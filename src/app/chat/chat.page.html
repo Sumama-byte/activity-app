@@ -7,11 +7,11 @@
         <ion-icon name="chevron-back-outline" size="large"></ion-icon>
       </ion-avatar>
       <ion-avatar>
-        <img src="{{chat.user_img}}" class="img">
+        <img src="{{chat.img}}" class="img">
       </ion-avatar>
       <ion-label>
-        <h2>{{chat.user_name}}</h2>
-        <p>{{chat.last_time}}</p>
+        <h2>{{chat.name}}</h2>
+        <!-- <p>{{chat.last_time}}</p> -->
       </ion-label>
       <ion-icon slot="end" name="ellipsis-vertical" size="large"></ion-icon>
     </ion-item>
@@ -21,28 +21,28 @@
 
   <!-- message area -->
   <ion-grid>
-    <ion-row *ngFor="let message of messages">
-      <ion-col size="9" *ngIf="currentUser !== message.user" class="message other-message">
-        <b>{{message.user}}</b><br>
-        <span>{{message.msg}}</span>
+    <ion-row *ngFor="let message of allChat">
+      <ion-col size="9" *ngIf="message.reciever_id" class="message other-message">
+        <!-- <b>{{message.user}}</b><br> -->
+        <span>{{message.reciever_msg}}</span>
         <div class="time" text-right><br>
-          {{message.createdAt | date:'short'}}
+          {{message.reciever_date}} {{message.reciever_time}} 
         </div>
 
         <div class="other_img">
-          <img src="./../../assets/Rectangle 2.png" alt="">
+          <img src="{{message.receiver_img}}" alt="">
         </div>
       </ion-col>
 
-      <ion-col offset="3" size="9" *ngIf="currentUser === message.user" class="message my-message">
-        <b>{{message.user}}</b><br>
-        <span>{{message.msg}}</span>
+      <ion-col offset="3" size="9" *ngIf="message.sender_id" class="message my-message">
+        <!-- <b>{{message.user}}</b><br> -->
+        <span>{{message.sender_msg}}</span>
         <div class="time" text-right><br>
-          {{message.createdAt | date:'short'}}
+          {{message.sender_date}} {{message.sender_time}} 
         </div>
         <div class="my_img">
           <!-- user img -->
-          <img src="{{chat.user_img}}" alt="">
+          <img src="{{message.sender_img}}" alt="">
         </div>
       </ion-col>
 
@@ -77,7 +77,7 @@
   <ion-toolbar>
 
     <ion-item lines="none" class="p-1">
-      <textarea autosize maxRows="4" class="message-input" placeholder="text here" [(ngModel)]="newMsg" #txtmsg>
+      <textarea autosize maxRows="4" class="message-input" placeholder="text here" [(ngModel)]="userMsg.msg" #txtmsg>
        
       </textarea> 
 

@@ -54,4 +54,47 @@ export class GlobalService {
      console.log(getactivity);
     }
 
+     // get my participant activity
+  private myparticipant = new BehaviorSubject<any>('');
+  public Myparticipant = this.myparticipant.asObservable();
+ set_myparticipant(myparticipant: any)
+  {
+    this.myparticipant.next(myparticipant);
+     console.log(myparticipant);
+    }
+
+     // get all public activity for filter
+  private allfilteractivity = new BehaviorSubject<any>('');
+  public Allfilteractivity = this.allfilteractivity.asObservable();
+ set_allfilteractivity(allfilteractivity: any)
+  {
+    this.allfilteractivity.next(allfilteractivity);
+     console.log(allfilteractivity);
+    }
+
+     // get status
+  private getActivityStatus = new BehaviorSubject<any>('');
+  public GetActivityStatus = this.getActivityStatus.asObservable();
+ set_getActivityStatus(getActivityStatus: any)
+  {
+    this.getActivityStatus.next(getActivityStatus);
+     console.log(getActivityStatus);
+    }
+     // get people for chat
+  private storpeopleForchat = new BehaviorSubject<any>('');
+  public StorpeopleForchat = this.storpeopleForchat.asObservable();
+ set_storpeopleForchat(storpeopleForchat: any)
+  {
+    this.storpeopleForchat.next(storpeopleForchat);
+     console.log(storpeopleForchat);
+    }
+     // get chat
+  private storchat = new BehaviorSubject<any>('');
+  public Storchat = this.storchat.asObservable();
+ set_storchat(storchat: any)
+  {
+    this.storchat.next(storchat);
+     console.log(storchat);
+    }
+
 }

@@ -58,7 +58,7 @@ export class ApicallService {
     await this.authservice.con(data , 'create_profile').then((result) => {
        this.data = JSON.parse(String(result));
        if (this.data.error === false) {
-        this.router.navigate(['/tabs/profile'])
+        this.router.navigate(['/tabs/tab1'])
         console.log(this.data);
          return;
         } 
@@ -112,12 +112,43 @@ export class ApicallService {
      }
 
 
-    //  get activity
+    //  get activity by id
     async api_getActivity(u_id:any) {
       await this.authservice.getdata('getactivitybyid/'+u_id).then((result) => {
           this.data = JSON.parse(String(result));
          console.log(this.data);
           this.global.set_getActivity(this.data);
+        }, (err) => {
+          console.log(err);
+        });
+      }
+    //  get all public activity for filter
+    async api_getallfilterActivity() {
+      await this.authservice.getdata('getactivitybylocation').then((result) => {
+          this.data = JSON.parse(String(result));
+         console.log(this.data);
+          this.global.set_allfilteractivity(this.data);
+        }, (err) => {
+          console.log(err);
+        });
+      }
+    //  get my activity activity
+    async api_myparticipantActivity(u_id:any) {
+      await this.authservice.getdata('myparticipantactivity/'+u_id).then((result) => {
+          this.data = JSON.parse(String(result));
+         console.log(this.data);
+          this.global.set_myparticipant(this.data);
+        }, (err) => {
+          console.log(err);
+        });
+      }
+
+    //  get activity status
+    async api_ActivityStatus(a_id:any) {
+      await this.authservice.getdata('getstatus_activity/'+a_id).then((result) => {
+          this.data = JSON.parse(String(result));
+         console.log(this.data);
+         this.global.set_getActivityStatus(this.data)
         }, (err) => {
           console.log(err);
         });
@@ -136,5 +167,71 @@ export class ApicallService {
            console.log(err);
          });
        }
+
+      // post status
+      async api_postStatus(data: any) {
+        await this.authservice.con(data , 'create_status').then((result) => {
+           this.data = JSON.parse(String(result));
+           if (this.data.error === false) {
+            console.log(this.data);
+             return;
+            } 
+            else{
+              console.log(this.data);
+            }
+         }, (err) => {
+           console.log(err);
+         });
+       }
+      // post status
+      async api_getStatus(data: any) {
+        await this.authservice.con(data , 'update_status').then((result) => {
+           this.data = JSON.parse(String(result));
+           if (this.data.error === false) {
+            console.log(this.data);
+             return;
+            } 
+             console.log(this.data);
+         }, (err) => {
+           console.log(err);
+         });
+       }
+
+    //  get people  for Chat
+    async api_getpeopleForChat() {
+      await this.authservice.getdata('getpeopleforchat').then((result) => {
+          this.data = JSON.parse(String(result));
+         console.log(this.data);
+          this.global.set_storpeopleForchat(this.data);
+        }, (err) => {
+          console.log(err);
+        });
+      }
+
+       // post status
+         async api_postChat(data: any) {
+           await this.authservice.con(data , 'insertchat').then((result) => {
+           this.data = JSON.parse(String(result));
+          if (this.data.error === false) {
+           console.log(this.data);
+           return;
+          } 
+           console.log(this.data);
+           }, (err) => {
+           console.log(err);
+         });
+        }
+
+       // get chat 
+         async api_getChat(data: any) {
+           await this.authservice.con(data , 'getchat').then((result) => {
+           this.data = JSON.parse(String(result));
+           console.log(this.data);
+           this.global.set_storchat(this.data)
+           console.log(this.data);
+           }, (err) => {
+           console.log(err);
+         });
+        }
 
 }

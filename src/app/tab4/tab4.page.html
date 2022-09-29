@@ -13,16 +13,16 @@
 
   <!-- list of user -->
   <ion-list >
-    <ion-item lines="none" *ngFor="let user of users"  (click)="show_chat(user)">
+    <ion-item lines="none" *ngFor="let user of Allusers"  (click)="show_chat(user)">
       <ion-avatar slot="start" class="avatar">
-        <img src="{{user.user_img}}" class="img">
+        <img src="{{user.img}}" class="img">
       </ion-avatar>
       <ion-label>
-        <h2>{{user.user_name}}</h2>
-        <p>{{user.user_last_msg}}</p>
+        <h2>{{user.name}}</h2>
+        <p>{{user.msg}}</p>
       </ion-label>
       <ion-note slot="end">
-        {{user.last_time}}
+        {{user.time}}
       </ion-note>
     </ion-item>
   </ion-list>

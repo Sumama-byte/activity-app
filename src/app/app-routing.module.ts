@@ -52,6 +52,10 @@ const routes: Routes = [
   {
     path: 'new-user',
     loadChildren: () => import('./new-user/new-user.module').then( m => m.NewUserPageModule)
+  },
+  {
+    path: 'myactivity',
+    loadChildren: () => import('./myactivity/myactivity.module').then( m => m.MyactivityPageModule)
   }
 
 

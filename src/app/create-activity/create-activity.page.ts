@@ -14,10 +14,11 @@ export class CreateActivityPage implements OnInit {
 
   tabID = 1;
 
-  public activityData : any = {u_id:'17', activity_name:'', location:'', description:'', max_atendes:'',
+  public activityData : any = {u_id:'', activity_name:'', location:'', description:'', max_atendes:'',
   social_range:'', date:'', start_time:'', end_time:'', a_image:'', visibilty:''}
   profile_data: any;
   profile: any;
+  Togglevaluee: any  = 'public';
 
   constructor(public route :Router , public apiCall:ApicallService,  public loadingController: LoadingController, public apicall : ApicallService, public global : GlobalService) { }
 
@@ -28,11 +29,11 @@ export class CreateActivityPage implements OnInit {
 
   async submit_activity_data(){
     console.log(this.activityData);
+    this.activityData.visibilty = this.Togglevaluee;
     await  this.apiCall.api_postActivity(this.activityData);
    
     this.activityData = {u_id:'', activity_name:'', location:'', description:'', max_atendes:'',
   social_range:'', date:'', start_time:'', end_time:'', a_image:'', visibilty:''}
-   document.getElementById('cameraImage').setAttribute('src','');
   }
 
 
@@ -68,11 +69,11 @@ export class CreateActivityPage implements OnInit {
     console.log($event.detail.checked);
     console.log($event.detail.value);
     if ($event.detail.checked == true) {
-          this.activityData.visibilty = 'private'
+          this.Togglevaluee = 'private'
           console.log(this.activityData.visibilty);
     }
     else{
-      this.activityData.visibilty = 'public'
+      this.Togglevaluee = 'public'
       console.log(this.activityData.visibilty);
     }
 

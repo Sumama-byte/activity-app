@@ -29,16 +29,21 @@
   <!-- canidates going -->
 
   <ion-row *ngIf=" selectTabs == 'going'">
-    <ion-col size="12" *ngFor="let data of going">
+    <ion-col size="12" *ngFor="let data of Going">
 
       <div class="user_img m-2">
-        <img src="{{this.data.user_img}}" alt="">
+        <img src="{{this.data.img}}" alt="">
       </div>
 
       <div class="m-2">
-        <p class="title m-1"><b>{{this.data.user_name}}</b></p>
+        <p class="title m-1"><b>{{this.data.name}}</b></p>
       </div>
     </ion-col>
+
+  <div *ngIf="this.Going == 0">
+    <h3 class="bold_lbl">There is no activity here.</h3>
+  </div>
+
   </ion-row>
 
 
@@ -46,16 +51,19 @@
 
   
   <ion-row *ngIf=" selectTabs == 'may_be_going' ">
-    <ion-col size="12" *ngFor="let data of may_be_going">
+    <ion-col size="12" *ngFor="let data of MaybeGoing">
 
       <div class="user_img m-2">
-        <img src="{{this.data.user_img}}" alt="">
+        <img src="{{this.data.img}}" alt="">
       </div>
 
       <div class="m-2">
-        <p class="title m-1"><b>{{this.data.user_name}}</b></p>
+        <p class="title m-1"><b>{{this.data.name}}</b></p>
       </div>
     </ion-col>
+    <div *ngIf="this.MaybeGoing == 0">
+      <h3 class="bold_lbl">There is no activity here.</h3>
+    </div>
   </ion-row>
 
 </ion-content>

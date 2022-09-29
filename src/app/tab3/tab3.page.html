@@ -7,7 +7,7 @@
           <ion-icon class="black" name="chevron-back-outline" size="large"></ion-icon>
         </ion-avatar>
       </div>
-      <ion-input placeholder="Search here"></ion-input>
+      <ion-input placeholder="Search here" [(ngModel)]="filterTerm"></ion-input>
       <div class="head_align_right">
         <ion-button>
           <ion-icon class="white" name="search"></ion-icon>
@@ -25,20 +25,20 @@
 <ion-content>
 
   <ion-row>
-    <ion-col size="12" size-md="5" (click)="show_details()">
+    <ion-col size="12" size-md="5" *ngFor="let data of  activitys | filter: filterTerm" (click)="show_details()">
 
       <div class="user_img m-2">
-        <img src="../../assets/Rectangle 142.png" alt="">
+        <img src="{{data.profile_img}}" alt="">
       </div>
 
       <div class="m-2">
-        <p class="title m-1"><b>this.data.activity_title</b></p>
-        <p class="subtitle m-1 short_des">this.data.activity_des</p>
+        <p class="title m-1"><b>{{data.activity_name}}</b></p>
+        <p class="subtitle m-1 short_des">{{data.description}}</p>
         <p class="subtitle m-1"><b>view it</b></p>
       </div>
 
       <div class="location_img">
-        <img class="a" src="../../assets/Rectangle 12942.png" alt="">
+        <img class="a" src="{{data.a_image}}" alt="">
       </div>
 
     </ion-col>
