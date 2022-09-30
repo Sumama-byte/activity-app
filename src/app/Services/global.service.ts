@@ -97,4 +97,22 @@ export class GlobalService {
      console.log(storchat);
     }
 
+    // get all public activity
+  private storallactivity = new BehaviorSubject<any>('');
+  public Storallactivity = this.storallactivity.asObservable();
+ set_storallactivity(storallactivity: any)
+  {
+    this.storallactivity.next(storallactivity);
+     console.log(storallactivity);
+    }
+
+    // get activity for update
+  private activityDataforUpdate = new BehaviorSubject<any>('');
+  public ActivityDataforUpdate = this.activityDataforUpdate.asObservable();
+ set_activityDataforUpdate(activityDataforUpdate: any)
+  {
+    this.activityDataforUpdate.next(activityDataforUpdate);
+     console.log(activityDataforUpdate);
+    }
+
 }

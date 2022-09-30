@@ -76,7 +76,8 @@ count_G: number;
 
   // show activity details
   show_details(data){
-    this.router.navigate(['/tabs/myactivity'], { state: { data: data} })
+    console.log(data); 
+    this.router.navigate(['/create-activity'], { state: { data: data} })
   }
    
 

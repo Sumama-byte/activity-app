@@ -168,6 +168,20 @@ export class ApicallService {
          });
        }
 
+            // update activity
+      async api_updateActivity(data: any) {
+        await this.authservice.con(data , 'updateactivity').then((result) => {
+           this.data = JSON.parse(String(result));
+           if (this.data.error === false) {
+            console.log(this.data);
+             return;
+            } 
+             console.log(this.data);
+         }, (err) => {
+           console.log(err);
+         });
+       }
+
       // post status
       async api_postStatus(data: any) {
         await this.authservice.con(data , 'create_status').then((result) => {
@@ -233,5 +247,59 @@ export class ApicallService {
            console.log(err);
          });
         }
+
+
+    //  get one week activity
+    async api_getoneWeekactivity() {
+      await this.authservice.getdata('getOneWeekActivity').then((result) => {
+          this.data = JSON.parse(String(result));
+         console.log(this.data);
+          this.global.set_allfilteractivity(this.data);
+        }, (err) => {
+          console.log(err);
+        });
+      }
+    //  get current date activity
+    async api_getcurrentDateactivity() {
+      await this.authservice.getdata('getcurrentDateActivity').then((result) => {
+          this.data = JSON.parse(String(result));
+         console.log(this.data);
+          this.global.set_allfilteractivity(this.data);
+        }, (err) => {
+          console.log(err);
+        });
+      }
+    //  get activity Social Range
+    async api_getactivitySocialRange(social_range:any) {
+      await this.authservice.getdata('getActivityonSocialRange/'+ social_range).then((result) => {
+          this.data = JSON.parse(String(result));
+         console.log(this.data);
+          this.global.set_allfilteractivity(this.data);
+        }, (err) => {
+          console.log(err);
+        });
+      }
+    //  get activity by manual date
+      async api_getactivitybymanualDate(data: any) {
+        await this.authservice.con(data , 'getActivitybymanualDate').then((result) => {
+        this.data = JSON.parse(String(result));
+        console.log(this.data);
+        this.global.set_allfilteractivity(this.data)
+        console.log(this.data);
+        }, (err) => {
+        console.log(err);
+      });
+     }
+
+         //  get all public activity
+    async api_getallActivitybylocation() {
+      await this.authservice.getdata('getactivitybylocation').then((result) => {
+          this.data = JSON.parse(String(result));
+         console.log(this.data);
+          this.global.set_storallactivity(this.data);
+        }, (err) => {
+          console.log(err);
+        });
+      }
 
 }

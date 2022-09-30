@@ -25,16 +25,16 @@
 <ion-content>
 
   <ion-row>
-    <ion-col size="12" size-md="5" *ngFor="let data of  activitys | filter: filterTerm" (click)="show_details()">
+    <ion-col size="12" size-md="5" *ngFor="let data of  activitys | filter: filterTerm">
 
-      <div class="user_img m-2">
-        <img src="{{data.profile_img}}" alt="">
+      <div class="user_img">
+        <img class="userimg" src="{{data.profile_img}}" alt="">
       </div>
 
       <div class="m-2">
         <p class="title m-1"><b>{{data.activity_name}}</b></p>
         <p class="subtitle m-1 short_des">{{data.description}}</p>
-        <p class="subtitle m-1"><b>view it</b></p>
+        <p class="subtitle m-1" (click)="show_details(data)"><b>view it</b></p>
       </div>
 
       <div class="location_img">

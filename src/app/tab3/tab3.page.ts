@@ -33,7 +33,8 @@ export class Tab3Page implements OnInit {
   go_back(){
     this.router.navigate(['/tabs/tab1'])
   }
-  show_details(){
-    console.log('detaisl')
+  show_details(data){
+    console.log(data)
+    this.router.navigate(['/activity-details'], { state: { data: data} })
   }
 }

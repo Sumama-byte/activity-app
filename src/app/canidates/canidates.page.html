@@ -31,8 +31,8 @@
   <ion-row *ngIf=" selectTabs == 'going'">
     <ion-col size="12" *ngFor="let data of Going">
 
-      <div class="user_img m-2">
-        <img src="{{this.data.img}}" alt="">
+      <div class="user_img">
+        <img class="userimg" src="{{this.data.img}}" alt="">
       </div>
 
       <div class="m-2">
@@ -53,8 +53,8 @@
   <ion-row *ngIf=" selectTabs == 'may_be_going' ">
     <ion-col size="12" *ngFor="let data of MaybeGoing">
 
-      <div class="user_img m-2">
-        <img src="{{this.data.img}}" alt="">
+      <div class="user_img">
+        <img class="userimg" src="{{this.data.img}}" alt="">
       </div>
 
       <div class="m-2">

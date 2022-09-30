@@ -20,20 +20,38 @@ export class CreateActivityPage implements OnInit {
   profile: any;
   Togglevaluee: any  = 'public';
 
+  public YourActivity: any = {u_id:''}
+
   constructor(public route :Router , public apiCall:ApicallService,  public loadingController: LoadingController, public apicall : ApicallService, public global : GlobalService) { }
 
   ngOnInit() {
     this.getprofile();
+  if(history.state.data !== undefined){
+    this.activityData = history.state.data;
+    console.log(this.activityData);
+  }
   }
   
 
   async submit_activity_data(){
-    console.log(this.activityData);
-    this.activityData.visibilty = this.Togglevaluee;
-    await  this.apiCall.api_postActivity(this.activityData);
-   
-    this.activityData = {u_id:'', activity_name:'', location:'', description:'', max_atendes:'',
-  social_range:'', date:'', start_time:'', end_time:'', a_image:'', visibilty:''}
+    if(history.state.data !== undefined){
+      console.log("data Update");
+      console.log(this.activityData);
+      this.activityData.visibilty = this.Togglevaluee;
+      await this.apiCall.api_updateActivity(this.activityData)
+      await this.apiCall.api_getActivity(this.YourActivity.u_id);
+      this.activityData = {u_id:'', activity_name:'', location:'', description:'', max_atendes:'',
+      social_range:'', date:'', start_time:'', end_time:'', a_image:'', visibilty:''}
+      this.route.navigate(['/tabs/tab2']);
+    }
+    else{
+      console.log(this.activityData);
+      this.activityData.visibilty = this.Togglevaluee;
+      await  this.apiCall.api_postActivity(this.activityData);
+      this.activityData = {u_id:'', activity_name:'', location:'', description:'', max_atendes:'',
+    social_range:'', date:'', start_time:'', end_time:'', a_image:'', visibilty:''}
+      
+    }
   }
 
 
@@ -42,6 +60,7 @@ export class CreateActivityPage implements OnInit {
       //  this.apiCall.api_getprofile(uid);
        console.log(uid);
        this.activityData.u_id = uid;
+       this.YourActivity.u_id = uid;
       });
        this.global.Getactivity.subscribe(res => {
        console.log(res)
