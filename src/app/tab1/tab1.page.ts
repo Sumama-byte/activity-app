@@ -54,11 +54,15 @@ export class Tab1Page implements ViewDidEnter {
 
   ngOnInit() {
     this.getProfile();
+    this.getAllActivity();
+    console.log(this.coordinates);
+    
   }
 
   async getProfile() {
     await this.global.Uid.subscribe(uid => {
       this.uid = uid;
+      this.userlocation.u_id = uid
     });
     
     await this.apiCall.api_getprofile(this.uid);
@@ -72,7 +76,22 @@ export class Tab1Page implements ViewDidEnter {
   public coords:any = [{coordinate:{lat:33.2, lng:-117.8}}]
   public coordinates: any;
 
+  public userlocation : any = {u_id:'', lng:'', lat:''}
+
+  public notificationsActivity:any;
   constructor(public route : Router , public global : GlobalService, public location: LocationsService,public apiCall:ApicallService ) {}
+
+  async getAllActivity(){
+    await this.apiCall.api_getallActivitybylocation();
+    this.global.Storallactivity.subscribe(res =>{
+     this.notificationsActivity = res;
+    });
+   }
+
+   show_details(data){
+    console.log(data)
+    this.route.navigate(['/activity-details'], { state: { data: data} })
+  }
 
   // navigations
   notification(){
@@ -83,17 +102,23 @@ export class Tab1Page implements ViewDidEnter {
   }
 
   // show activity details
-  show_details(data){
-    this.route.navigate(['/tabs/activity-details']);
-    this.global.set_activity_details(data);
-  }
+  // show_details(data){
+  //   this.route.navigate(['/tabs/activity-details']);
+  //   this.global.set_activity_details(data);
+  // }
 
   // Map Function
   ionViewDidEnter(): void {
     this.createMap();
     this.getLocationDistances();
   }
+
+ async postLocation(){
+   await this.apiCall.api_postLocation(this.userlocation)
+  }
+
   async createMap() {
+    this.getAllActivity();
     // Get Current Locations
     await this.getLocation();
     // Create Map
@@ -112,17 +137,17 @@ export class Tab1Page implements ViewDidEnter {
     });
     await this.newMap.enableClustering();
     // Add Markers
-    for(let i=0; i<markers.length; i++) {
-      console.log(markers[i]);
+    for(let i=0; i<this.notificationsActivity.length; i++) {
+      console.log(this.notificationsActivity[i]);
       this.newMap.addMarkers([
         {
           coordinate:{
-            lat: markers[i].lat,
-            lng: markers[i].lng
+            lat: parseInt(this.notificationsActivity[i].lat),
+            lng: parseInt(this.notificationsActivity[i].lng)
           },
-          title:markers[i].title,
+          title:this.notificationsActivity[i].name,
           snippet:"Zagham",
-          // iconUrl:"https://avatars.githubusercontent.com/u/104660890?v=4",
+          iconUrl: this.notificationsActivity[i].profile_img,
           iconSize: {
             width: 40,
             height:36
@@ -139,6 +164,12 @@ export class Tab1Page implements ViewDidEnter {
     this.coordinates = await Geolocation.getCurrentPosition();
 
     console.log('Current position:', this.coordinates.coords.latitude);
+    console.log('Current position:', this.coordinates.coords.longitude);
+    this.userlocation.lat = this.coordinates.coords.latitude;
+    this.userlocation.lng = this.coordinates.coords.longitude;
+    console.log(this.userlocation);
+    this.postLocation();
+    
   }
   
   // Get Distance

@@ -48,20 +48,20 @@
 
     <!-- List data -->
     <ion-row>
-      <ion-col size="12" size-md="5" *ngFor="let data of list_activities" (click)="show_details(data)">
+      <ion-col size="12" size-md="5" *ngFor="let data of notificationsActivity" (click)="show_details(data)">
 
         <div class="user_img">
-          <img class="userimg" src="./../../assets/test3.jpg" alt="">
+          <img class="userimg" src="{{this.data.profile_img}}" alt="">
         </div>
 
         <div class="m-2">
-          <p class="title m-1"><b>{{this.data.activity_title}}</b></p>
-          <p class="subtitle m-1 short_des">{{this.data.activity_des}}</p>
-          <p class="subtitle m-1"><b>view it</b></p>
+          <p class="title m-1"><b>{{this.data.activity_name}}</b></p>
+          <p class="subtitle m-1 short_des">{{this.data.description}}</p>
+          <p class="subtitle m-1" (click)="show_details(data)"><b>view it</b></p>
         </div>
 
         <div class="location_img">
-          <img class="a" src="./../../assets/test3.jpg" alt="">
+          <img class="a" src="{{this.data.a_image}}" alt="">
         </div>
 
       </ion-col>
