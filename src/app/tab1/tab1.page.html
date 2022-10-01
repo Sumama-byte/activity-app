@@ -36,7 +36,7 @@
   </ion-segment>
 
   <!-- Map Segment -->
-  <ion-list *ngIf="selectTabs == 'map' ">
+  <ion-list class="map-container" *ngIf="selectTabs == 'map' ">
 
     <!-- Map -->
     <capacitor-google-maps id="my-cool-map" #map></capacitor-google-maps>

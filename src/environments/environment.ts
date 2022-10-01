@@ -13,7 +13,7 @@ export const environment = {
     appId: "1:903333912762:web:cbe7136548f6092c0ca283",
     measurementId: "G-5BGH5T9MGD"
   },
-  mapApiKey:"AIzaSyAxmRcO8VzGXFXRWHXaLh34Yu7KoDnbRaY"
+  mapsKey:"AIzaSyAxmRcO8VzGXFXRWHXaLh34Yu7KoDnbRaY"
 };
 /*
  * For easier debugging in development mode, you can import the following file
