@@ -30,10 +30,10 @@
 @import 'swiper/scss/pagination';
 
 .swiper-slide {
-    display: flex; 
+    display: flex;
     flex-wrap: wrap;
     align-content: space-between;
- 
+
 }
 
 .swiper-slide h2 {
@@ -60,15 +60,16 @@
     .swiper-pagination-bullet {
         background-color: black;
         height: 8px;
-        width: 8px;       
+        width: 8px;
     }
     .swiper-pagination-bullet-active {
         background: #f2910c;
         width: 24px;
         border-radius: 100px;
-        height: 8px;     
+        height: 8px;
     }
 }
- 
+.md body , .ios body{
+  --ion-background-color: none;
+}
 
- 
