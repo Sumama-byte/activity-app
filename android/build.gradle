@@ -9,12 +9,9 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:7.3.0'
         classpath 'com.google.gms:google-services:4.3.13'
-<<<<<<< HEAD
         classpath 'com.google.android.gms:play-services-analytics:16.0.3'
         classpath 'com.google.android.gms:play-services-maps:18.1.0'
         classpath 'com.google.maps.android:android-maps-utils:2.3.0'
-=======
->>>>>>> 2022e1b545d0cbdc76d0e00b6734dd53e7b28b17
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
