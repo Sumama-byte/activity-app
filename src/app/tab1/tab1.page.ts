@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { GlobalService } from '../Services/global.service';
 import { GoogleMap, Marker } from '@capacitor/google-maps';
@@ -8,12 +8,13 @@ import { Geolocation } from '@capacitor/geolocation';
 import { ApicallService } from '../Services/apicall.service';
 import { markers } from './data/index';
 import { LocationsService } from '../Services/locations.service';
+import { interval, timer } from 'rxjs';
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
-export class Tab1Page implements ViewDidEnter {
+export class Tab1Page implements ViewDidEnter, OnInit {
   
   // Map Variables
   @ViewChild('map')
@@ -54,6 +55,10 @@ export class Tab1Page implements ViewDidEnter {
 
   ngOnInit() {
     this.getProfile();
+    const ticker = timer(0, 5000);
+  // ticker.subscribe(() => {
+  //   this.getLocation();
+  // });
   }
 
   async getProfile() {
