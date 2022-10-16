@@ -16,7 +16,7 @@ export class ActivityDetailsPage implements OnInit {
   
 
   public postStatus: any = {a_id:'', u_id:'', status:''}
-
+  public YourActivity:any={u_id:''}
   constructor( public route :Router , public global :GlobalService, public apicall : ApicallService ) { }
 
   ngOnInit() {
@@ -25,6 +25,7 @@ export class ActivityDetailsPage implements OnInit {
      this.global.Uid.subscribe(uid => {
       console.log(uid);
       this.postStatus.u_id = uid;
+      this.YourActivity.u_id = uid;
      });
   }
 
@@ -38,7 +39,8 @@ export class ActivityDetailsPage implements OnInit {
     console.log('going')
     this.postStatus.status = "g"
     console.log(this.postStatus);
-   await this.apicall.api_postStatus(this.postStatus)
+   await this.apicall.api_postStatus(this.postStatus);
+   this.getDataactivity();
   }
 
   //data to may_be_going 
@@ -46,6 +48,15 @@ async may_be_going(){
     console.log('may_be_going')
     this.postStatus.status = "m"
     console.log(this.postStatus);
-   await this.apicall.api_postStatus(this.postStatus)
+   await this.apicall.api_postStatus(this.postStatus);
+   this.getDataactivity();
   }
+
+  async getDataactivity() {
+   await this.apicall.api_getActivity(this.YourActivity.u_id);
+   await this.apicall.api_myparticipantActivity(this.YourActivity.u_id);
+   await this.apicall.api_getallActivitybylocation();
+   await this.apicall.api_getallfilterActivity();
+   await this.apicall.api_getpeopleForChat();
+   }
 }
