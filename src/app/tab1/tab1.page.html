@@ -23,7 +23,7 @@
 
 </ion-header>
 
-<ion-content>
+<ion-content  [ngClass]="selectTabs == 'map' ? 'my_class1' : 'my_class2'">
 
   <!-- Segment -->
   <ion-segment [(ngModel)]="selectTabs" mode="ios" value="map" (ionChange)="createMap()">

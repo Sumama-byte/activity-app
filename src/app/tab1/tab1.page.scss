@@ -24,11 +24,12 @@ ion-header {
     }
 }
 
-//ion-content{
-//    --background: none;
-
-
-//  }
+.my_class1{
+   --background: none;
+ }
+.my_class2{
+   --background: white;
+ }
 
 ion-segment {
     width: 184px;
