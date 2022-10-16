@@ -2,8 +2,11 @@ ion-header {
     height: 120px;
     display: flex;
     align-items: center;
+  --background-color: white;
+  --background: white;
     ion-toolbar {
-
+      --background-color: white;
+      --background: white;
         .head_align {
             display: flex;
             justify-content: space-between;
@@ -112,4 +115,8 @@ ion-row {
 
     }
 
+}
+ion-content {
+  --background-color: white;
+  --background: white;
 }

@@ -2,7 +2,12 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  {         
+  {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full'
+  },
+  {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
@@ -37,7 +42,8 @@ const routes: Routes = [
   {
     path: 'notification',
     loadChildren: () => import('./notification/notification.module').then( m => m.NotificationPageModule)
-  },  {
+  },
+  {
     path: 'activity-details',
     loadChildren: () => import('./activity-details/activity-details.module').then( m => m.ActivityDetailsPageModule)
   },
@@ -56,7 +62,11 @@ const routes: Routes = [
   {
     path: 'myactivity',
     loadChildren: () => import('./myactivity/myactivity.module').then( m => m.MyactivityPageModule)
+  },  {
+    path: 'test',
+    loadChildren: () => import('./pages/test/test.module').then( m => m.TestPageModule)
   }
+
 
 
 

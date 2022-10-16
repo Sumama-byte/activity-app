@@ -90,6 +90,7 @@ export class Tab1Page implements ViewDidEnter {
     await this.apiCall.api_getallActivitybylocation();
     this.global.Storallactivity.subscribe(res =>{
      this.notificationsActivity = res;
+     console.log(res);
     });
    }
 
@@ -123,6 +124,8 @@ export class Tab1Page implements ViewDidEnter {
   }
 
   async createMap() {
+    const coordinates = await Geolocation.getCurrentPosition();
+    console.log('Current position:', coordinates);
     this.getAllActivity();
     // Get Current Locations
     await this.getLocation();
@@ -134,14 +137,30 @@ export class Tab1Page implements ViewDidEnter {
       apiKey: environment.mapsKey,
       config: {
         center: {
-          lat: markers[0].lat,
-          lng: markers[0].lng,
+          lat: coordinates.coords.latitude,
+          lng: coordinates.coords.longitude,
         },
-        zoom: 12,
+        zoom: 15,
       }
     });
     await this.newMap.enableClustering();
     // Add Markers
+
+    this.newMap.addMarkers([
+      {
+        coordinate:{
+          lat: coordinates.coords.latitude,
+          lng: coordinates.coords.longitude
+        },
+        title:this.notificationsActivity.name,
+        snippet:"Zagham",
+        iconUrl: this.Profile,
+        iconSize: {
+          width: 40,
+          height:36
+        }
+      }
+    ])
     for(let i=0; i<this.notificationsActivity.length; i++) {
       console.log(this.notificationsActivity[i]);
       this.newMap.addMarkers([
@@ -152,7 +171,7 @@ export class Tab1Page implements ViewDidEnter {
           },
           title:this.notificationsActivity[i].name,
           snippet:"Zagham",
-          iconUrl: this.notificationsActivity[i].profile_img,
+          iconUrl: this.notificationsActivity[i].a_image,
           iconSize: {
             width: 40,
             height:36
@@ -162,7 +181,10 @@ export class Tab1Page implements ViewDidEnter {
     }
      await this.newMap.setOnMarkerClickListener(async (marker) => {
       console.log(marker);
-     })
+     });
+    await this.newMap.setOnMapClickListener(async (marker) => {
+      console.log(marker)
+    })
 }
   // GeoLocation
   async getLocation () {

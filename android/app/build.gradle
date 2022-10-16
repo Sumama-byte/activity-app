@@ -1,8 +1,6 @@
 apply plugin: 'com.android.application'
 
 android {
-
-    namespace 'com.learn2earn.activity'
     compileSdkVersion rootProject.ext.compileSdkVersion
     defaultConfig {
         applicationId "com.learn2earn.activity"

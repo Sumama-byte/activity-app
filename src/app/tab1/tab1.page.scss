@@ -24,10 +24,9 @@ ion-header {
     }
 }
 
-ion-content{
-  --ion-background-color: none;
-    --background: none;
-  }
+//ion-content{
+//    --background: none;
+//  }
 
 ion-segment {
     width: 184px;
@@ -59,6 +58,7 @@ ion-list {
 }
 .map-container{
   background: none;
+  --ion-background-color: none;
 }
 
 ion-row {
@@ -193,3 +193,6 @@ capacitor-google-maps::ng-deep {
     border-radius: 100%;
     height: -webkit-fill-available;
 }
+//ion-list {
+//    --ion-background-color: none;
+//}

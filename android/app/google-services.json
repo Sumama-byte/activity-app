@@ -14,7 +14,7 @@
       },
       "oauth_client": [
         {
-          "client_id": "903333912762-ts884vloapoe6ulrgbhh5og5v4avh5h0.apps.googleusercontent.com",
+          "client_id": "903333912762-5orm0394dod9f18fcmqmj08evpoa3f0o.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.learn2earn.activity",
@@ -37,6 +37,13 @@
             {
               "client_id": "903333912762-55rqulbv9dcj8bcd7r33n8uipk9cqu2h.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "903333912762-pq0enjr8lrista37nsnksabjfokcjsvp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.learn2earn.activity"
+              }
             }
           ]
         }
