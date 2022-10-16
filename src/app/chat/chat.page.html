@@ -24,9 +24,9 @@
     <ion-row *ngFor="let message of allChat">
       <ion-col size="9" *ngIf="message.reciever_id" class="message other-message">
         <!-- <b>{{message.user}}</b><br> -->
-        <span>{{message.reciever_msg}}</span>
+        <span>{{message.msg}}</span>
         <div class="time" text-right><br>
-          {{message.reciever_date}} {{message.reciever_time}} 
+          {{message.date}} {{message.time}} 
         </div>
 
         <div class="other_img">
@@ -36,9 +36,9 @@
 
       <ion-col offset="3" size="9" *ngIf="message.sender_id" class="message my-message">
         <!-- <b>{{message.user}}</b><br> -->
-        <span>{{message.sender_msg}}</span>
+        <span>{{message.msg}}</span>
         <div class="time" text-right><br>
-          {{message.sender_date}} {{message.sender_time}} 
+          {{message.date}} {{message.time}} 
         </div>
         <div class="my_img">
           <!-- user img -->
