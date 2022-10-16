@@ -19,14 +19,14 @@
 </ion-header>
 <ion-content>
 
-  <!-- message area -->
+  <!-- message area   -->
   <ion-grid>
     <ion-row *ngFor="let message of allChat">
       <ion-col size="9" *ngIf="message.reciever_id" class="message other-message">
         <!-- <b>{{message.user}}</b><br> -->
         <span>{{message.msg}}</span>
         <div class="time" text-right><br>
-          {{message.date}} {{message.time}} 
+          {{message.date}} {{message.time}}
         </div>
 
         <div class="other_img">
@@ -38,7 +38,7 @@
         <!-- <b>{{message.user}}</b><br> -->
         <span>{{message.msg}}</span>
         <div class="time" text-right><br>
-          {{message.date}} {{message.time}} 
+          {{message.date}} {{message.time}}
         </div>
         <div class="my_img">
           <!-- user img -->
@@ -78,11 +78,11 @@
 
     <ion-item lines="none" class="p-1">
       <textarea autosize maxRows="4" class="message-input" placeholder="text here" [(ngModel)]="userMsg.msg" #txtmsg>
-       
-      </textarea> 
+
+      </textarea>
 
       <ion-button expand="block" fill="clear" color="primary" *ngIf="txtmsg.value.length > 0" class="msg-btn"
-        (click)="sendMessage()"> 
+        (click)="sendMessage()">
         <ion-icon name="send" slot="icon-only"></ion-icon>
       </ion-button>
     </ion-item>
