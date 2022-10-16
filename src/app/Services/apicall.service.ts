@@ -305,7 +305,7 @@ export class ApicallService {
 
           //  post location
           async api_postLocation(data: any) {
-            await this.authservice.con(data , 'add_location').then((result) => {
+            await this.authservice.con(data , 'addUserlocation').then((result) => {
             this.data = JSON.parse(String(result));
             console.log(this.data);
             }, (err) => {

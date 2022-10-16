@@ -12,11 +12,16 @@ export class Tab4Page implements OnInit {
 
 
   public Allusers:any;
-  public userData: any = {reciever_id:''}
+  public userData: any = {reciever_id:'', sender_id:''}
   constructor( public route: Router , public global : GlobalService, public apicall : ApicallService) { }
 
   ngOnInit() {
-    this.getAllPeopleForChat()
+    this.getAllPeopleForChat();
+    this.global.Uid.subscribe(uid => {
+      this.userData.sender_id = uid;
+      console.log(uid);
+     });
+
   }
 
   async getAllPeopleForChat(){
@@ -29,9 +34,10 @@ export class Tab4Page implements OnInit {
   //show_chat   
 async  show_chat(user){
     console.log(user);
+    console.log(this.userData);
     this.userData.reciever_id = user.u_id
-await this.apicall.api_getChat(this.userData)
-this.global.set_chat(user)
+await this.apicall.api_getChat(this.userData);
+this.global.set_chat(user);
     this.route.navigate(['chat'])
   }
 

@@ -36,12 +36,15 @@ export class ChatPage implements OnInit {
   public allChat :any;
 
   public userMsg : any = {sender_id:'', reciever_id:'', msg:''}
-  public userData: any = {reciever_id:''}
+  public userData: any = {reciever_id:'', sender_id:''}
   @ViewChild(IonContent) content: IonContent
 
   constructor( public route: Router , public global :GlobalService, public apicall : ApicallService  ) { }
 
   ngOnInit() {
+    setTimeout(() => {
+      this.content.scrollToBottom(200);
+    });
     this.getChat();
     this.global.Chat.subscribe( res => {
       this.chat = res;
@@ -51,6 +54,7 @@ export class ChatPage implements OnInit {
     });
     this.global.Uid.subscribe(uid => {
       this.userMsg.sender_id = uid;
+      this.userData.sender_id = uid;
       console.log(uid);
      });
   }
@@ -64,9 +68,9 @@ export class ChatPage implements OnInit {
   }
 
  async sendMessage(){
-  await this.apicall.api_postChat(this.userMsg)
+  await this.apicall.api_postChat(this.userMsg);
     console.log(this.userMsg);
-  await this.apicall.api_getChat(this.userData)
+  await this.apicall.api_getChat(this.userData);
     setTimeout(() => {
       this.content.scrollToBottom(200);
     });

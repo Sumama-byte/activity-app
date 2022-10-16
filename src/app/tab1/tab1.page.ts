@@ -60,6 +60,7 @@ export class Tab1Page implements ViewDidEnter {
   //   this.getLocation();
   // });
     this.getAllActivity();
+    this.get_appData();
     console.log(this.coordinates);
 
   }
@@ -84,6 +85,7 @@ export class Tab1Page implements ViewDidEnter {
   public userlocation : any = {u_id:'', lng:'', lat:''}
 
   public notificationsActivity:any;
+  public YourActivity:any={u_id:''}
   constructor(public route : Router , public global : GlobalService, public location: LocationsService,public apiCall:ApicallService ) {}
 
   async getAllActivity(){
@@ -99,9 +101,18 @@ export class Tab1Page implements ViewDidEnter {
     this.route.navigate(['/activity-details'], { state: { data: data} })
   }
 
+ async get_appData(){
+  await this.apiCall.api_getActivity(this.uid);
+  await this.apiCall.api_myparticipantActivity(this.uid);
+  await this.apiCall.api_getallfilterActivity();
+  await this.apiCall.api_getpeopleForChat();
+  }
+
   // navigations
   notification(){
-    this.route.navigate(['/tabs/notification'])
+    this.getAllActivity();
+    this.get_appData();
+    this.route.navigate(['/tabs/notification']);
   }
   profile(){
     this.route.navigate(['/tabs/profile'])
@@ -127,6 +138,7 @@ export class Tab1Page implements ViewDidEnter {
     const coordinates = await Geolocation.getCurrentPosition();
     console.log('Current position:', coordinates);
     this.getAllActivity();
+    this.get_appData();
     // Get Current Locations
     await this.getLocation();
     // Create Map
