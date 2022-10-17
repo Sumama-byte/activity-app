@@ -28,6 +28,8 @@ export class ChatPage implements OnInit {
     },
   ];
 
+  public sender_msgs:any = [];
+  public reciever_msgs:any = [];
   currentUser = 'Rehan';
 
   newMsg = '';
@@ -36,12 +38,16 @@ export class ChatPage implements OnInit {
   public allChat :any;
 
   public userMsg : any = {sender_id:'', reciever_id:'', msg:''}
-  public userData: any = {reciever_id:'', sender_id:''}
+  public userData: any = {reciever_id:'', sender_id:''};
+  public reciever_id:any;
   @ViewChild(IonContent) content: IonContent
+  allmsgs: { sender: any; reciever: any; };
 
   constructor( public route: Router , public global :GlobalService, public apicall : ApicallService  ) { }
 
   ngOnInit() {
+    this.reciever_id = history.state.data;
+
     setTimeout(() => {
       this.content.scrollToBottom(200);
     });
@@ -59,15 +65,44 @@ export class ChatPage implements OnInit {
      });
   }
 
-  getChat(){
-    this.global.Storchat.subscribe(res =>{
+  async getChat(){
+    await this.global.Storchat.subscribe(res =>{
       this.allChat = res;
       console.log(this.allChat);
       console.log(res);
     });
+    
+    //  Chat Filter by Zagham Nadeem
+
+      console.log( 'Sender', this.userData.sender_id, 'Reciever', this.reciever_id);
+      this.sender_msgs.length = 0;
+      this.reciever_msgs.length = 0;
+      for( let i = 0; i<this.allChat.length; i++ ) {
+        if( this.allChat[i].sender_id == this.userData.sender_id && this.allChat[i].reciever_id == this.reciever_id ) {
+          console.log(this.allChat[i]);
+          if( this.allChat[i].sender_id == this.allChat[i].reciever_id ) {
+            const reciever = [];
+            
+            this.reciever_msgs.push(this.allChat[i]);
+            console.log(this.reciever_msgs);
+          }
+          if( this.allChat[i].sender_id != this.allChat[i].reciever_id ) {
+            const sender = [];
+            
+            this.sender_msgs.push(this.allChat[i]);
+            console.log(this.sender_msgs);
+          }
+        }
+        else {
+          console.log('empty')
+        }
+        // this.allmsgs = [ sender: this.sender_msgs , reciever:this.reciever_msgs];
+        // console.log(this.allmsgs);
+      }
   }
 
  async sendMessage(){
+  this.getChat();
   await this.apicall.api_postChat(this.userMsg);
     console.log(this.userMsg);
   await this.apicall.api_getChat(this.userData);

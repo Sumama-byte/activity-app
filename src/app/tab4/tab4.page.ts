@@ -38,7 +38,7 @@ async  show_chat(user){
     this.userData.reciever_id = user.u_id
 await this.apicall.api_getChat(this.userData);
 this.global.set_chat(user);
-    this.route.navigate(['chat'])
+    this.route.navigate(['chat'], {state:{data: user.u_id}})
   }
 
   // navigate back

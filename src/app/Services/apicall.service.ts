@@ -273,7 +273,7 @@ export class ApicallService {
 
        // get chat 
          async api_getChat(data: any) {
-           await this.authservice.con(data , 'getchat').then((result) => {
+           await this.authservice.getdata('getchat').then((result) => {
            this.data = JSON.parse(String(result));
            console.log(this.data);
            this.global.set_storchat(this.data)
