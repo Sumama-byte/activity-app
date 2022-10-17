@@ -72,7 +72,7 @@ export class ChatPage implements OnInit {
       console.log(res);
     });
     
-    //  Chat Filter by Zagham Nadeem
+    //  Chat Filter by Zagham Nadeem...
 
       console.log( 'Sender', this.userData.sender_id, 'Reciever', this.reciever_id);
       this.sender_msgs.length = 0;
