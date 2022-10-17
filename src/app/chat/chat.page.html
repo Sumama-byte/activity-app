@@ -33,6 +33,17 @@
           <img class="userimage" src="{{message.receiver_img}}" alt="">
         </div>
       </ion-col>
+      <ion-col size="9" *ngIf="message.reciever_id == 2"   class="message other-message">
+        <!-- <b>{{message.user}}</b><br> -->
+        <span>{{message.msg}}</span>
+        <div class="time" text-right><br>
+          {{message.date}} {{message.time}}
+        </div>
+
+        <div class="other_img">
+          <img class="userimage" src="{{message.receiver_img}}" alt="">
+        </div>
+      </ion-col>
 
       
 
