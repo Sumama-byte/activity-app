@@ -63,6 +63,10 @@ export class Tab1Page implements ViewDidEnter {
     this.get_appData();
     console.log(this.coordinates);
 
+    setInterval(() => {
+      this.get_appData(); // api call
+    }, 30000);
+
   }
 
   async getProfile() {

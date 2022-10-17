@@ -75,15 +75,39 @@ count_G: number;
    }
 
   // show activity details
-  show_details(data){
+  editActivty(data){
     console.log(data); 
     this.router.navigate(['/create-activity'], { state: { data: data} })
+  }
+
+  activitydetails(data){
+    console.log(data); 
+    this.router.navigate(['/myactivity'], { state: { data: data} })
+  }
+
+  mypaticipatactivitydetails(data){
+    console.log(data); 
+    this.router.navigate(['/activity-details'], { state: { data: data} })
   }
    
 
  async checkStatus(a_id){
     console.log(a_id);
 await this.apiCall.api_ActivityStatus(a_id)
-    this.route.navigate(['/tabs/canidates'])
+    this.route.navigate(['/tabs/canidates']);
   }
+
+  gotosearh(){
+    this.route.navigate(['tabs/tab3']);
+    this.getactivity();
+    this.getmyallparticipant();
+    this.getDataactivity();
+  }
+
+  async getDataactivity() {
+   await this.apiCall.api_getallActivitybylocation();
+   await this.apiCall.api_getallfilterActivity();
+   await this.apiCall.api_getpeopleForChat();
+   }
+
 }
