@@ -21,8 +21,8 @@
 
   <!-- message area   -->
   <ion-grid>
-    <ion-row *ngFor="let message of reciever_msgs">
-      <ion-col size="9"  class="message other-message">
+    <ion-row *ngFor="let message of sender_msgs">
+      <ion-col size="9"   class="message my-message">
         <!-- <b>{{message.user}}</b><br> -->
         <span>{{message.msg}}</span>
         <div class="time" text-right><br>
@@ -31,22 +31,6 @@
 
         <div class="other_img">
           <img class="userimage" src="{{message.receiver_img}}" alt="">
-        </div>
-      </ion-col>
-
-      
-
-    </ion-row>
-    <ion-row *ngFor="let message of sender_msgs">
-      <ion-col offset="3" size="9"  class="message my-message">
-        <!-- <b>{{message.user}}</b><br> -->
-        <span>{{message.msg}}</span>
-        <div class="time" text-right><br>
-          {{message.date}} {{message.time}}
-        </div>
-        <div class="my_img">
-          <!-- user img -->
-          <img class="userimage"  src="{{message.sender_img}}" alt="">
         </div>
       </ion-col>
 

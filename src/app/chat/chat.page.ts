@@ -80,18 +80,18 @@ export class ChatPage implements OnInit {
       for( let i = 0; i<this.allChat.length; i++ ) {
         if( this.allChat[i].sender_id == this.userData.sender_id && this.allChat[i].reciever_id == this.reciever_id ) {
           console.log(this.allChat[i]);
-          if( this.allChat[i].sender_id == this.allChat[i].reciever_id ) {
-            const reciever = [];
+          this.sender_msgs.push(this.allChat[i]);
+          // if( this.allChat[i].sender_id == this.userData.sender_id ) {
+          //   const reciever = [];
             
-            this.reciever_msgs.push(this.allChat[i]);
-            console.log(this.reciever_msgs);
-          }
-          if( this.allChat[i].sender_id != this.allChat[i].reciever_id ) {
-            const sender = [];
-            
-            this.sender_msgs.push(this.allChat[i]);
-            console.log(this.sender_msgs);
-          }
+          //   this.reciever_msgs.push(this.allChat[i]);
+          //   console.log(this.reciever_msgs);
+          // }
+          // if( this.allChat[i].sender_id != this.reciever_id ) {
+          //   const sender = [];
+          //   this.sender_msgs.push(this.allChat[i]);
+          //   console.log(this.sender_msgs);
+          // }
         }
         else {
           console.log('empty')
