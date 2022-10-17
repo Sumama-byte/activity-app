@@ -3,6 +3,7 @@ import { AuthService } from './auth.service';
 import { GlobalService } from './global.service';
 import { HttpClient } from "@angular/common/http";
 import { Router } from '@angular/router';
+import { ToastService } from './toast.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,7 +12,12 @@ export class ApicallService {
   activity: any;
   data: any;
 
-  constructor( public global: GlobalService,public router:Router , public authservice: AuthService, public http: HttpClient ) { }
+   goingStatus : any = "are  going";
+   maygoingStatus : any = "may be going";
+   alreadygoingStatus : any = "are already going";
+   alreadymaygoingStatus : any = "already may go";
+
+  constructor( public global: GlobalService,public router:Router , public authservice: AuthService, public http: HttpClient, public toast : ToastService ) { }
   // eslint-disable-next-line @typescript-eslint/naming-convention
   //Login
   api_addLogin(login : any ){
@@ -21,6 +27,9 @@ export class ApicallService {
       if (this.login.error === false) {
         console.log(this.login);
         return;
+      }
+      else{
+        console.log(this.login);
       }
     }, (err) => {
       console.log(err);
@@ -58,11 +67,15 @@ export class ApicallService {
     await this.authservice.con(data , 'create_profile').then((result) => {
        this.data = JSON.parse(String(result));
        if (this.data.error === false) {
-        this.router.navigate(['/tabs/tab1'])
+        this.router.navigate(['/tabs/tab1']);
+        this.toast.profilecreateToast();
         console.log(this.data);
          return;
         } 
-         console.log(this.data);
+        else{
+          console.log(this.data);
+        }
+        
      }, (err) => {
        console.log(err);
      });
@@ -99,12 +112,14 @@ export class ApicallService {
       await this.authservice.con(data , 'login').then((result) => {
          this.data = JSON.parse(String(result));
          if (this.data.error === false) {
-          this.router.navigate(['/tabs/tab1'])
+          this.router.navigate(['/tabs/tab1']);
+          this.toast.loginToast();
           console.log(this.data);
            return;
           } 
           else (this.data.error === true)
-          this.router.navigate(['new-user'])
+          this.router.navigate(['new-user']);
+          this.toast.newUserloginToast();
            console.log(this.data);
        }, (err) => {
          console.log(err);
@@ -160,9 +175,13 @@ export class ApicallService {
            this.data = JSON.parse(String(result));
            if (this.data.error === false) {
             console.log(this.data);
+            this.toast.createActiviyToast();
+            this.router.navigate(['tabs/tab2']);
              return;
             } 
-             console.log(this.data);
+            else{
+              console.log(this.data);
+            }
          }, (err) => {
            console.log(err);
          });
@@ -188,10 +207,26 @@ export class ApicallService {
            this.data = JSON.parse(String(result));
            if (this.data.error === false) {
             console.log(this.data);
+            console.log(data);
+            if(data.status == 'g'){
+              this.toast.alreadygoingActiviyToast(this.alreadygoingStatus);
+            }
+            else{
+              this.toast.alreadygoingActiviyToast(this.alreadymaygoingStatus);
+            }
              return;
             } 
             else{
               console.log(this.data);
+              console.log(data);
+              if(data.status == 'g'){
+                this.toast.goingActiviyToast(this.goingStatus);
+                this.router.navigate(['tabs/tab2']);
+              }
+              else{
+                this.toast.goingActiviyToast(this.maygoingStatus);
+                this.router.navigate(['tabs/tab2']);
+              }
             }
          }, (err) => {
            console.log(err);

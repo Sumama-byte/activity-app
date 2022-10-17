@@ -39,10 +39,11 @@ export class CreateActivityPage implements OnInit {
       console.log(this.activityData);
       this.activityData.visibilty = this.Togglevaluee;
       await this.apiCall.api_updateActivity(this.activityData)
-      await this.apiCall.api_getActivity(this.YourActivity.u_id);
+      // await this.apiCall.api_getActivity(this.YourActivity.u_id);
       this.activityData = {u_id:'', activity_name:'', location:'', description:'', max_atendes:'',
       social_range:'', date:'', start_time:'', end_time:'', a_image:'', visibilty:''}
       this.route.navigate(['/tabs/tab2']);
+      this.getDataactivity();
     }
     else{
       console.log(this.activityData);
@@ -50,7 +51,7 @@ export class CreateActivityPage implements OnInit {
       await  this.apiCall.api_postActivity(this.activityData);
       this.activityData = {u_id:'', activity_name:'', location:'', description:'', max_atendes:'',
     social_range:'', date:'', start_time:'', end_time:'', a_image:'', visibilty:''}
-      
+      this.getDataactivity();
     }
   }
 
@@ -110,5 +111,13 @@ export class CreateActivityPage implements OnInit {
     console.log(image.base64String);
     this.activityData.a_image = image.base64String;
   }
+
+  async getDataactivity() {
+    await this.apicall.api_getActivity(this.YourActivity.u_id);
+    await this.apicall.api_myparticipantActivity(this.YourActivity.u_id);
+    await this.apicall.api_getallActivitybylocation();
+    await this.apicall.api_getallfilterActivity();
+    await this.apicall.api_getpeopleForChat();
+    }
   
 }

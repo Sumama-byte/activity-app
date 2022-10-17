@@ -4,7 +4,7 @@
       <ion-title slot="start">
         Social Calender
       </ion-title>
-      <ion-icon slot="end" name="search"></ion-icon>
+      <ion-icon slot="end" name="search" (click)="gotosearh()"></ion-icon>
       <ion-icon slot="end" name="ellipsis-vertical" size="large"></ion-icon>
     </ion-item>
   </ion-toolbar>
@@ -28,7 +28,7 @@
   <!-- Activities on going -->
   <div *ngIf =" selectTabs ==  'going' " >
     <ion-row>
-      <ion-col size="12" size-md="5" size-lg="6" *ngFor="let data of myGoing" (click)="checkStatus(data.a_id)">
+      <ion-col size="12" size-md="5" size-lg="6" *ngFor="let data of myGoing">
         <div class="user_img">
           <img class="userimg" src="{{this.data.profile_img}}" alt="">
         </div>
@@ -36,10 +36,10 @@
         <div class="m-2">
           <p class="title m-1"><b>{{this.data.activity_name}}</b></p>
           <p class="subtitle m-1 short_des">{{this.data.description}}</p>
-          <p class="subtitle m-1"><b>view it</b></p>
+          <p class="subtitle m-1" (click)="checkStatus(data.a_id)"><b>view it</b></p>
         </div>
 
-        <div class="location_img">
+        <div class="location_img" (click)="mypaticipatactivitydetails(data)">
           <img class="a" src="{{this.data.a_image}}" alt="">
         </div>
       </ion-col>
@@ -49,7 +49,7 @@
   <!-- Activities  may be going -->
   <div *ngIf =" selectTabs ==  'may_be_going' " >
     <ion-row>
-      <ion-col size="12" size-md="4" *ngFor="let data of MaybeGoing" (click)="checkStatus(data.a_id)">
+      <ion-col size="12" size-md="4" *ngFor="let data of MaybeGoing">
         
           <div class="user_img">
             <img class="userimg" src="{{this.data.profile_img}}" alt="">
@@ -58,10 +58,10 @@
           <div class="m-2">
             <p class="title m-1"><b>{{this.data.activity_name}}</b></p>
             <p class="subtitle m-1 short_des">{{this.data.description}}</p>
-            <p class="subtitle m-1"><b>view it</b></p>
+            <p class="subtitle m-1" (click)="checkStatus(data.a_id)"><b>view it</b></p>
           </div>
   
-          <div class="location_img">
+          <div class="location_img" (click)="mypaticipatactivitydetails(data)">
             <img class="a" src="{{this.data.a_image}}" alt="">
           </div>
 
@@ -83,7 +83,8 @@
           <p class="subtitle m-1 short_des">{{data.description}}</p>
           <div style="display: flex;">
             <p class="subtitle m-1" style="margin-right: 15px;" (click)="checkStatus(data.a_id)"><b>view it</b></p>
-            <p class="subtitle m-1" (click)="show_details(data)"><b>Edit</b></p>
+            <p class="subtitle m-1" (click)="editActivty(data)"><b>Edit</b></p>
+            <p class="subtitle m-1" style="margin-left: 15px;" (click)="activitydetails(data)"><b>Details</b></p>
           </div>
         </div>
 
