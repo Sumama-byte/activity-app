@@ -1,4 +1,11 @@
- 
+ion-header{
+  background: white;
+  --background: white;
+  ion-toolbar{
+    background: white;
+    --background: white;
+  }
+}
 .back-button{
     border-radius: 100%;
     box-shadow: 2px 3px 5px 5px whitesmoke;
@@ -20,10 +27,10 @@
         display: flex;
     }
 .div2{
-    width: 90%;                                            
+    width: 90%;
     margin-left: auto;
     margin-right: auto;
-    
+
     .para{
         margin-left: auto;
         margin-right: auto;
@@ -43,7 +50,7 @@
         // height: 43px;
          width: 37px;
         height: 46px;
-      
+
         background-color: #F2910C;
         color: white;
         border-radius: 8px;
@@ -57,9 +64,9 @@
         margin: 8px;
     }
 
-        
-        
-    
+
+
+
 }
 ion-button {
     --background: #F2910C;

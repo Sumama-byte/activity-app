@@ -2,17 +2,13 @@ ion-tabs {
     ion-button {
         width: 70px;
         height: 70px;
-        margin: 0% auto;
+        margin: -35px auto;
         display: flex;
         z-index: 12;
         --border-color: #fff;
         --border-radius: 100%;
         --border-style: solid;
         --border-width: 5px;
-        position: fixed;
-        bottom: 21px;
-        left: 41%;
-        right: 41%;
         --box-shadow: none;
         --ripple-color:none;
         --background-activated:#454545;
