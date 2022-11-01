@@ -7,10 +7,10 @@
         <ion-icon name="chevron-back-outline" size="large"></ion-icon>
       </ion-avatar>
       <ion-avatar>
-        <img src="{{chat.img}}" class="img">
+        <img src="{{userData.img}}" class="img">
       </ion-avatar>
       <ion-label>
-        <h2>{{chat.name}}</h2>
+        <h2>{{userData.name}}</h2>
         <!-- <p>{{chat.last_time}}</p> -->
       </ion-label>
       <ion-icon slot="end" name="ellipsis-vertical" size="large"></ion-icon>
@@ -18,77 +18,77 @@
   </ion-list>
 </ion-header>
 <ion-content>
+  <ion-content>
 
-  <!-- message area   -->
-  <ion-grid>
-    <ion-row *ngFor="let message of sender_msgs">
-      <ion-col size="9"   class="message my-message">
-        <!-- <b>{{message.user}}</b><br> -->
-        <span>{{message.msg}}</span>
-        <div class="time" text-right><br>
-          {{message.date}} {{message.time}}
-        </div>
-
-        <div class="other_img">
-          <img class="userimage" src="{{message.receiver_img}}" alt="">
-        </div>
-      </ion-col>
-      <ion-col size="9" *ngIf="message.reciever_id == 2"   class="message other-message">
-        <!-- <b>{{message.user}}</b><br> -->
-        <span>{{message.msg}}</span>
-        <div class="time" text-right><br>
-          {{message.date}} {{message.time}}
-        </div>
-
-        <div class="other_img">
-          <img class="userimage" src="{{message.receiver_img}}" alt="">
-        </div>
-      </ion-col>
-
-      
-
-    </ion-row>
-  </ion-grid>
-
-</ion-content>
-
-
-<!-- enter msg -->
-<ion-fab horizontal="start" vertical="bottom" slot="fixed">
-  <ion-fab-button>
-    <ion-icon color="light" name="add"></ion-icon>
-  </ion-fab-button>
-  <ion-fab-list side="top">
-    <ion-fab-button color="light">
-      <ion-icon name="logo-facebook"></ion-icon>
+    <!-- message area -->
+    <ion-grid>
+      <ion-row *ngFor="let message of messages">
+        <ion-col size="9" *ngIf="message.incoming_key == other" class="message other-message">
+          <b>{{message.name}}</b><br>
+          <span>{{message.msg}}</span>
+          <div class="time" text-right><br>
+            {{message.date | date:'short'}}
+          </div>
+  
+          <div class="other_img">
+            <img src="{{message.img}}" alt="">
+          </div>
+        </ion-col>
+  
+        <ion-col offset="3" size="9" *ngIf="message.outgoing_key == other" class="message my-message">
+          <b>{{message.name}}</b><br>
+          <span>{{message.msg}}</span>
+          <div class="time" text-right><br>
+            {{message.date | date:'short'}}
+          </div>
+          <div class="my_img">
+            <!-- user img -->
+            <img src="{{message.img}}" alt="">
+          </div>
+        </ion-col>
+  
+      </ion-row>
+    </ion-grid>
+  
+  </ion-content>
+  
+  
+  <!-- enter msg -->
+  <ion-fab horizontal="start" vertical="bottom" slot="fixed">
+    <ion-fab-button>
+      <ion-icon color="light" name="add"></ion-icon>
     </ion-fab-button>
-    <ion-fab-button color="light">
-      <ion-icon name="logo-twitter"></ion-icon>
-    </ion-fab-button>
-    <ion-fab-button color="light">
-      <ion-icon name="logo-vimeo"></ion-icon>
-    </ion-fab-button>
-    <ion-fab-button color="light">
-      <ion-icon name="logo-google"></ion-icon>
-    </ion-fab-button>
-  </ion-fab-list>
-</ion-fab>
-<ion-footer class="ion-no-border">
-
-  <ion-toolbar>
-
-    <ion-item lines="none" class="p-1">
-      <textarea autosize maxRows="4" class="message-input" placeholder="text here" [(ngModel)]="userMsg.msg" #txtmsg>
-
-      </textarea>
-
-      <ion-button expand="block" fill="clear" color="primary" *ngIf="txtmsg.value.length > 0" class="msg-btn"
-        (click)="sendMessage()">
-        <ion-icon name="send" slot="icon-only"></ion-icon>
-      </ion-button>
-    </ion-item>
-
-
-
-  </ion-toolbar>
-</ion-footer>
+    <ion-fab-list side="top">
+      <ion-fab-button color="light">
+        <ion-icon name="logo-facebook"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="light">
+        <ion-icon name="logo-twitter"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="light">
+        <ion-icon name="logo-vimeo"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="light">
+        <ion-icon name="logo-google"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+  <ion-footer class="ion-no-border">
+  
+    <ion-toolbar>
+  
+      <ion-item lines="none" class="p-1">
+        <div class="msg-area">
+          <ion-input [autosize]="true" maxRows="4" class="message-input" placeholder="text here" [(ngModel)]="newMsg.msg" #txtmsg></ion-input> 
+        </div>
+  
+        <ion-button expand="block" fill="clear" color="primary" *ngIf="txtmsg.value.length > 0" class="msg-btn"
+          (click)="sendMessage()"> 
+          <ion-icon name="send" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-item>
+  
+  
+  
+    </ion-toolbar>
+  </ion-footer>

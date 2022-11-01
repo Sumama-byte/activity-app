@@ -1,3 +1,6 @@
+ion-content {
+    height: 91%;
+}
 ion-list {
     box-shadow: 2px 2px 14px rgba(0, 0, 0, 0.225)
 }
@@ -12,9 +15,11 @@ ion-label {
     height: 33px;
     width: 33px;
 }
-
+ion-grid {
 img {
     border-radius: 100%;
+    height: 100%;
+    width: 100%;
 }
 
 .time {
@@ -45,7 +50,7 @@ img {
 .my_img {
     width: 26px;
     height: 26px;
-    border-radius: 100px;
+    border-radius: 100%;
     position: absolute;
     right: 0;
     top: 107%;
@@ -54,7 +59,7 @@ img {
 .other_img {
     width: 26px;
     height: 26px;
-    border-radius: 100px;
+    border-radius: 100%;
     position: absolute;
     left: -15px;
     top: 107%;
@@ -70,18 +75,32 @@ img {
     float: right;
     font-size: small;
 }
-
-.message-input {
+}
+ .msg-area {
     width: 100%;
     border: 1px solid #F39200;
-    border-radius: 100px;
     background: #fff;
+    margin-left: 61px;
+    border-radius: 100px;
+    font-size: 22px;
+    padding: 6px;
+    padding-left: 14px;
     resize: none;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-left: 43px;
+    height: 59px;
+    margin-top: 10px;
 }
-
+.message-input {
+    // width: 100%;
+    // border: 1px solid #F39200;
+    // border-radius: 100px;
+    // background: #fff;
+    // padding-left: 10px;
+    // padding-right: 10px;
+    // margin-left: 43px;
+}
+.ion-icon  {
+    font-size: 20px;
+}
 ::placeholder {
     padding-top: 10px;
 }
@@ -92,7 +111,7 @@ img {
 }
 
 .p-1 {
-    padding: 13px 0px 13px 13px;
+    padding: 0px 0px 13px 13px;
     --background: transparent;
 }
 

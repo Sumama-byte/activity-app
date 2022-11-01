@@ -117,7 +117,7 @@ export class CreateActivityPage implements OnInit {
     await this.apicall.api_myparticipantActivity(this.YourActivity.u_id);
     await this.apicall.api_getallActivitybylocation();
     await this.apicall.api_getallfilterActivity();
-    await this.apicall.api_getpeopleForChat();
+    // await this.apicall.api_getpeopleForChat();
     }
   
 }

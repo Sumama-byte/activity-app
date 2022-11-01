@@ -86,7 +86,7 @@ export class Tab1Page implements ViewDidEnter {
   await this.apiCall.api_getActivity(this.uid);
   await this.apiCall.api_myparticipantActivity(this.uid);
   await this.apiCall.api_getallfilterActivity();
-  await this.apiCall.api_getpeopleForChat();
+  // await this.apiCall.api_getpeopleForChat();
   }
 
   // navigation

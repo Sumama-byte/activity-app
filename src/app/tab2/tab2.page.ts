@@ -107,7 +107,7 @@ await this.apiCall.api_ActivityStatus(a_id)
   async getDataactivity() {
    await this.apiCall.api_getallActivitybylocation();
    await this.apiCall.api_getallfilterActivity();
-   await this.apiCall.api_getpeopleForChat();
+  //  await this.apiCall.api_getpeopleForChat();
    }
 
 }

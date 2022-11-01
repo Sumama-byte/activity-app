@@ -245,21 +245,20 @@ export class ApicallService {
            console.log(err);
          });
        }
+       api_getpeopleForChat() {
 
+       }
     //  get people  for Chat
-    async api_getpeopleForChat() {
-      await this.authservice.getdata('getpeopleforchat').then((result) => {
-          this.data = JSON.parse(String(result));
-         console.log(this.data);
-          this.global.set_storpeopleForchat(this.data);
-        }, (err) => {
-          console.log(err);
-        });
-      }
+      async api_getUsersForChat(data: any) {
+        await this.authservice.con(data , 'getAllUsers').then((result) => {
+        this.data = JSON.parse(String(result));
+        this.global.set_storpeopleForchat(this.data.users);
+      });
+     }
 
        // post status
          async api_postChat(data: any) {
-           await this.authservice.con(data , 'insertchat').then((result) => {
+           await this.authservice.con(data , 'insertChat').then((result) => {
            this.data = JSON.parse(String(result));
           if (this.data.error === false) {
            console.log(this.data);
@@ -273,14 +272,13 @@ export class ApicallService {
 
        // get chat 
          async api_getChat(data: any) {
-           await this.authservice.getdata('getchat').then((result) => {
-           this.data = JSON.parse(String(result));
-           console.log(this.data);
-           this.global.set_storchat(this.data)
-           console.log(this.data);
-           }, (err) => {
-           console.log(err);
-         });
+          this.authservice.con(data, 'getChat').then(async (res) => {
+            this.data = JSON.parse(String(res).toString());
+            this.global.set_chat(this.data.message);
+            console.log(this.data);
+          }, (err) => {
+            console.log(err);
+          });
         }
 
 

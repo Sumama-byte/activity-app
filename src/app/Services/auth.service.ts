@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-const apiUrl = 'https://turbonowpk.com/activity/public/';
-// const apiUrl = 'http://localhost/Activity/public/';
+// const apiUrl = 'https://turbonowpk.com/activity/public/';
+const apiUrl = 'http://localhost/activityApp/public/';
 
 
 @Injectable({
