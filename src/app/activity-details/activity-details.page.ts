@@ -59,4 +59,12 @@ async may_be_going(){
    await this.apicall.api_getallfilterActivity();
    await this.apicall.api_getpeopleForChat();
    }
+
+  async checkAttendees(){
+   const x = this.data.a_id
+    console.log(x);
+  await this.apicall.api_ActivityStatus(x);
+      this.route.navigate(['/tabs/canidates']);
+   }
+
 }

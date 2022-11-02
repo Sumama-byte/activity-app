@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonContent } from '@ionic/angular';
 import { ApicallService } from '../Services/apicall.service';
@@ -9,7 +9,7 @@ import { GlobalService } from '../Services/global.service';
   templateUrl: './chat.page.html',
   styleUrls: ['./chat.page.scss'],
 })
-export class ChatPage implements OnInit {
+export class ChatPage implements OnInit, AfterViewInit, OnDestroy {
   
   public messages:any = [];
 
@@ -36,9 +36,20 @@ export class ChatPage implements OnInit {
       this.other = u_id;
       this.keys.outgoing_key = u_id;
       this.newMsg.outgoing_key = u_id;
-    })
-     this.getChat();
+    });
+    this.getChat();
+     setTimeout(() => {
+      this.content.scrollToBottom(200);
+    }, 100);
   }
+
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.content.scrollToBottom(200);
+    }, 300);
+    this.getChat();
+  }
+
   async getChat() {
     await this.apiCall.api_getChat(this.keys);
     await this.global.Chat.subscribe( res => {
@@ -48,16 +59,25 @@ export class ChatPage implements OnInit {
     })
   }
   async sendMessage(){
+    
     await this.apiCall.api_postChat(this.newMsg);
     this.getChat();
+    this.newMsg.msg = '';
     setTimeout(() => {
       this.content.scrollToBottom(200);
-      this.getChat();
+      // this.getChat();
     });
+    
   }
 
 
   go_back(){
     this.route.navigate(['/tabs/tab4'])
   }
+
+  ngOnDestroy() {
+    console.log('Destroy');
+    this.getChat();
+  }
+
 }
