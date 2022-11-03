@@ -1,14 +1,16 @@
-import { Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
+import {ModalController, Platform} from '@ionic/angular';
+import { Component, Input, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { ActionSheetController } from '@ionic/angular';
 import { GmapsService } from 'src/app/Services/gmap.service';
 import { Geolocation } from '@capacitor/geolocation';
 @Component({
-  selector: 'app-map',
-  templateUrl: './map.page.html',
-  styleUrls: ['./map.page.scss'],
+  selector: 'app-mapmodal',
+  templateUrl: './mapmodal.page.html',
+  styleUrls: ['./mapmodal.page.scss'],
 })
-export class MapPage implements OnInit {
+export class MapmodalPage implements OnInit {
 
+  @Input() Data:any;
   @ViewChild('map', {static: true}) mapElementRef: ElementRef;
   googleMaps: any;
   center = { lat: '', lng: '' };
@@ -16,17 +18,17 @@ export class MapPage implements OnInit {
   mapClickListener: any;
   markerClickListener: any;
   markers: any[] = [];
+  public location:any = {lat:'', lng:''};
 
   constructor(
     private gmaps: GmapsService,
     private renderer: Renderer2,
-    private actionSheetCtrl: ActionSheetController
+    private actionSheetCtrl: ActionSheetController,
+    private modalCtrl: ModalController
   ) {}
 
-  ngOnInit(): void {
-    
+  ngOnInit() {
   }
-
   ngAfterViewInit() {
     this.loadMap();
   }
@@ -64,7 +66,7 @@ export class MapPage implements OnInit {
   addMarker(location) {
     let googleMaps: any = this.googleMaps;
     const icon = {
-      url: 'https://turbonowpk.com/activity/images/2211011667330422.8122.jpg',
+      url: 'assets/location-outline.svg',
       scaledSize: new googleMaps.Size(50, 50), 
     };
     const marker = new googleMaps.Marker({
@@ -75,67 +77,26 @@ export class MapPage implements OnInit {
       // animation: googleMaps.Animation.DROP
     });
     this.markers.push(marker);
+    console.log(marker.position.lat());
+    console.log(marker.position.lng());
+    this.location.lat = marker.position.lat();
+    this.location.lng = marker.position.lng();
     this.markerClickListener = this.googleMaps.event.addListener(marker, 'click', () => {
       console.log('markerclick', marker);
-      this.checkAndRemoveMarker(marker);
+      // this.checkAndRemoveMarker(marker);
       console.log('markers: ', this.markers);
     });
     return marker;
   }
-
-  placeMarker(location) {
-    let marker
-    if ( marker ) {
-      marker.setPosition(location);
-    } else {
-      marker = new google.maps.Marker({
-        position: location,
-        map: this.map
-      });
-    }
+  setLocation() {
+    this.cancel();
+  }
+  cancel() {
+    return this.modalCtrl.dismiss(this.location, 'cancel');
   }
 
-  checkAndRemoveMarker(marker) {
-    
-      marker.setMap(null);
-     
-  }
-
-  async presentActionSheet() {
-    const actionSheet = await this.actionSheetCtrl.create({
-      header: 'Added Marker',
-      subHeader: '',
-      buttons: [
-        {
-          text: 'Remove',
-          role: 'destructive',
-          data: {
-            action: 'delete',
-          },
-        },
-        {
-          text: 'Save',
-          data: {
-            action: 'share',
-          },
-        },
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          data: {
-            action: 'cancel',
-          },
-        },
-      ],
-    });
-
-    await actionSheet.present();
-  }
-
-  ngOnDestroy() {
-    // this.googleMaps.event.removeAllListeners();
-    if(this.mapClickListener) this.googleMaps.event.removeListener(this.mapClickListener);
-    if(this.markerClickListener) this.googleMaps.event.removeListener(this.markerClickListener);
+  confirm() {
+    return this.modalCtrl.dismiss(this.location, 'confirm');
   }
 
 }

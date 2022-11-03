@@ -117,3 +117,26 @@ ion-button{
 ion-toggle{
     --background-checked: rgb(131, 131, 131) ;
 }
+ion-button#open-modal {
+    z-index: 10;
+    margin: 5px;
+    position: absolute;
+    right: 0;
+}
+//  Ion-modal
+ion-modal {
+    ion-toolbar {
+        --background: #F39200;
+       
+    }
+    #map {
+        width: 100%;
+        height: 480px;
+    }
+}
+ion-toggle::ng-deep {
+    .toggle-inner[part="handle"] {
+        will-change: transform;
+        background-color: #F39200;
+    }
+}

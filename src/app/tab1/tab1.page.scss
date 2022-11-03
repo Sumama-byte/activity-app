@@ -31,6 +31,8 @@ ion-header {
  }
 .my_class2{
    --background: white;
+   --ion-background-color: white;
+   background-color: white;
  }
 
 ion-segment {
@@ -47,6 +49,7 @@ ion-segment {
     left: 70px;
     right: 70px;
     z-index: 1;
+    background-color: white;
 
     ion-segment-button {
         --border-radius: 100px;
@@ -254,6 +257,22 @@ capacitor-google-maps::ng-deep {
         width: 0px !important;
     }
     div[role="button"] {
+        background-image: url("./../../assets/map-icon/markerTag.png");
+        z-index: 10;
+        background-size: 68px 97px;
+        background-repeat: no-repeat;
+        height: 118px !important;
+        width: 300px !important;
+        div[tabindex="-1"] {
+            background-image: none;
+            z-index: 10;
+            background-size: 68px 97px;
+            background-repeat: no-repeat;
+            height: 118px !important;
+            width: 300px !important;
+        }
+    }
+    div[tabindex="-1"] {
         background-image: url("./../../assets/map-icon/markerTag.png");
         z-index: 10;
         background-size: 68px 97px;

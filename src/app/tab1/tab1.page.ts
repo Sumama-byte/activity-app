@@ -36,7 +36,7 @@ export class Tab1Page implements ViewDidEnter {
   public Profile: any ;
   private userName:any;
   uid: any;
-
+  public googleMap:any;
   constructor(public route : Router , public global : GlobalService, public location: LocationsService,public apiCall:ApicallService,
     private gmaps: GmapsService,
     private renderer: Renderer2 ) {}
@@ -53,7 +53,7 @@ export class Tab1Page implements ViewDidEnter {
     setInterval(() => {
       this.get_appData(); // api call
     }, 30000);
-
+    // this.loadMap()
   }
   ngAfterViewInit() {
     this.loadMap();
@@ -63,6 +63,7 @@ export class Tab1Page implements ViewDidEnter {
     const coordinates = await Geolocation.getCurrentPosition();
     try {
       let googleMaps: any = await this.gmaps.loadGoogleMaps();
+      this.googleMap = await this.gmaps.loadGoogleMaps();
       this.googleMaps = googleMaps;
       const mapEl = this.mapElementRef.nativeElement;
       const location = new googleMaps.LatLng(coordinates.coords.latitude, coordinates.coords.longitude);
@@ -78,6 +79,7 @@ export class Tab1Page implements ViewDidEnter {
     }
   }
   addMarker(location) {
+    console.log(location)
     let googleMaps: any = this.googleMaps;
     const icon = {
       url: this.Profile,
@@ -97,6 +99,27 @@ export class Tab1Page implements ViewDidEnter {
       // this.checkAndRemoveMarker(marker);
       console.log('markers: ', this.markers);
     });
+    for(let i=0; i<this.notificationsActivity.length; i++) {
+        console.log(this.notificationsActivity[i]);
+        console.log(`${this.notificationsActivity[i].lng}`);
+        const lat = `${this.notificationsActivity[i].lat}`;
+        const lng = `${this.notificationsActivity[i].lng}`
+        const locations = new this.googleMap.LatLng(lat, lng);
+        console.log(locations)
+        let googleMaps: any = this.googleMaps;
+    const icon = {
+      url: this.notificationsActivity[i].a_image,
+      scaledSize: new googleMaps.Size(50, 50), 
+    };
+    const marker = new googleMaps.Marker({
+      position: locations,
+      map: this.map,
+      icon: icon,
+      // draggable: true,
+      // animation: googleMaps.Animation.DROP
+    });
+    this.markers.push(marker);
+      }
   }
 
   checkAndRemoveMarker(marker) {
@@ -112,6 +135,7 @@ export class Tab1Page implements ViewDidEnter {
     // this.googleMaps.event.removeAllListeners();
     if(this.mapClickListener) this.googleMaps.event.removeListener(this.mapClickListener);
     if(this.markerClickListener) this.googleMaps.event.removeListener(this.markerClickListener);
+    this.loadMap();
   }
   async getProfile() {
     await this.global.Uid.subscribe(uid => {

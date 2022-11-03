@@ -21,17 +21,19 @@
 
 </ion-header>
 
-<ion-content  [ngClass]="selectTabs == 'map' ? 'my_class1' : 'my_class2'">
+<ion-content  [ngClass]="selectTabs == 'map' ? 'my_class1' : 'my_class2'" >
 
   <!-- Segment -->
-  <ion-segment [(ngModel)]="selectTabs" mode="ios" value="map" (ionChange)="createMap()">
-    <ion-segment-button value="map">
-      <ion-label>Map</ion-label>
-    </ion-segment-button>
-    <ion-segment-button value="list">
-      <ion-label>List</ion-label>
-    </ion-segment-button>
-  </ion-segment>
+  <div style="background-color: white;">
+    <ion-segment [ngClass]="selectTabs == 'list' ? 'my_class1' : 'my_class2'" [(ngModel)]="selectTabs" mode="ios" value="map" (ionChange)="createMap()" style="background-color: white;">
+      <ion-segment-button value="map">
+        <ion-label>Map</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="list">
+        <ion-label>List</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
 
   <!-- Map Segment -->
   <ion-list class="map-container" >
@@ -42,10 +44,10 @@
   </ion-list>
 
   <!-- List Segment -->
-  <div *ngIf="selectTabs == 'list' " style=" --ion-background-color: white;">
+  <div *ngIf="selectTabs == 'list' " style="background-color: white;">
 
     <!-- List data -->
-    <ion-row>
+    <ion-row style="background-color: white;">
       <ion-col size="12" size-md="5" *ngFor="let data of notificationsActivity" (click)="show_details(data)">
 
         <div class="user_img">

@@ -5,6 +5,8 @@ import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { LoadingController, MenuController, NavController } from '@ionic/angular';
 import { ApicallService } from '../Services/apicall.service';
 import { GlobalService } from '../Services/global.service';
+import { ModalController } from "@ionic/angular";
+import { MapmodalPage } from '../pages/mapmodal/mapmodal.page';
 @Component({
   selector: 'app-create-activity',
   templateUrl: './create-activity.page.html',
@@ -15,14 +17,15 @@ export class CreateActivityPage implements OnInit {
   tabID = 1;
 
   public activityData : any = {u_id:'', activity_name:'', location:'', description:'', max_atendes:'',
-  social_range:'', date:'', start_time:'', end_time:'', a_image:'', visibilty:''}
+  social_range:'', date:'', start_time:'', end_time:'', a_image:'', visibilty:'', lat:'', lng:''}
   profile_data: any;
   profile: any;
   Togglevaluee: any  = 'public';
-
+  public location:any;
   public YourActivity: any = {u_id:''}
+  modalData: any;
 
-  constructor(public route :Router , public apiCall:ApicallService,  public loadingController: LoadingController, public apicall : ApicallService, public global : GlobalService) { }
+  constructor(public route :Router , public apiCall:ApicallService,  public loadingController: LoadingController, public apicall : ApicallService, public global : GlobalService, public modalController: ModalController) { }
 
   ngOnInit() {
     this.getprofile();
@@ -119,5 +122,17 @@ export class CreateActivityPage implements OnInit {
     await this.apicall.api_getallfilterActivity();
     // await this.apicall.api_getpeopleForChat();
     }
-  
+  //  Map Modal
+  async openModal() {
+    const modal = await this.modalController.create({
+      component: MapmodalPage
+    });
+    await modal.present();
+    const { data, role } = await modal.onWillDismiss();
+    console.log(data);
+    this.location = data
+    this.activityData.lat = data.lat;
+    this.activityData.lng = data.lng;
+    return await modal.present();
+  }
 }

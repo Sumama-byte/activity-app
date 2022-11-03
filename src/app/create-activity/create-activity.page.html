@@ -31,14 +31,16 @@
       <ion-row class="input-text">
         <p class="input"><b>Name of Activity</b></p>
       </ion-row>
-      <ion-input [(ngModel)]="activityData.activity_name"></ion-input>
+      <ion-input  [(ngModel)]="activityData.activity_name"></ion-input>
 
       <!-- Activity location -->
       <ion-row class="input-text">
-        <p class="input"><b> Location</b></p>
+        <p class="input" disabled="true" ><b> Location</b></p>
       </ion-row>
-      <ion-input [(ngModel)]="activityData.location"></ion-input>
-
+      <ion-input [disabled]="true" [(ngModel)]="activityData.location" placeholder="Select Location">
+        <ion-button id="open-modal" (click)="openModal()">
+          <ion-icon name="location-outline"></ion-icon>
+        </ion-button></ion-input>
       <!-- activity description -->
       <ion-row class="input-text">
         <p class="input"><b> Short Description</b></p>
@@ -56,7 +58,7 @@
           <p style="font-size: 12px;"><b>Activity as private</b></p>
         </ion-col>
         <ion-col size="7" style="text-align: end;">
-          <ion-toggle style="margin: 4px;" value={{this.Togglevaluee}} (ionChange)="changeToggle($event, data)"></ion-toggle>
+          <ion-toggle [enableOnOffLabels]="true" color="primary" style="margin: 4px;" value={{this.Togglevaluee}} (ionChange)="changeToggle($event, data)"></ion-toggle>
         </ion-col>
       </ion-row>
 
