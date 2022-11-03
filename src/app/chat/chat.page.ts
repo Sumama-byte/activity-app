@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonContent } from '@ionic/angular';
+import { interval } from 'rxjs';
 import { ApicallService } from '../Services/apicall.service';
 import { GlobalService } from '../Services/global.service';
 
@@ -20,7 +21,8 @@ export class ChatPage implements OnInit {
   public chat :any ;
   public userData:any ={name:'', img:''};
   public keys:any = {incoming_key:'', outgoing_key:''}
-
+  counter = interval(60000); // sets 60 seconds interval
+  subscription: any = null;
   @ViewChild(IonContent) content: IonContent
 
   constructor( public route: Router , public global :GlobalService, private apiCall: ApicallService  ) { }
@@ -36,6 +38,9 @@ export class ChatPage implements OnInit {
       this.other = u_id;
       this.keys.outgoing_key = u_id;
       this.newMsg.outgoing_key = u_id;
+    })
+    this.subscription = this.counter.subscribe(f => { 
+      this.getChat();
     })
      this.getChat();
   }

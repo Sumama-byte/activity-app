@@ -36,15 +36,15 @@
   </ion-segment>
 
   <!-- Map Segment -->
-  <ion-list class="map-container" *ngIf="selectTabs == 'map' " style=" --ion-background-color: none;">
+  <ion-list class="map-container" >
 
     <!-- Map -->
-    <capacitor-google-maps id="my-cool-map" #map></capacitor-google-maps>
+    <div class="map" #map></div>
 
   </ion-list>
 
   <!-- List Segment -->
-  <div *ngIf="selectTabs == 'list' ">
+  <div *ngIf="selectTabs == 'list' " style=" --ion-background-color: white;">
 
     <!-- List data -->
     <ion-row>
