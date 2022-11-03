@@ -108,7 +108,7 @@ export class CreateActivityPage implements OnInit {
       quality:90,
       resultType: CameraResultType.Base64,
       source: CameraSource.Prompt,
-
+      allowEditing: false
     });
     // document.getElementById('cameraImage').setAttribute('src', `data:image/${image.format};base64,`+image.base64String );
     console.log(image.base64String);
