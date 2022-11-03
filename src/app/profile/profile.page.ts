@@ -61,7 +61,11 @@ export class ProfilePage implements OnInit {
   
   // refer a friend
   log_out(){
-    console.log('log out')
+    console.log('log out');
+    const x = '';
+    this.global.add_uid(x);
+    console.log(x);
+    this.route.navigate(['/login']);
   }
 
   // nav back to home  

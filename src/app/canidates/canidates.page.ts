@@ -27,6 +27,8 @@ export class CanidatesPage implements OnInit {
   
   }
 
+  
+
   async getAllStatus(){
    await this.global.GetActivityStatus.subscribe(res =>{
             this.allStatus = res;
@@ -39,6 +41,6 @@ export class CanidatesPage implements OnInit {
   }
 
   go_back(){
-     this.route.navigate(['/tabs/tab2'])
+     this.route.navigate(['/tabs/tab1'])
   }
 }

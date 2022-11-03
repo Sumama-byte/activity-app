@@ -17,7 +17,6 @@
     </ion-item>
   </ion-list>
 </ion-header>
-<ion-content>
   <ion-content>
 
     <!-- message area -->
@@ -54,7 +53,7 @@
   
   
   <!-- enter msg -->
-  <ion-fab horizontal="start" vertical="bottom" slot="fixed">
+  <!-- <ion-fab horizontal="start" vertical="bottom" slot="fixed">
     <ion-fab-button>
       <ion-icon color="light" name="add"></ion-icon>
     </ion-fab-button>
@@ -72,17 +71,17 @@
         <ion-icon name="logo-google"></ion-icon>
       </ion-fab-button>
     </ion-fab-list>
-  </ion-fab>
-  <ion-footer class="ion-no-border">
+  </ion-fab> -->
+  <!-- <ion-footer class="ion-no-border">
   
     <ion-toolbar>
   
       <ion-item lines="none" class="p-1">
         <div class="msg-area">
-          <ion-input [autosize]="true" maxRows="4" class="message-input" placeholder="text here" [(ngModel)]="newMsg.msg" #txtmsg></ion-input> 
+          <ion-input [autosize]="true" maxRows="4" class="message-input" placeholder="text here" [(ngModel)]="newMsg.msg" ></ion-input> 
         </div>
   
-        <ion-button expand="block" fill="clear" color="primary" *ngIf="txtmsg.value.length > 0" class="msg-btn"
+        <ion-button expand="block" fill="clear" color="primary"  class="msg-btn"
           (click)="sendMessage()"> 
           <ion-icon name="send" slot="icon-only"></ion-icon>
         </ion-button>
@@ -90,5 +89,21 @@
   
   
   
+    </ion-toolbar>
+  </ion-footer> -->
+
+
+  <ion-footer class="ion-no-border">
+    <ion-toolbar class="ion-no-border">
+      <ion-row class="ion-align-items-center">
+        <ion-col size="10">
+          <ion-textarea placeholder="type text here" class="message-input" autoGrow="true" rows="1" [(ngModel)]="newMsg.msg" ></ion-textarea>
+        </ion-col>
+        <ion-col size="2" class="ion-text-center">
+          <ion-button fill="clear" class="msg-btn" [disabled]="newMsg.msg == ''"  (click)="sendMessage()">
+            <ion-icon slot="icon-only" name="send" color="primary"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
     </ion-toolbar>
   </ion-footer>

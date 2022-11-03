@@ -7,10 +7,11 @@ ion-header {
             justify-content: space-between;
 
             .head_align_left {
-                display: flex;
-                justify-content: space-around;
-                width: 187px;
-                align-items: center
+                margin-left: 10px;
+                // display: flex;
+                // justify-content: space-around;
+                // width: 187px;
+                // align-items: center
             }
 
             .head_align_right {
