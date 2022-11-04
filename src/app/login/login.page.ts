@@ -25,15 +25,15 @@ export class LoginPage implements OnInit {
   async googleLogin(){
     console.log('Google login program');
 
-      // const result = await FirebaseAuthentication.signInWithGoogle();
-      // console.log(result);
-      this.global.add_uid("VXAk08aW76MtVEz4SOmGvfckpQD3");
-      // this.UserData.u_id = result.user.uid
+      const result = await FirebaseAuthentication.signInWithGoogle();
+      console.log(result);
+      this.global.add_uid(result.user.uid);
+      this.UserData.u_id = result.user.uid
       // this.UserData.u_id = '5787855'
       const coordinates = await Geolocation.getCurrentPosition();
     console.log('Current position:', coordinates);
-      this.apiCall.api_postLogin({u_id:"VXAk08aW76MtVEz4SOmGvfckpQD3", token:""});
-      this.apiCall.api_postLocation({u_id:"VXAk08aW76MtVEz4SOmGvfckpQD3", lat:coordinates.coords.latitude, lng:coordinates.coords.longitude})
+      this.apiCall.api_postLogin(this.UserData);
+      this.apiCall.api_postLocation({u_id:result.user.uid, lat:coordinates.coords.latitude, lng:coordinates.coords.longitude})
       // return result.user;
     };
 

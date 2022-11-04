@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonContent } from '@ionic/angular';
 import { interval } from 'rxjs';
@@ -10,8 +10,8 @@ import { GlobalService } from '../Services/global.service';
   templateUrl: './chat.page.html',
   styleUrls: ['./chat.page.scss'],
 })
-export class ChatPage implements OnInit, AfterViewInit, OnDestroy {
-  
+export class ChatPage implements OnInit, AfterViewInit, OnDestroy, AfterViewChecked {
+  @ViewChild('scrollMe') private myScrollContainer: ElementRef;
   public messages:any = [];
 
   currentUser = 'Rehan';
@@ -38,12 +38,24 @@ export class ChatPage implements OnInit, AfterViewInit, OnDestroy {
       this.other = u_id;
       this.keys.outgoing_key = u_id;
       this.newMsg.outgoing_key = u_id;
+      
     });
     this.getChat();
-     setTimeout(() => {
-      this.content.scrollToBottom(200);
-    }, 100);
+    //  setTimeout(() => {
+    //   this.content.scrollToBottom(200);
+    // }, 100);
+    this.scrollToBottom();
   }
+  ngAfterViewChecked() {  
+    // this.getChat();      
+    this.scrollToBottom();        
+} 
+
+scrollToBottom(): void {
+    try {
+        this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+    } catch(err) { }                 
+}
 
   ngAfterViewInit(): void {
     setTimeout(() => {
@@ -65,10 +77,11 @@ export class ChatPage implements OnInit, AfterViewInit, OnDestroy {
     await this.apiCall.api_postChat(this.newMsg);
     this.getChat();
     this.newMsg.msg = '';
-    setTimeout(() => {
-      this.content.scrollToBottom(200);
-      // this.getChat();
-    });
+    // setTimeout(() => {
+    //   this.content.scrollToBottom(200);
+    //   // this.getChat();
+    // });
+    this.scrollToBottom(); 
     
   }
 
