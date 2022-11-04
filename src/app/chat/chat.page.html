@@ -1,15 +1,15 @@
 <ion-header>
   <!-- header -->
   <ion-list>
-    <ion-item lines="none">
+    <ion-item lines="none" >
 
       <ion-avatar slot="start" class="back-button" (click)="go_back()">
         <ion-icon name="chevron-back-outline" size="large"></ion-icon>
       </ion-avatar>
-      <ion-avatar>
+      <ion-avatar (click)="openProfile()">
         <img src="{{userData.img}}" class="img">
       </ion-avatar>
-      <ion-label>
+      <ion-label (click)="openProfile()">
         <h2>{{userData.name}}</h2>
         <!-- <p>{{chat.last_time}}</p> -->
       </ion-label>
@@ -50,47 +50,7 @@
     </ion-grid>
   
   </ion-content>
-  
-  
-  <!-- enter msg -->
-  <!-- <ion-fab horizontal="start" vertical="bottom" slot="fixed">
-    <ion-fab-button>
-      <ion-icon color="light" name="add"></ion-icon>
-    </ion-fab-button>
-    <ion-fab-list side="top">
-      <ion-fab-button color="light">
-        <ion-icon name="logo-facebook"></ion-icon>
-      </ion-fab-button>
-      <ion-fab-button color="light">
-        <ion-icon name="logo-twitter"></ion-icon>
-      </ion-fab-button>
-      <ion-fab-button color="light">
-        <ion-icon name="logo-vimeo"></ion-icon>
-      </ion-fab-button>
-      <ion-fab-button color="light">
-        <ion-icon name="logo-google"></ion-icon>
-      </ion-fab-button>
-    </ion-fab-list>
-  </ion-fab> -->
-  <!-- <ion-footer class="ion-no-border">
-  
-    <ion-toolbar>
-  
-      <ion-item lines="none" class="p-1">
-        <div class="msg-area">
-          <ion-input [autosize]="true" maxRows="4" class="message-input" placeholder="text here" [(ngModel)]="newMsg.msg" ></ion-input> 
-        </div>
-  
-        <ion-button expand="block" fill="clear" color="primary"  class="msg-btn"
-          (click)="sendMessage()"> 
-          <ion-icon name="send" slot="icon-only"></ion-icon>
-        </ion-button>
-      </ion-item>
-  
-  
-  
-    </ion-toolbar>
-  </ion-footer> -->
+
 
 
   <ion-footer class="ion-no-border">

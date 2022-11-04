@@ -347,4 +347,16 @@ export class ApicallService {
           });
          }
 
+
+        //  get user profile 
+        async api_getuserprofile(u_id:any) {
+          await this.authservice.getdata('getprofile/'+u_id).then((result) => {
+              this.data = JSON.parse(String(result));
+             console.log(this.data);
+              this.global.set_getuserprofile(this.data);
+            }, (err) => {
+              console.log(err);
+            });
+          }
+
 }

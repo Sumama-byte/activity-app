@@ -73,6 +73,10 @@ const routes: Routes = [
   {
     path: 'mapmodal',
     loadChildren: () => import('./pages/mapmodal/mapmodal.module').then( m => m.MapmodalPageModule)
+  },
+  {
+    path: 'userprofile',
+    loadChildren: () => import('./userprofile/userprofile.module').then( m => m.UserprofilePageModule)
   }
 
 

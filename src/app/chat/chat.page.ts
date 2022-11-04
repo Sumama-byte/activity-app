@@ -1,9 +1,10 @@
 import { AfterViewChecked, AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { IonContent } from '@ionic/angular';
+import { IonContent, ModalController } from '@ionic/angular';
 import { interval } from 'rxjs';
 import { ApicallService } from '../Services/apicall.service';
 import { GlobalService } from '../Services/global.service';
+import { UserprofilePage } from '../userprofile/userprofile.page';
 
 @Component({
   selector: 'app-chat',
@@ -23,9 +24,10 @@ export class ChatPage implements OnInit, AfterViewInit, OnDestroy, AfterViewChec
   public keys:any = {incoming_key:'', outgoing_key:''}
   counter = interval(60000); // sets 60 seconds interval
   subscription: any = null;
+  public userID :any ;
   @ViewChild(IonContent) content: IonContent
 
-  constructor( public route: Router , public global :GlobalService, private apiCall: ApicallService  ) { }
+  constructor( public route: Router , public global :GlobalService, private apiCall: ApicallService ,  public modalController: ModalController ) { }
   
   ngOnInit() {
     // this.sendMessage();
@@ -34,6 +36,7 @@ export class ChatPage implements OnInit, AfterViewInit, OnDestroy, AfterViewChec
     this.userData.name = this.chat.name;
     this.keys.incoming_key = this.chat.u_id;
     this.newMsg.incoming_key = this.chat.u_id;
+    this.userID = this.chat.u_id;
     this.global.Uid.subscribe( u_id => {
       this.other = u_id;
       this.keys.outgoing_key = u_id;
@@ -85,7 +88,17 @@ scrollToBottom(): void {
     
   }
 
-
+  async openProfile() {
+    console.log(this.userID);
+    const modal = await this.modalController.create({
+      component: UserprofilePage,
+      cssClass: 'my-modal-class',
+      componentProps: {
+        'userId': this.userID,
+      }
+    });
+    return await modal.present();
+  }
   go_back(){
     this.route.navigate(['/tabs/tab4'])
   }

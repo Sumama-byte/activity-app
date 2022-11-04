@@ -114,5 +114,13 @@ export class GlobalService {
     this.activityDataforUpdate.next(activityDataforUpdate);
      console.log(activityDataforUpdate);
     }
+    // get user profile
+  private getuserprofile = new BehaviorSubject<any>('');
+  public Getuserprofile = this.getuserprofile.asObservable();
+ set_getuserprofile(getuserprofile: any)
+  {
+    this.getuserprofile.next(getuserprofile);
+     console.log(getuserprofile);
+    }
 
 }

@@ -83,17 +83,17 @@ export class MapPage implements OnInit {
     return marker;
   }
 
-  placeMarker(location) {
-    let marker
-    if ( marker ) {
-      marker.setPosition(location);
-    } else {
-      marker = new google.maps.Marker({
-        position: location,
-        map: this.map
-      });
-    }
-  }
+  // placeMarker(location) {
+  //   let marker
+  //   if ( marker ) {
+  //     marker.setPosition(location);
+  //   } else {
+  //     marker = new google.maps.Marker({
+  //       position: location,
+  //       map: this.map
+  //     });
+  //   }
+  // }
 
   checkAndRemoveMarker(marker) {
     
