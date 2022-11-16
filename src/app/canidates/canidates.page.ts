@@ -19,10 +19,14 @@ export class CanidatesPage implements OnInit {
    public allStatus : any;
    public Going : any;
    public MaybeGoing : any;
-
+   public userData: any = {incoming_key:'', outgoing_key:''};
   constructor(public route :Router, public global : GlobalService, public apicall : ApicallService ) { }
 
   ngOnInit() {
+    this.global.Uid.subscribe(uid => {
+      this.userData.sender_id = uid;
+      console.log(uid);
+     });
     this.getAllStatus();
   
   }
@@ -38,6 +42,16 @@ export class CanidatesPage implements OnInit {
             this.MaybeGoing = this.allStatus.filter(x => x.status === 'm');
             console.log(this.MaybeGoing);         
     });
+  }
+
+  async  show_chat(data){
+    console.log(data);
+    console.log(this.userData);
+    this.userData.reciever_id = data.u_id
+    await this.apicall.api_getChat(this.userData);
+    this.global.set_chat(data);
+    const x = {data:data.u_id, userData:data}
+    this.route.navigate(['chat'], {state:{data: data}})
   }
 
   go_back(){
