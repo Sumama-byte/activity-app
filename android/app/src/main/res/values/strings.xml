@@ -4,4 +4,7 @@
     <string name="title_activity_main">Activity</string>
     <string name="package_name">com.learn2earn.activity</string>
     <string name="custom_url_scheme">com.learn2earn.activity</string>
+    <string name="facebook_app_id">3006031833028907</string>
+    <string name="fb_login_protocol_scheme">fb3006031833028907</string>
+    <string name="facebook_client_token">fc04063fd5826a88740075fbafcfe4fb</string>
 </resources>
