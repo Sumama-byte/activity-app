@@ -12,7 +12,7 @@
 
     <ion-row>
       <!-- login with facebook -->
-      <ion-button mode="ios" class="FB_button" [routerLink]="['/location']" >
+      <ion-button mode="ios" class="FB_button" (click)="facebookLogin()" >
         <img slot="start" class="btn_logo" src="../../assets/002-facebook.png" alt="">
         <h5>Continue with Facebook</h5>
       </ion-button>

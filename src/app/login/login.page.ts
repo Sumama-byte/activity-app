@@ -37,6 +37,20 @@ export class LoginPage implements OnInit {
       // return result.user;
     };
 
+    async facebookLogin(){
+      console.log('Facebook login program');
+  
+        const result = await FirebaseAuthentication.signInWithFacebook();
+        console.log(result);
+        this.global.add_uid(result.user.uid);
+        this.UserData.u_id = result.user.uid
+        // this.UserData.u_id = '5787855'
+        const coordinates = await Geolocation.getCurrentPosition();
+      console.log('Current position:', coordinates);
+        this.apiCall.api_postLogin(this.UserData);
+        this.apiCall.api_postLocation({u_id:result.user.uid, lat:coordinates.coords.latitude, lng:coordinates.coords.longitude})
+        // return result.user;
+      };
 }
 
 
