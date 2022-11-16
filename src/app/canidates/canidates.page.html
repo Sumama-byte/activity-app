@@ -29,7 +29,7 @@
   <!-- canidates going -->
 
   <ion-row *ngIf=" selectTabs == 'going'">
-    <ion-col size="12" *ngFor="let data of Going">
+    <ion-col size="12" *ngFor="let data of Going" (click)="show_chat(data)">
 
       <div class="user_img">
         <img class="userimg" src="{{this.data.img}}" alt="">
@@ -51,7 +51,7 @@
 
   
   <ion-row *ngIf=" selectTabs == 'may_be_going' ">
-    <ion-col size="12" *ngFor="let data of MaybeGoing">
+    <ion-col size="12" *ngFor="let data of MaybeGoing" (click)="show_chat(data)">
 
       <div class="user_img">
         <img class="userimg" src="{{this.data.img}}" alt="">
