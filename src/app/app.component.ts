@@ -10,13 +10,13 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor() {}
  async ngOnInit() {
     await SplashScreen.show({
-      showDuration: 2000,
+      showDuration: 4000,
       autoHide: true,
     });
   }
   async ngOnDestroy() {
     await SplashScreen.show({
-      showDuration: 2000,
+      showDuration: 4000,
       autoHide: true,
     });
   }
